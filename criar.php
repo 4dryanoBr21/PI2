@@ -4,7 +4,7 @@
 
   if(isset($_POST['submit'])) {
 
-    include_once("/php/conexao.php");
+    include_once("conexao.php");
   
     $nome = $_POST['nome'];
     $codigo = $_POST['codigo'];
