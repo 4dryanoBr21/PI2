@@ -25,7 +25,7 @@ include('protect.php');
     <h1>Salas disponiveis</h1>
     <div class="salas-container">
       <div class="salas-card">
-        <h2><a href="usr.php">Nome da Sala 1</a></h2>
+        <h2><a href="participante.php">Nome da Sala 1</a></h2>
       </div>
     </div>
     <form action="criar.php">
