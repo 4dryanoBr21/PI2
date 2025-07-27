@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Tempo de geração: 03/07/2025 às 02:31
+-- Host: 127.0.0.1
+-- Tempo de geração: 27/07/2025 às 20:08
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -24,27 +24,27 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `participante`
+-- Estrutura para tabela `sala`
 --
 
-CREATE TABLE `participante` (
+CREATE TABLE `sala` (
   `id` int(11) NOT NULL,
-  `nome` varchar(100) DEFAULT NULL,
-  `email` varchar(100) DEFAULT NULL,
-  `usuario` varchar(100) DEFAULT NULL,
-  `senha` varchar(100) DEFAULT NULL
+  `nome_sala` varchar(100) DEFAULT NULL,
+  `codigo_sala` varchar(100) DEFAULT NULL,
+  `tempo_fala` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `reuniao`
+-- Estrutura para tabela `usuario`
 --
 
-CREATE TABLE `reuniao` (
+CREATE TABLE `usuario` (
   `id` int(11) NOT NULL,
-  `nome_reuniao` varchar(100) DEFAULT NULL,
-  `nome_participante` varchar(100) DEFAULT NULL
+  `nome` varchar(100) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `senha` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -52,15 +52,15 @@ CREATE TABLE `reuniao` (
 --
 
 --
--- Índices de tabela `participante`
+-- Índices de tabela `sala`
 --
-ALTER TABLE `participante`
+ALTER TABLE `sala`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `reuniao`
+-- Índices de tabela `usuario`
 --
-ALTER TABLE `reuniao`
+ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -68,16 +68,16 @@ ALTER TABLE `reuniao`
 --
 
 --
--- AUTO_INCREMENT de tabela `participante`
+-- AUTO_INCREMENT de tabela `sala`
 --
-ALTER TABLE `participante`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `sala`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT de tabela `reuniao`
+-- AUTO_INCREMENT de tabela `usuario`
 --
-ALTER TABLE `reuniao`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `usuario`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
