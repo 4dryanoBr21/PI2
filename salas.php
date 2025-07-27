@@ -29,7 +29,6 @@ include('conexao.php');
         <?php
           $sql = "SELECT id, nome_sala FROM sala";
           $resultado = $mysqli->query($sql);
-
           if ($resultado->num_rows > 0) {
             while ($sala = $resultado->fetch_assoc()) {
               echo '
