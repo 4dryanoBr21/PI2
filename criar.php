@@ -1,4 +1,4 @@
-<?php include('/php/protect.php');?>
+<?php include('php/protect.php');?>
 
 <?php
 
