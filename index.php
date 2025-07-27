@@ -1,6 +1,6 @@
 <?php
 
-    include("php/conexao.php");
+    include("conexao.php");
 
     if(isset($_POST['email']) || isset($_POST['password'])) {
 
@@ -61,7 +61,7 @@
   <img id="logo-login" src="imagens/MI_legenda.png" alt="">
   <div class="login-container">
     <h1>Login</h1>
-    <form action="" method="POST">
+    <form action="php/login.php" method="POST">
       <div class="login-text">
         <p>Email</p>
       </div>
