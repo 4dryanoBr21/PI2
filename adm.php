@@ -1,6 +1,6 @@
 <?php
 
-include('php/protect.php');
+include('protect.php');
 
 ?>
 
