@@ -1,9 +1,10 @@
 # ME INSCREVO | Projeto de Cronômetro para Reuniões Presenciais feito por alunos do IFCS Campus Garopaba
 ![Logo do Meu Repositório](imagens/MI_legenda_branco.png)
 
-## Nomes:
+## Colaboradores do projeto:
 - Adriano Canto Junior  
 - Henrique Ribeiro Fernandes
+- Joel Jorge Teixeira Filho
 
 ## Relação com Unidades Curriculares:
 
