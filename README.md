@@ -1,7 +1,5 @@
-# Projeto ME INSCREVO | Feito por alunos do IFCS Campus Garopaba
+# ME INSCREVO | Projeto de Cronômetro para Reuniões Presenciais feito por alunos do IFCS Campus Garopaba
 ![Logo do Meu Repositório](imagens/MI_legenda_branco.png)
-
-# Projeto de Cronômetro para Reuniões Presenciais
 
 ## Nomes:
 - Adriano Canto Junior  
