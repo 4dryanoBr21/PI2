@@ -1,6 +1,7 @@
 <?php
 
 include('protect.php');
+include('conexao.php');
 
 ?>
 
@@ -25,7 +26,19 @@ include('protect.php');
       <div class="saida">
         <a href="salas.php"><span id="emoji" style="font-size: 20px; cursor: pointer;">❌</span></a>
       </div>
-      <h1>Sala01</h1>
+      <h1>Sala de test</h1>
+        <!-- <?php 
+          $sql = "SELECT id, nome_sala FROM sala";
+          $resultado = $mysqli->query($sql);
+
+          if ($resultado->num_rows > 0) {
+            while ($sala = $resultado->fetch_assoc()) {
+              echo '<h1 href="participante.php?id=' . $sala['id'] . '">' . $sala['nome_sala'] . '</h1>';
+            }
+          } else {
+            echo "<p>Nenhuma sala disponível.</p>";
+          }
+        ?> -->
       <div class="cronometro">
         <p>00:00</p>
       </div>

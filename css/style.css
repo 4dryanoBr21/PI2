@@ -162,6 +162,12 @@
   }
 
   .salas-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .salas {
     margin-bottom: 20px;
     margin-top: 20px;
     width: 80%;

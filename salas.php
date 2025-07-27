@@ -1,6 +1,7 @@
 <?php
 
 include('protect.php');
+include('conexao.php');
 
 ?>
 
@@ -25,7 +26,23 @@ include('protect.php');
     <h1>Salas disponiveis</h1>
     <div class="salas-container">
       <div class="salas-card">
-        <h2><a href="participante.php">Nome da Sala 1</a></h2>
+        <?php
+          $sql = "SELECT id, nome_sala FROM sala";
+          $resultado = $mysqli->query($sql);
+
+          if ($resultado->num_rows > 0) {
+            while ($sala = $resultado->fetch_assoc()) {
+              echo '
+                <div class="salas">
+                  <h2>' . htmlspecialchars($sala["nome_sala"]) . '</h2>
+                  <a href="participante.php?id=' . $sala["id"] . '">Entrar na sala</a>
+                </div>
+              ';
+            }
+          } else {
+            echo "<p>Nenhuma sala disponível.</p>";
+          }
+        ?>
       </div>
     </div>
     <form action="criar.php">
