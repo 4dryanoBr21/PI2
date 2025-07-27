@@ -5,7 +5,7 @@
 - Adriano Canto Junior  
 - Henrique Ribeiro Fernandes
 
-## Relação com Unidades Curriculares, Introdução e Problema:
+## Relação com Unidades Curriculares:
 
 Este projeto está relacionado a temas como **gestão do tempo** e **organização em ambientes colaborativos**, como reuniões e discussões em grupo.  
 O problema que buscamos solucionar é a **dificuldade em controlar o tempo de fala dos participantes** em reuniões presenciais.
@@ -25,7 +25,7 @@ A justificativa é clara: **aumentar a eficiência e a organização das reuniõ
 
 - Criar uma **interface web** com HTML, CSS e JavaScript  
 - Criar um **banco de dados MySQL**, utilizando **PHP** para comunicação com a interface  
-- **Hospedar** a interface e o banco de dados em uma **máquina local**, facilitando o desenvolvimento  
+- **Hospedar** a interface e o banco de dados em uma **máquina local**, facilitando o desenvolvimento e realização de testes
 - Ter como principal local de uso o **IFSC Campus Garopaba**
 
 ## Relevância:
