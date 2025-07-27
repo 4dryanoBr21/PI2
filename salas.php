@@ -42,13 +42,14 @@ include('conexao.php');
             echo "<p>Nenhuma sala disponível.</p>";
           }
         ?>
-        
+
       </div>
     </div>
-    <form action="criar.php">
-      <input type="text" placeholder="Procurar sala existente" class="form-input-salas">
-      <button type="submit">Criar Reunião</button>
+    <form action="">
+      <input type="text" placeholder="Digite o nome da sala" class="form-input-salas">
+      <button id="entrar-sala" type="submit">Entrar</button>
     </form>
+      <a href="criar.php"><button type="submit">Criar Reunião</button></a>
   </div>
 </body>
 </html>

@@ -7,10 +7,9 @@
     include_once("conexao.php");
   
     $nome = $_POST['nome'];
-    $codigo = $_POST['codigo'];
     $tempo = $_POST['tempo'];
 
-    $result = mysqli_query($mysqli, "INSERT INTO sala (nome_sala, codigo_sala, tempo_fala) VALUES ('$nome', '$codigo', '$tempo')");
+    $result = mysqli_query($mysqli, "INSERT INTO sala (nome_sala, tempo_fala) VALUES ('$nome', '$tempo')");
 
   }
 ?>
@@ -35,11 +34,7 @@
       <h1>Criar reunião</h1>
         <form id="form" action="" method="POST">
           <input name="nome" type="text" placeholder="Nome da reunião" required />
-          <input name="codigo" type="text" placeholder="Código da reunião" required />
-          <p>
-            Tempo de fala dos participantes
-          </p>
-          <input id="tempo" name="tempo" type="text" placeholder="" required />
+          <input id="tempo" name="tempo" type="number" placeholder="Tempo de fala dos participantes" required />
           <button name="submit" type="submit">Criar</button>
         </form>
       </div>
