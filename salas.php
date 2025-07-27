@@ -7,7 +7,6 @@ include('conexao.php');
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,6 +17,7 @@ include('conexao.php');
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <title>ME INSCREVO</title>
 </head>
+
 <body class="salas-page">
   <div class="salas-container-center">
     <div class="saida">
@@ -26,6 +26,7 @@ include('conexao.php');
     <h1>Salas disponiveis</h1>
     <div class="salas-container">
       <div class="salas-card">
+
         <?php
           $sql = "SELECT id, nome_sala FROM sala";
           $resultado = $mysqli->query($sql);
@@ -33,8 +34,7 @@ include('conexao.php');
             while ($sala = $resultado->fetch_assoc()) {
               echo '
                 <div class="salas">
-                  <h2>' . htmlspecialchars($sala["nome_sala"]) . '</h2>
-                  <a href="participante.php?id=' . $sala["id"] . '">Entrar na sala</a>
+                  <a href="participante.php?id=' . $sala["id"] . '"><h2>' . htmlspecialchars($sala["nome_sala"]) . '</h2></a>
                 </div>
               ';
             }
@@ -42,6 +42,7 @@ include('conexao.php');
             echo "<p>Nenhuma sala disponível.</p>";
           }
         ?>
+        
       </div>
     </div>
     <form action="criar.php">
