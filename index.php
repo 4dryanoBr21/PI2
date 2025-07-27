@@ -61,7 +61,7 @@
   <img id="logo-login" src="imagens/MI_legenda.png" alt="">
   <div class="login-container">
     <h1>Login</h1>
-    <form action="php/login.php" method="POST">
+    <form action="" method="POST">
       <div class="login-text">
         <p>Email</p>
       </div>
