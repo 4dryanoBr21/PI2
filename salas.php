@@ -5,6 +5,37 @@ include('conexao.php');
 
 ?>
 
+<?php
+
+if(isset($_POST['nome_sala'])) {
+
+            $nome_sala = $mysqli->real_escape_string($_POST['nome_sala']);
+
+            $sql_code = "SELECT * FROM sala WHERE nome_sala = '$nome_sala'";
+            $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
+            
+            $quantidade = $sql_query->num_rows;
+
+            if($quantidade == 1) {
+
+                $usuario = $sql_query->fetch_assoc();
+
+                if(!isset($_SESSION)) {
+                    session_start();
+                }
+
+                $_SESSION['nome_sala'] = $usuario['nome_sala'];
+
+                header("Location: participante.php");
+
+            } else {
+                echo "Falha ao entrar na sala!";
+            }
+
+        }   
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,9 +76,9 @@ include('conexao.php');
 
       </div>
     </div>
-    <form action="">
-      <input type="text" placeholder="Digite o nome da sala" class="form-input-salas">
-      <button id="entrar-sala" type="submit">Entrar</button>
+    <form action="" method="POST">
+      <input name="nome_sala" type="text" placeholder="Digite o nome da sala" class="form-input-salas">
+      <button name="submit" id="entrar-sala" type="submit">Entrar</button>
     </form>
       <a href="criar.php"><button type="submit">Criar Reunião</button></a>
   </div>
