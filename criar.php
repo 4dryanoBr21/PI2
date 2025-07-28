@@ -5,11 +5,17 @@
   if(isset($_POST['submit'])) {
 
     include_once("conexao.php");
+    session_start();
   
     $nome = $_POST['nome'];
     $tempo = $_POST['tempo'];
 
     $result = mysqli_query($mysqli, "INSERT INTO sala (nome_sala, tempo_fala) VALUES ('$nome', '$tempo')");
+
+    $_SESSION['nome_sala'] = $nome;
+
+    header("Location: criador.php");
+    exit();
 
   }
 ?>
