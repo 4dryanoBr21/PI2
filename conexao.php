@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 
     $db_host = 'localhost';
     $db_user = 'root';
@@ -15,4 +15,4 @@
         echo "Conexão feita com sucesso!";
     }*/
 
-?>
+?> -->
