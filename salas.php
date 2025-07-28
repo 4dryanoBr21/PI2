@@ -56,8 +56,8 @@ if(isset($_POST['nome_sala'])) {
     </div>
     <h1>Salas disponiveis</h1>
     <div class="salas-container">
-      <div class="salas-card">
-
+      <div class="salas-card" id="lista-salas">
+<!-- 
         <?php
           $sql = "SELECT id, nome_sala FROM sala";
           $resultado = $mysqli->query($sql);
@@ -72,7 +72,7 @@ if(isset($_POST['nome_sala'])) {
           } else {
             echo "<p>Nenhuma sala disponível.</p>";
           }
-        ?>
+        ?> -->
 
       </div>
     </div>
@@ -83,4 +83,21 @@ if(isset($_POST['nome_sala'])) {
       <a href="criar.php"><button type="submit">Criar Reunião</button></a>
   </div>
 </body>
+
+<script>
+  function carregarSalas() {
+    fetch('salas_ajax.php')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('lista-salas').innerHTML = data;
+      });
+  }
+
+  // Atualiza a cada 5 segundos
+  setInterval(carregarSalas, 5000);
+  // Carrega assim que abrir a página
+  window.onload = carregarSalas;
+</script>
+
+
 </html>
