@@ -24,7 +24,8 @@ include('protect.php');
   <div class="criador-container-center">
     <div class="criador-container">
       <div class="saida">
-        <a href="sair_e_deletar_sala.php"><span id="emoji" style="font-size: 20px; cursor: pointer;">❌</span></a>
+        <a href="sair_e_deletar_sala.php" id=""><span id="emoji" style="font-size: 20px; cursor: pointer;">❌</span></a>
+      </div>
       <h1>Sala01</h1>
       <div class="cronometro">
         <p>00:00</p>

@@ -54,7 +54,7 @@ if(isset($_POST['nome_sala'])) {
     <div class="saida">
       <a href="logout.php"><span id="emoji" style="font-size: 20px; cursor: pointer;">❌</span></a>
     </div>
-    <h1>Salas disponiveis</h1>
+      <h1>Salas disponiveis</h1>
     <div class="salas-container">
       <div class="salas-card" id="lista-salas">
 <!-- 
@@ -92,12 +92,8 @@ if(isset($_POST['nome_sala'])) {
         document.getElementById('lista-salas').innerHTML = data;
       });
   }
-
-  // Atualiza a cada 5 segundos
-  setInterval(carregarSalas, 5000);
-  // Carrega assim que abrir a página
+  setInterval(carregarSalas, 1000);
   window.onload = carregarSalas;
 </script>
-
 
 </html>
