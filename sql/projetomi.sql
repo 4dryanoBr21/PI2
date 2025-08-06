@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Tempo de geração: 27/07/2025 às 20:08
+-- Host: localhost
+-- Tempo de geração: 06/08/2025 às 23:58
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -30,7 +30,6 @@ SET time_zone = "+00:00";
 CREATE TABLE `sala` (
   `id` int(11) NOT NULL,
   `nome_sala` varchar(100) DEFAULT NULL,
-  `codigo_sala` varchar(100) DEFAULT NULL,
   `tempo_fala` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -71,13 +70,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de tabela `sala`
 --
 ALTER TABLE `sala`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
