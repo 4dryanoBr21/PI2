@@ -1,6 +1,6 @@
 <?php
 
-    include("../projetomi/php/conexao.php");
+    include("../projetomi/functions/conexao.php");
 
     if(isset($_POST['email']) || isset($_POST['password'])) {
 
@@ -29,7 +29,7 @@
                 $_SESSION['id'] = $usuario['id'];
                 $_SESSION['nome'] = $usuario['nome'];
 
-                header("Location: php/salas.php");
+                header("Location: pages/salas.php");
 
             } else {
                 echo "Falha no login!";
@@ -47,7 +47,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="php/css/style.css">
+  <link rel="stylesheet" href="css/style.css">
   <link rel="shortcut icon" href="imagens/MI_legenda.png" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
