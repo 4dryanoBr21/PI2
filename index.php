@@ -1,6 +1,6 @@
 <?php
 
-    include("conexao.php");
+    include("php/conexao.php");
 
     if(isset($_POST['email']) || isset($_POST['password'])) {
 
@@ -29,7 +29,7 @@
                 $_SESSION['id'] = $usuario['id'];
                 $_SESSION['nome'] = $usuario['nome'];
 
-                header("Location: salas.php");
+                header("Location: php/salas.php");
 
             } else {
                 echo "Falha no login!";
@@ -47,12 +47,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="php/css/style.css">
   <link rel="shortcut icon" href="imagens/MI_legenda.png" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <script src="js/script.js"></script>
   <title>ME INSCREVO - Login</title>
 </head>
@@ -72,7 +71,7 @@
       <input type="password" placeholder="exemplo123" name="password" id="senha">
       <div class="login-button">
         <button id="login-submit" type="submit">Entrar</button>
-        <a id="register-ancora" href="register.php">Registrar</a>
+        <a id="register-ancora" href="php/register.php">Registrar</a>
       </div>
     </form>
   </div>
