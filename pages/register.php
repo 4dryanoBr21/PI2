@@ -2,7 +2,7 @@
 
   if(isset($_POST['submit'])) {
 
-    include_once("conexao.php");
+    include_once("../functions/conexao.php");
   
     $nome = $_POST['nome'];
     $email = $_POST['email'];
@@ -19,7 +19,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="../css/style.css">
   <link rel="shortcut icon" href="imagens/MI_legenda.png" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

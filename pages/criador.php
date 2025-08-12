@@ -1,6 +1,6 @@
 <?php
 
-include('protect.php');
+include('../functions/protect.php');
 
 ?>
 
@@ -10,7 +10,7 @@ include('protect.php');
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="../css/style.css">
   <link rel="shortcut icon" href="imagens/MI_legenda.png" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,7 +24,7 @@ include('protect.php');
   <div class="criador-container-center">
     <div class="criador-container">
       <div class="saida">
-        <a href="sair_e_deletar_sala.php" id=""><span id="emoji" style="font-size: 20px; cursor: pointer;">❌</span></a>
+        <a href="../functions/sair_e_deletar_sala.php" id=""><span id="emoji" style="font-size: 20px; cursor: pointer;">❌</span></a>
       </div>
       <h1>Sala01</h1>
       <div class="cronometro">
