@@ -52,7 +52,7 @@ if(isset($_POST['nome_sala'])) {
 <body class="salas-page">
   <div class="salas-container-center">
     <div class="saida">
-      <a href="logout.php"><span id="emoji" style="font-size: 20px; cursor: pointer;">❌</span></a>
+      <a href="../php/logout.php"><span id="emoji" style="font-size: 20px; cursor: pointer;">❌</span></a>
     </div>
       <h1>Salas disponiveis</h1>
     <div class="salas-container">

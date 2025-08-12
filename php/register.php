@@ -46,7 +46,7 @@
       <input type="password" name="senha" placeholder="exemplo123" required>
       <div class="login-button">
         <button name="submit" id="login-submit" type="submit">Registrar</button>
-        <a id="register-ancora" href="index.php">Login</a>
+        <a id="register-ancora" href="../index.php">Login</a>
       </div>
     </form>
   </div>
