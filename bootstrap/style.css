@@ -2,10 +2,24 @@ body{
     background-color: #0078A6;
 }
 
-.container{
+#login-container{
     background-color: white;
-    margin-top: 200px;
+    margin-top: 180px;
     border-radius: 20px;
-    padding: 20px;
-    width: 400px;
+    padding: 40px;
+    width: 360px;
+}
+
+#login-text{
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.btn-primary{
+    background-color: #0078A6;
+    border-color: #0078A6;
+}
+
+.btn-primary:hover{
+    background-color: #0078A6;
 }
