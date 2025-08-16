@@ -48,7 +48,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="shortcut icon" href="imagens/MI_legenda.png" type="image/x-icon">
+  <link rel="shortcut icon" href="img/MI_legenda.png" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -57,7 +57,7 @@
 </head>
 
 <body class="login-page">
-  <img id="logo-login" src="imagens/MI_legenda.png" alt="">
+  <img id="logo-login" src="img/MI_legenda.png" alt="">
   <div class="login-container">
     <h1>Login</h1>
     <form action="" method="POST">
