@@ -1,5 +1,5 @@
 # ME INSCREVO | Projeto Integrador para reuniões presenciais feito por alunos do IFSC Campus Garopaba.
-![Logo do Meu Repositório](imagens/MI_legenda_branco.png)
+![Logo do Meu Repositório](img/MI_legenda_branco.png)
 
 ## Colaboradores do projeto:
 - Adriano Canto Junior  
