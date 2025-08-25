@@ -1,5 +1,6 @@
 <?php
 
+include('../functions/conexao.php');
 include('../functions/protect.php');
 
 ?>
@@ -26,7 +27,7 @@ include('../functions/protect.php');
       <div class="saida">
         <a href="../functions/sair_e_deletar_sala.php" id=""><span id="emoji" style="font-size: 20px; cursor: pointer;">❌</span></a>
       </div>
-      <h1>Sala01</h1>
+      <h1>Sala de test</h1>
       <div class="cronometro">
         <p>00:00</p>
       </div>
