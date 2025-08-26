@@ -30,7 +30,7 @@ include('../functions/protect.php');
       <?php
 
         $sql = "SELECT nome_sala FROM sala";
-        $result = $conn->query($sql);
+        $result = $mysqli->query($sql);
 
         if ($result->num_rows > 0) {
           $row = $result->fetch_assoc();
