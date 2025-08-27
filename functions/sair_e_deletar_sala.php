@@ -3,10 +3,10 @@ session_start();
 include('conexao.php');
 
 if (isset($_SESSION['nome_sala'])) {
-    $nome_sala = $mysqli->real_escape_string($_SESSION['nome_sala']);
+    $nome_sala = $PDO->real_escape_string($_SESSION['nome_sala']);
 
     $sql = "DELETE FROM sala WHERE nome_sala = '$nome_sala'";
-    $mysqli->query($sql);
+    $PDO->query($sql);
 
     unset($_SESSION['nome_sala']);
     header("Location: ../pages/salas.php");
