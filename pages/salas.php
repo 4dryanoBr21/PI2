@@ -1,82 +1,99 @@
+<?php
+
+include('../functions/protect.php');
+include('../functions/conexao.php');
+
+?>
+
+<?php
+
+if(isset($_POST['nome_sala'])) {
+
+            $nome_sala = $mysqli->real_escape_string($_POST['nome_sala']);
+
+            $sql_code = "SELECT * FROM sala WHERE nome_sala = '$nome_sala'";
+            $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
+            
+            $quantidade = $sql_query->num_rows;
+
+            if($quantidade == 1) {
+
+                $usuario = $sql_query->fetch_assoc();
+
+                if(!isset($_SESSION)) {
+                    session_start();
+                }
+
+                $_SESSION['nome_sala'] = $usuario['nome_sala'];
+
+                header("Location: participante.php");
+
+            } else {
+                echo "Falha ao entrar na sala!";
+            }
+
+        }   
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../css/style.css">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="shortcut icon" href="imagens/MI_legenda.png" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <title>ME INSCREVO</title>
 </head>
 
-<body>
-    <div class="container">
-        <a href="../functions/logout.php"><button type="button" class="btn-close" aria-label="Close"></button></a>
-        <h1 style=" text-align: center; font-size: 30px; font-weight: bold;">Available Rooms</h1>
-        <div class="container overflow-auto shadow p-3 mb-5 bg-body-tertiary rounded"
-            style="width: 250px; height: 300px;">
-            <div class="d-grid gap-2">
-                <button class="btn btn-secondary" type="button">Button</button>
-                <button class="btn btn-secondary" type="button">Button</button>
-                <button class="btn btn-secondary" type="button">Button</button>
-                <button class="btn btn-secondary" type="button">Button</button>
-                <button class="btn btn-secondary" type="button">Button</button>
-                <button class="btn btn-secondary" type="button">Button</button>
-                <button class="btn btn-secondary" type="button">Button</button>
-                <button class="btn btn-secondary" type="button">Button</button>
-                <button class="btn btn-secondary" type="button">Button</button>
-                <button class="btn btn-secondary" type="button">Button</button>
-                <button class="btn btn-secondary" type="button">Button</button>
-                <button class="btn btn-secondary" type="button">Button</button>
-                <button class="btn btn-secondary" type="button">Button</button>
-                <button class="btn btn-secondary" type="button">Button</button>
-                <button class="btn btn-secondary" type="button">Button</button>
-                <button class="btn btn-secondary" type="button">Button</button>
-                <button class="btn btn-secondary" type="button">Button</button>
-                <button class="btn btn-secondary" type="button">Button</button>
-                <button class="btn btn-secondary" type="button">Button</button>
-                <button class="btn btn-secondary" type="button">Button</button>
-            </div>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" placeholder="">
-            <label for="floatingInput">Enter the Name of the Room</label>
-        </div>
-        <div class="d-grid gap-2">
-            <button class="btn btn-dark" type="button">Enter</button>
-            <!-- Button trigger modal create room -->
-            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                Create Room
-            </button>
-        </div>
+<body class="salas-page">
+  <div class="salas-container-center">
+    <div class="saida">
+      <a href="../functions/logout.php"><span id="emoji" style="font-size: 20px; cursor: pointer;">❌</span></a>
     </div>
+      <h1>Salas disponiveis</h1>
+    <div class="salas-container">
+      <div class="salas-card" id="lista-salas">
+<!-- 
+        <?php
+          $sql = "SELECT id, nome_sala FROM sala";
+          $resultado = $mysqli->query($sql);
+          if ($resultado->num_rows > 0) {
+            while ($sala = $resultado->fetch_assoc()) {
+              echo '
+                <div class="salas">
+                  <a href="participante.php?id=' . $sala["id"] . '"><h2>' . htmlspecialchars($sala["nome_sala"]) . '</h2></a>
+                </div>
+              ';
+            }
+          } else {
+            echo "<p>Nenhuma sala disponível.</p>";
+          }
+        ?> -->
+
+      </div>
+    </div>
+    <form action="" method="POST">
+      <input name="nome_sala" type="text" placeholder="Digite o nome da sala" class="form-input-salas">
+      <button name="submit" id="entrar-sala" type="submit">Entrar</button>
+    </form>
+      <a href="criar.php"><button type="submit">Criar Reunião</button></a>
+  </div>
 </body>
 
-<!-- Modal create room -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">Create Room</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="">
-                    <label for="floatingInput">Room Name</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="floatingInput" placeholder="">
-                    <label for="floatingInput">Participants Speaking Time</label>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-dark">Create</button>
-            </div>
-        </div>
-    </div>
-</div>
+<script>
+  function carregarSalas() {
+    fetch('../functions/salas_ajax.php')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('lista-salas').innerHTML = data;
+      });
+  }
+  setInterval(carregarSalas, 1000);
+  window.onload = carregarSalas;
+</script>
 
 </html>

@@ -1,12 +1,9 @@
 <?php
-$host = "localhost";
-$user = "root";   // seu usuário do MySQL
-$pass = "";       // sua senha do MySQL
-$db   = "projetomi";
+    $db_host = 'localhost';
+    $db_user = 'root';
+    $dbpassword = '';
+    $dbpassword = 'System32';
+    $dbname = 'projetomi';
 
-$conn = new mysqli($host, $user, $pass, $db);
-
-if ($conn->connect_error) {
-    die("Falha na conexão: " . $conn->connect_error);
-}
+    $mysqli = new mysqli($db_host,$db_user,$dbpassword,$dbname);
 ?>
