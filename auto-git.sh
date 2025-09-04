@@ -9,7 +9,7 @@ while true; do
         echo "Alterações detectadas, enviando para o repositório..."
         git add .
         git commit -m "auto: $(date '+%Y-%m-%d %H:%M:%S')"
-        git push
+        git push origin main
         echo "✅ Commit e push feitos com sucesso!"
     fi
     # Aguarda 10 segundos antes de verificar de novo
