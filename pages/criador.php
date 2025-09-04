@@ -101,18 +101,5 @@ include('../functions/protect.php');
   window.onload = atualizarCronometro;  
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 </script>
 </html>
