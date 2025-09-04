@@ -1,5 +1,6 @@
 <?php
 
+include('../functions/conexao.php');
 include('../functions/protect.php');
 
 ?>
@@ -26,7 +27,20 @@ include('../functions/protect.php');
       <div class="saida">
         <a href="../functions/sair_e_deletar_sala.php" id=""><span id="emoji" style="font-size: 20px; cursor: pointer;">❌</span></a>
       </div>
-      <h1>Sala01</h1>
+      <?php
+
+        $sql = "SELECT nome_sala FROM sala";
+        $result = $mysqli->query($sql);
+
+        if ($result->num_rows > 0) {
+          $row = $result->fetch_assoc();
+          echo "<h1>" . htmlspecialchars($row['nome_sala']) . "</h1>";
+        } else {
+          echo "Nenhum produto encontrado.";
+        }
+
+
+      ?>
       <div class="cronometro">
         <p>00:00</p>
       </div>
