@@ -1,9 +1,10 @@
 body{
     background-color: #0078A6;
+    padding: ;
 }
 
 .container{
     background-color: white;
     padding: 20px;
-    borde;
+    border-radius: 10px;
 }
