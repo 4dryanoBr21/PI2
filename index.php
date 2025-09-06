@@ -62,10 +62,7 @@
                         <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
                         <label for="floatingPassword">Repeat your Password</label>
                     </div>
-                                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-dark">Register</button>
+                </form>
             </div>
         </div>
     </div>
