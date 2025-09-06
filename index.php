@@ -27,7 +27,8 @@
                 <button class="btn btn-dark" type="submit" style="margin-top: 20px;">Login</button>
                 <!-- Button Trigger Register Modal -->
                 <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                    Registe</button>
+                    Register
+                </button>
             </div>
         </form>
     </div>
