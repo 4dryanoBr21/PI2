@@ -16,4 +16,6 @@
       echo "Erro: " . $stmt->error;
   }
 
+  header
+
 ?>
