@@ -1,16 +1,17 @@
 <?php
+include 'conexao.php';
 
-  if(isset($_POST['submit'])) {
+$nome  = $_POST['nome'];
+$email = $_POST['email'];
+$senha = password_hash($_POST['senha'], PASSWORD_DEFAULT); // Criptografa a senha
 
-    include_once("conexao.php");
-  
-    $nome = $_POST['cad_nome'];
-    $email = $_POST['cad_email'];
-    $senha = $_POST['cad_senha'];
+$sql = "INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("sss", $nome, $email, $senha);
 
-    $result = new mysqli($mysqli, "INSERT INTO usuario (nome, email, senha) VALUES ('$nome', '$email', '$senha')");
-
-    echo "Cadastro feito com sucesso!";
-
-  }
+if ($stmt->execute()) {
+    echo "Usuário cadastrado com sucesso! <a href='index.html'>Voltar</a>";
+} else {
+    echo "Erro: " . $stmt->error;
+}
 ?>
