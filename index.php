@@ -73,7 +73,7 @@
 
         if(isset($_POST['submit'])) {
 
-        include_once("../functions/conexao.php");
+            include_once("../functions/conexao.php");
   
             $nome = $_POST['cad_nome'];
             $email = $_POST['cad_email'];
