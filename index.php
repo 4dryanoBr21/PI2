@@ -24,7 +24,7 @@
     <div class="modal-dialog">
       <div class="modal-content p-3">
         <h5>Criar Conta</h5>
-        <form action="registrar.php" method="POST">
+        <form action="functions/registrar.php" method="POST">
           <input type="text" name="nome" placeholder="Nome" class="form-control mb-2" required>
           <input type="email" name="email" placeholder="Email" class="form-control mb-2" required>
           <input type="password" name="senha" placeholder="Senha" class="form-control mb-2" required>
