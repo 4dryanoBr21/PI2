@@ -45,12 +45,12 @@
                 <div class="modal-body">
                     <form action="functions/register.php" method="POST">
                         <div class="form-floating">
-                            <input name="cad_nome" type="text" class="form-control" id="floatingInputGroup1" placeholder="Username"
+                            <input name="nome" type="text" class="form-control" id="floatingInputGroup1" placeholder="Username"
                                 style="margin-bottom: 18px;" required>
                             <label for="floatingInputGroup1">Username</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input name="cad_email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
+                            <input name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
                             <label for="floatingInput">Email address</label>
                         </div>
                         <div class="form-floating">
