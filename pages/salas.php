@@ -12,6 +12,7 @@
 
 <body>
     <div class="container">
+        <button type="button" class="btn-close" aria-label="Close"></button>
         <h1 style=" text-align: center; font-size: 30px; font-weight: bold;">Available Rooms</h1>
         <div class="container overflow-auto shadow p-3 mb-5 bg-body-tertiary rounded"
             style="width: 250px; height: 300px;">
