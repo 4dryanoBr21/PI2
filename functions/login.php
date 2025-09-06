@@ -29,7 +29,7 @@
             $_SESSION['id'] = $usuario['id'];
             $_SESSION['nome'] = $usuario['nome'];
 
-            header("Location: pages/salas.php");
+            header("Location: ../pages/salas.php");
 
             } else {
                 echo "Falha no login!";
