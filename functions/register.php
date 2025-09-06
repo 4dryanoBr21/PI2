@@ -4,9 +4,9 @@
 
     include_once("conexao.php");
   
-    $nome = $_POST['nome'];
-    $email = $_POST['email'];
-    $senha = $_POST['senha'];
+    $nome = $_POST['cad_nome'];
+    $email = $_POST['cad_email'];
+    $senha = $_POST['cad_senha'];
 
     $result = new mysqli("INSERT INTO usuario (nome, email, senha) VALUES ('$nome', '$email', '$senha')");
 
