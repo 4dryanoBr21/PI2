@@ -10,9 +10,12 @@
   $stmt->bind_param("sss", $nome, $email, $senhaHash);
 
   if ($stmt->execute()) {
-      echo window.location.href = "login.html";
+      echo "Usuário cadastrado com sucesso! ";
       
   } else {
       echo "Erro: " . $stmt->error;
   }
+
+  window.location.href = "login.html";
+
 ?>
