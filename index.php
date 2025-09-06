@@ -35,15 +35,15 @@
 
     <?php
 
-    include("../projetomi/functions/conexao.php");
+        include("../projetomi/functions/conexao.php");
 
-    if(isset($_POST['email']) || isset($_POST['password'])) {
+        if(isset($_POST['email']) || isset($_POST['password'])) {
 
-        if(strlen($_POST['email']) == 0) {
+            if(strlen($_POST['email']) == 0) {
             echo "Preencha seu email!";
-        } else if(strlen($_POST['password']) == 0) {
+            } else if(strlen($_POST['password']) == 0) {
             echo "Preencha sua senha!";
-        } else {
+            } else {
 
             $email = $mysqli->real_escape_string($_POST['email']);
             $senha = $mysqli->real_escape_string($_POST['password']);
