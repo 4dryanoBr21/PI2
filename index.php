@@ -70,9 +70,9 @@
                 echo "Falha no login!";
             }
 
-        }   
+            }   
 
-    }
+        }
 
     ?>
 
