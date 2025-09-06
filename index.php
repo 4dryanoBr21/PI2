@@ -44,7 +44,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="" method="">
+                <form action="" method="POST">
                     <div class="form-floating">
                         <input type="text" class="form-control" id="floatingInputGroup1" placeholder="Username"
                             style="margin-bottom: 18px;">
