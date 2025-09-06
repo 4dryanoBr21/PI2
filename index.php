@@ -55,11 +55,11 @@
                         <label for="floatingInput">Email address</label>
                     </div>
                     <div class="form-floating">
-                        <input name="cad_senha" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
                         <label for="floatingPassword">Password</label>
                     </div>
                     <div class="form-floating" style="margin-top: 18px;">
-                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                        <input name="cad_senha" type="password" class="form-control" id="floatingPassword" placeholder="Password">
                         <label for="floatingPassword">Repeat your Password</label>
                     </div>
                     <div class="modal-footer">
