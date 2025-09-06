@@ -54,11 +54,11 @@
                             <label for="floatingInput">Email address</label>
                         </div>
                         <div class="form-floating">
-                            <input name="cad_senha_confirm" type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
+                            <input name="senha_confirm" type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
                             <label for="floatingPassword">Password</label>
                         </div>
                         <div class="form-floating" style="margin-top: 18px;">
-                            <input name="cad_senha" type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
+                            <input name="senha" type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
                             <label for="floatingPassword">Repeat your Password</label>
                         </div>
                         <div class="modal-footer">
