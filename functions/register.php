@@ -5,7 +5,7 @@
   $email = $_POST['email'];
   $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT); // Criptografa a senha
   
-  $sql = "INSERT INTO usuario (nome, email, senha) VALUES (?, ?, ?)";
+  $conn = "INSERT INTO usuario (nome, email, senha) VALUES (?, ?, ?)";
   $stmt = $conn->prepare($sql);
   $stmt->bind_param("sss", $nome, $email, $senhaHash);
 
