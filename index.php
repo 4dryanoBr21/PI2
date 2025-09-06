@@ -1,76 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="css/style.css">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
+<body class="d-flex justify-content-center align-items-center vh-100">
 
-<body>
-    <div class="container">
-        <img src="img/MI_legenda.png" class="img-fluid" alt="...">
-        <form action="functions/login.php" method="POST">
-            <div class="form-floating mb-3">
-                <input name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
-                <label for="floatingInput">Email address</label>
-            </div>
-            <div class="form-floating">
-                <input name="password" type="password" class="form-control" id="floatingPassword"
-                    placeholder="Password" required>
-                <label for="floatingPassword">Password</label>
-            </div>
-            <div class="d-grid gap-2">
-                <button class="btn btn-dark" type="submit" style="margin-top: 20px;">Login</button>
-                
-                <!-- Button Trigger Register Modal -->
-                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                    Register
-                </button>
-            </div>
+  <div class="card p-4" style="width: 300px;">
+    <h4 class="text-center">Login</h4>
+    <form action="login.php" method="POST">
+      <input type="email" name="email" placeholder="Email" class="form-control mb-2" required>
+      <input type="password" name="senha" placeholder="Senha" class="form-control mb-2" required>
+      <button type="submit" class="btn btn-primary w-100">Entrar</button>
+    </form>
+    <button class="btn btn-link w-100 mt-2" data-bs-toggle="modal" data-bs-target="#modalCadastro">
+      Registrar
+    </button>
+  </div>
+
+  <!-- Modal de Cadastro -->
+  <div class="modal fade" id="modalCadastro" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content p-3">
+        <h5>Criar Conta</h5>
+        <form action="registrar.php" method="POST">
+          <input type="text" name="nome" placeholder="Nome" class="form-control mb-2" required>
+          <input type="email" name="email" placeholder="Email" class="form-control mb-2" required>
+          <input type="password" name="senha" placeholder="Senha" class="form-control mb-2" required>
+          <button type="submit" class="btn btn-success w-100">Cadastrar</button>
         </form>
+      </div>
     </div>
+  </div>
 
-    <!-- Register Modal -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Register</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="functions/register.php" method="POST">
-                        <div class="form-floating">
-                            <input name="nome" type="text" class="form-control" id="floatingInputGroup1" placeholder="Username"
-                                style="margin-bottom: 18px;" required>
-                            <label for="floatingInputGroup1">Username</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
-                            <label for="floatingInput">Email address</label>
-                        </div>
-                        <div class="form-floating">
-                            <input name="senha" type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
-                            <label for="floatingPassword">Password</label>
-                        </div>
-                        <div class="form-floating" style="margin-top: 18px;">
-                            <input name="senha_confirm" type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
-                            <label for="floatingPassword">Repeat your Password</label>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-dark">Register</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
