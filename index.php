@@ -76,13 +76,13 @@
                             $nome = $_POST['cad_nome'];
                             $email = $_POST['cad_email'];
                             $senha = $_POST['cad_senha'];
-                                                
+
                             $result = new mysqli($mysqli, "INSERT INTO usuario (nome, email, senha) VALUES ('$nome', '$email', '$senha')");
-                                                
+
                             echo "Cadastro feito com sucesso!";
 
-  }
-?>
+                        }
+                    ?>
 
                 </form>
             </div>
