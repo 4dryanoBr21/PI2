@@ -16,6 +16,4 @@
       echo "Erro: " . $stmt->error;
   }
 
-  $window.location.href = "login.html";
-
 ?>
