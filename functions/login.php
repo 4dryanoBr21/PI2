@@ -31,12 +31,12 @@
 
             header("Location: pages/salas.php");
 
-                } else {
-                    echo "Falha no login!";
-                }
+            } else {
+                echo "Falha no login!";
+            }
 
-            }   
+        }   
 
-        }
+    }
 
 ?>
