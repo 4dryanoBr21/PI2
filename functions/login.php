@@ -20,16 +20,16 @@
 
         if($quantidade == 1) {
 
-                $usuario = $sql_query->fetch_assoc();
+            $usuario = $sql_query->fetch_assoc();
 
-                if(!isset($_SESSION)) {
-                    session_start();
-                }
+            if(!isset($_SESSION)) {
+                session_start();
+            }
 
-                $_SESSION['id'] = $usuario['id'];
-                $_SESSION['nome'] = $usuario['nome'];
+            $_SESSION['id'] = $usuario['id'];
+            $_SESSION['nome'] = $usuario['nome'];
 
-                header("Location: pages/salas.php");
+            header("Location: pages/salas.php");
 
                 } else {
                     echo "Falha no login!";
