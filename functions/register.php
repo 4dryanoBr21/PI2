@@ -8,7 +8,7 @@
     $email = $_POST['email'];
     $senha = $_POST['senha'];
 
-    $result = pdo_query($mysqli, "INSERT INTO usuario (nome, email, senha) VALUES ('$nome', '$email', '$senha')");
+    $result = new mysqli($mysqli, "INSERT INTO usuario (nome, email, senha) VALUES ('$nome', '$email', '$senha')");
 
   }
 ?>
