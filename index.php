@@ -62,7 +62,7 @@
                             <label for="floatingPassword">Repeat your Password</label>
                         </div>
                         <div class="modal-footer">
-                            <input type="submit" class="btn btn-dark">Register</button>
+                            <input type="submit" class="btn btn-dark">Register</input>
                         </div>
 
                         <?php
