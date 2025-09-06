@@ -124,7 +124,7 @@
   
     $nome = $_POST['rg_nome'];
     $email = $_POST['rg_email'];
-    $senha = $_POST['senha'];
+    $senha = $_POST['cad_senha'];
 
     $result = pdo_query($mysqli, "INSERT INTO usuario (nome, email, senha) VALUES ('$nome', '$email', '$senha')");
 
