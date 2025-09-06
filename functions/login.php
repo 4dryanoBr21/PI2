@@ -17,7 +17,7 @@ if ($result->num_rows > 0) {
         session_start();
         $_SESSION['usuario_id'] = $user['id'];
         $_SESSION['usuario_nome'] = $user['nome'];
-        echo "pages/salas.php"
+        echo "pages/salas.php";
         // aqui você pode redirecionar para a dashboard
     } else {
         echo "Senha incorreta!";
