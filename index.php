@@ -46,7 +46,7 @@
             <div class="modal-body">
                 <form action="" method="POST">
                     <div class="form-floating">
-                        <input name="cad_name" type="text" class="form-control" id="floatingInputGroup1" placeholder="Username"
+                        <input name="cad_nome" type="text" class="form-control" id="floatingInputGroup1" placeholder="Username"
                             style="margin-bottom: 18px;">
                         <label for="floatingInputGroup1">Username</label>
                     </div>
