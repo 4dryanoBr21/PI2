@@ -88,7 +88,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="../" method="POST">
+                <form action="../functions/register.php" method="POST">
                     <div class="form-floating">
                         <input name="cad_nome" type="text" class="form-control" id="floatingInputGroup1" placeholder="Username"
                             style="margin-bottom: 18px;">
