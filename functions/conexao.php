@@ -2,7 +2,7 @@
 $host = "localhost";
 $user = "root";   // seu usuário do MySQL
 $pass = "";       // sua senha do MySQL
-$db   = "sistema_login";
+$db   = "projetomi";
 
 $conn = new mysqli($host, $user, $pass, $db);
 
