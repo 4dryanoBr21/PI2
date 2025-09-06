@@ -10,7 +10,7 @@
 
     $result = new mysqli("INSERT INTO usuario (nome, email, senha) VALUES ('$nome', '$email', '$senha')");
 
-    
+    echo "Cadastro"
 
   }
 ?>
