@@ -12,7 +12,7 @@
 
 <body>
     <div class="container">
-        <img src="MI_legenda.png" class="img-fluid" alt="...">
+        <img src="img/MI_legenda.png" class="img-fluid" alt="...">
         <form action="" method="POST">
             <div class="form-floating mb-3">
                 <input name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
