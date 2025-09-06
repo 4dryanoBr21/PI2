@@ -81,7 +81,7 @@
 
 <script>
 
-    btn_close
+    btn_close = document.get
 
 </script>
 
