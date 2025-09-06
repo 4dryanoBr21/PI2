@@ -63,7 +63,7 @@
                         <label for="floatingPassword">Repeat your Password</label>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-dark">Register</button>
+                        <button type="submit" class="btn btn-dark">Register</button>
                     </div>
                 </form>
             </div>
