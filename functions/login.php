@@ -1,42 +1,28 @@
 <?php
+include 'conexao.php';
 
-    include("conexao.php");
+$email = $_POST['email'];
+$senha = $_POST['senha'];
 
-    if(isset($_POST['email']) || isset($_POST['password'])) {
+$sql = "SELECT * FROM usuarios WHERE email = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $email);
+$stmt->execute();
+$result = $stmt->get_result();
 
-        if(strlen($_POST['email']) == 0) {
-            echo "Preencha seu email!";
-        } else if(strlen($_POST['password']) == 0) {
-            echo "Preencha sua senha!";
-        } else {
+if ($result->num_rows > 0) {
+    $user = $result->fetch_assoc();
 
-            $email = $mysqli->real_escape_string($_POST['email']);
-            $senha = $mysqli->real_escape_string($_POST['password']);
-
-            $sql_code = "SELECT * FROM usuario WHERE email = '$email' AND senha = '$senha'";
-            $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
-            
-            $quantidade = $sql_query->num_rows;
-
-            if($quantidade == 1) {
-
-                $usuario = $sql_query->fetch_assoc();
-
-                if(!isset($_SESSION)) {
-                    session_start();
-                }
-
-                $_SESSION['id'] = $usuario['id'];
-                $_SESSION['nome'] = $usuario['nome'];
-
-                header("Location: pages/salas.php");
-
-            } else {
-                echo "Falha no login!";
-            }
-
-        }   
-
+    if (password_verify($senha, $user['senha'])) {
+        session_start();
+        $_SESSION['usuario_id'] = $user['id'];
+        $_SESSION['usuario_nome'] = $user['nome'];
+        echo "Login realizado! Bem-vindo, " . $user['nome'];
+        // aqui você pode redirecionar para a dashboard
+    } else {
+        echo "Senha incorreta!";
     }
-
+} else {
+    echo "Usuário não encontrado!";
+}
 ?>
