@@ -15,12 +15,12 @@
         <img src="img/MI_legenda.png" class="img-fluid" alt="...">
         <form action="functions/login.php" method="POST">
             <div class="form-floating mb-3">
-                <input name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <input name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
                 <label for="floatingInput">Email address</label>
             </div>
             <div class="form-floating">
                 <input name="password" type="password" class="form-control" id="floatingPassword"
-                    placeholder="Password">
+                    placeholder="Password" required>
                 <label for="floatingPassword">Password</label>
             </div>
             <div class="d-grid gap-2">
@@ -46,19 +46,19 @@
                     <form action="" method="POST">
                         <div class="form-floating">
                             <input name="cad_nome" type="text" class="form-control" id="floatingInputGroup1" placeholder="Username"
-                                style="margin-bottom: 18px;">
+                                style="margin-bottom: 18px;" required>
                             <label for="floatingInputGroup1">Username</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input name="cad_email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <input name="cad_email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
                             <label for="floatingInput">Email address</label>
                         </div>
                         <div class="form-floating">
-                            <input name="cad_senha_confirm" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                            <input name="cad_senha_confirm" type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
                             <label for="floatingPassword">Password</label>
                         </div>
                         <div class="form-floating" style="margin-top: 18px;">
-                            <input name="cad_senha" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                            <input name="cad_senha" type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
                             <label for="floatingPassword">Repeat your Password</label>
                         </div>
                         <div class="modal-footer">
@@ -87,7 +87,7 @@
             </div>
         </div>
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
