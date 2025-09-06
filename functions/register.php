@@ -10,7 +10,7 @@
   $stmt->bind_param("sss", $nome, $email, $senhaHash);
 
   if ($stmt->execute()) {
-      header("Location: ")
+      header("Location: ../index.php");
       
   } else {
       echo "Erro: " . $stmt->error;
