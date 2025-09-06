@@ -4,7 +4,7 @@ include 'conexao.php';
 $email = $_POST['email'];
 $senha = $_POST['senha'];
 
-$sql = "SELECT * FROM usuarios WHERE email = ?";
+$sql = "SELECT * FROM usuario WHERE email = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $email);
 $stmt->execute();
