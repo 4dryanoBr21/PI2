@@ -1,5 +1,8 @@
 #!/bin/bash
 
+git config user.name "4dryanoBr21"
+git config user.email "adrianocanto462@gmail.com"
+
 while true; do
     if [[ -n $(git status --porcelain) ]]; then
         echo "Alterações detectadas, enviando para o repositório..."
