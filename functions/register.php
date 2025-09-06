@@ -10,7 +10,7 @@
   $stmt->bind_param("sss", $nome, $email, $senhaHash);
 
   if ($stmt->execute()) {
-      header "";
+      header("Location: ")
       
   } else {
       echo "Erro: " . $stmt->error;
