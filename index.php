@@ -62,26 +62,26 @@
                             <label for="floatingPassword">Repeat your Password</label>
                         </div>
                         <div class="modal-footer">
-                            <input type="submit" class="btn btn-dark">Register</input>
+                            <button type="submit" class="btn btn-dark">Register</button>
                         </div>
-
+    
                         <?php
-
+    
                             if(isset($_POST['submit'])) {
-
+                            
                                 include_once("conexao.php");
                             
                                 $nome = $_POST['cad_nome'];
                                 $email = $_POST['cad_email'];
                                 $senha = $_POST['cad_senha'];
-
+                            
                                 $result = $mysqli->query("INSERT INTO usuario (nome, email, senha) VALUES ('$nome', '$email', '$senha')");
-
+                            
                                 echo "Cadastro feito com sucesso!";
-
+                            
                             }
                         ?>
-
+    
                     </form>
                 </div>
             </div>
