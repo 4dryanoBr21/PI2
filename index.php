@@ -77,7 +77,7 @@
                             $email = $_POST['cad_email'];
                             $senha = $_POST['cad_senha'];
 
-                            $result = $mysqli->query($mysqli, "INSERT INTO usuario (nome, email, senha) VALUES ('$nome', '$email', '$senha')");
+                            $result = $mysqli->query("INSERT INTO usuario (nome, email, senha) VALUES ('$nome', '$email', '$senha')");
 
                             echo "Cadastro feito com sucesso!";
 
