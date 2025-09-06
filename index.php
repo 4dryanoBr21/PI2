@@ -19,7 +19,8 @@
                 <label for="floatingInput">Email address</label>
             </div>
             <div class="form-floating">
-                <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <input name="password" type="password" class="form-control" id="floatingPassword"
+                    placeholder="Password">
                 <label for="floatingPassword">Password</label>
             </div>
             <div class="d-grid gap-2">
@@ -45,27 +46,27 @@
             <div class="modal-body">
                 <form action="">
                     <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInputGroup1" placeholder="Username"
-                        style="margin-bottom: 18px;">
-                    <label for="floatingInputGroup1">Username</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                    <label for="floatingInput">Email address</label>
-                </div>
-                <div class="form-floating">
-                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                    <label for="floatingPassword">Password</label>
-                </div>
-                <div class="form-floating" style="margin-top: 18px;">
-                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                    <label for="floatingPassword">Repeat your Password</label>
-                </div>
+                        <input type="text" class="form-control" id="floatingInputGroup1" placeholder="Username"
+                            style="margin-bottom: 18px;">
+                        <label for="floatingInputGroup1">Username</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Email address</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                        <label for="floatingPassword">Password</label>
+                    </div>
+                    <div class="form-floating" style="margin-top: 18px;">
+                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                        <label for="floatingPassword">Repeat your Password</label>
+                    </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-dark">Register</button>
             </div>
-                </form>
+            </form>
         </div>
     </div>
 </div>
