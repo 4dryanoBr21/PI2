@@ -8,7 +8,7 @@
     $email = $_POST['cad_email'];
     $senha = $_POST['cad_senha'];
 
-    $result = new mysqli(mys"INSERT INTO usuario (nome, email, senha) VALUES ('$nome', '$email', '$senha')");
+    $result = new mysqli($mysqli, "INSERT INTO usuario (nome, email, senha) VALUES ('$nome', '$email', '$senha')");
 
     echo "Cadastro feito com sucesso!";
 
