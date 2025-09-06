@@ -31,7 +31,6 @@
             Register
         </button>
     </div>
-    </div>
 </body>
 
 <!-- Register Modal -->
