@@ -66,6 +66,9 @@
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-dark">Register</button>
                     </div>
+
+                    
+
                 </form>
             </div>
         </div>
