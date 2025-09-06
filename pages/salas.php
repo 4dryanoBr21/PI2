@@ -81,7 +81,7 @@
 
 <script>
 
-    
+    btn_close
 
 </script>
 
