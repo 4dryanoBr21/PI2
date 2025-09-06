@@ -19,7 +19,7 @@
         $quantidade = $sql_query->num_rows;
 
         if($quantidade == 1) {
-
+            
             $usuario = $sql_query->fetch_assoc();
 
             if(!isset($_SESSION)) {
