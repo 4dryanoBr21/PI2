@@ -10,7 +10,7 @@ $stmt = $conn->prepare($sql);
 $stmt->bind_param("sss", $nome, $email, $senha);
 
 if ($stmt->execute()) {
-    echo "Usuário cadastrado com sucesso! <a href='index.'>Voltar</a>";
+    echo "Usuário cadastrado com sucesso! <a href='index.php'>Voltar</a>";
 } else {
     echo "Erro: " . $stmt->error;
 }
