@@ -1,8 +1,14 @@
-<?php
-    $db_host = 'localhost';
-    $db_user = 'root';
-    $dbpassword = '';
-    $dbname = 'projetomi';
+ <?php
+$servername = "localhost";
+$username = "username";
+$password = "password";
 
-    $mysqli = new mysqli($db_host,$db_user,$dbpassword,$dbname);
-?>
+// Create connection
+$conn = new mysqli($servername, $username, $password);
+
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+echo "Connected successfully";
+?> 
