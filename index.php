@@ -122,8 +122,8 @@
 
     include_once("../functions/conexao.php");
   
-    $nome = $_POST['rg_nome'];
-    $email = $_POST['rg_email'];
+    $nome = $_POST['cad_nome'];
+    $email = $_POST['cad_email'];
     $senha = $_POST['cad_senha'];
 
     $result = pdo_query($mysqli, "INSERT INTO usuario (nome, email, senha) VALUES ('$nome', '$email', '$senha')");
