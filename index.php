@@ -1,44 +1,93 @@
-<!-- Dentro do Register Modal -->
-<form action="" method="POST">
-    <div class="form-floating">
-        <input name="cad_nome" type="text" class="form-control" id="cadNome" placeholder="Username"
-            style="margin-bottom: 18px;">
-        <label for="cadNome">Username</label>
-    </div>
-    <div class="form-floating mb-3">
-        <input name="cad_email" type="email" class="form-control" id="cadEmail" placeholder="name@example.com">
-        <label for="cadEmail">Email address</label>
-    </div>
-    <div class="form-floating">
-        <input name="cad_senha" type="password" class="form-control" id="cadSenha" placeholder="Password">
-        <label for="cadSenha">Password</label>
-    </div>
-    <div class="form-floating" style="margin-top: 18px;">
-        <input name="cad_senha_confirm" type="password" class="form-control" id="cadSenhaConfirm" placeholder="Password">
-        <label for="cadSenhaConfirm">Repeat your Password</label>
-    </div>
-    <div class="modal-footer">
-        <button type="submit" name="submit" class="btn btn-dark">Register</button>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <img src="img/MI_legenda.png" class="img-fluid" alt="...">
+        <form action="functions/login.php" method="POST">
+            <div class="form-floating mb-3">
+                <input name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <label for="floatingInput">Email address</label>
+            </div>
+            <div class="form-floating">
+                <input name="password" type="password" class="form-control" id="floatingPassword"
+                    placeholder="Password">
+                <label for="floatingPassword">Password</label>
+            </div>
+            <div class="d-grid gap-2">
+                <button class="btn btn-dark" type="submit" style="margin-top: 20px;">Login</button>
+                <!-- Button Trigger Register Modal -->
+                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    Register
+                </button>
+            </div>
+        </form>
     </div>
 
-    <?php
-        if(isset($_POST['submit'])) {
+</body>
 
-            include_once("conexao.php"); // aqui precisa já retornar o objeto $mysqli
+<!-- Register Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Register</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="" method="POST">
+                    <div class="form-floating">
+                        <input name="cad_nome" type="text" class="form-control" id="floatingInputGroup1" placeholder="Username"
+                            style="margin-bottom: 18px;">
+                        <label for="floatingInputGroup1">Username</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input name="cad_email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Email address</label>
+                    </div>
+                    <div class="form-floating">
+                        <input name="cad_senha_confirm" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                        <label for="floatingPassword">Password</label>
+                    </div>
+                    <div class="form-floating" style="margin-top: 18px;">
+                        <input name="cad_senha" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                        <label for="floatingPassword">Repeat your Password</label>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-dark">Register</button>
+                    </div>
 
-            $nome = $_POST['cad_nome'];
-            $email = $_POST['cad_email'];
-            $senha = $_POST['cad_senha'];
+                    <?php
 
-            // executa o INSERT corretamente
-            $sql = "INSERT INTO usuario (nome, email, senha) VALUES ('$nome', '$email', '$senha')";
-            $result = $mysqli->query($sql);
+                        if(isset($_POST['submit'])) {
 
-            if($result){
-                echo "Cadastro feito com sucesso!";
-            } else {
-                echo "Erro ao cadastrar: " . $mysqli->error;
-            }
-        }
-    ?>
-</form>
+                            include_once("conexao.php");
+  
+                            $nome = $_POST['cad_nome'];
+                            $email = $_POST['cad_email'];
+                            $senha = $_POST['cad_senha'];
+
+                            $result = $mysqli->query("INSERT INTO usuario (nome, email, senha) VALUES ('$nome', '$email', '$senha')");
+
+                            echo "Cadastro feito com sucesso!";
+
+                        }
+                    ?>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</html>
