@@ -82,5 +82,24 @@ include('../functions/protect.php');
     </div>
   </div>
 </body>
+<script>
+  // Função para atualizar o cronômetro
+  
+  `tempo_fala`
+  function atualizarCronometro() {
+    const cronometro = document.querySelector('.cronometro p');
+    let tempo = 0;
 
+    setInterval(() => {
+      tempo++;
+      const minutos = Math.floor(tempo / 60);
+      const segundos = tempo % 60;
+      cronometro.textContent = `${String(minutos).padStart(2, '0')}:${String(segundos).padStart(2, '0')}`;
+    }, 1000);
+  }
+// Iniciar o cronômetro ao carregar a página
+  window.onload = atualizarCronometro;  
+
+
+</script>
 </html>
