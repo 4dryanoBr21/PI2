@@ -1,6 +1,6 @@
 <?php
 
-    include("../projetomi/functions/conexao.php");
+    include("functions/conexao.php");
 
     if(isset($_POST['email']) || isset($_POST['password'])) {
 
