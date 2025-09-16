@@ -1,3 +1,18 @@
+<?php
+
+  if(isset($_POST['submit'])) {
+
+    include_once("functions/conexao.php");
+  
+    $nome = $_POST['nome'];
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+
+    $result = mysqli_query($mysqli, "INSERT INTO usuario (nome, email, senha) VALUES ('$nome', '$email', '$senha')");
+
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,21 +36,21 @@
         <div class="card" style="width: 300px;">
             <h2 style="text-align: center; font-weight: bold; margin-top: 20px;">Register</h2>
             <div class="card-body">
-                <form>
+                <form action="" method="POST">
                     <div class="mb-3">
                         <label for="exampleInput1" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="exampleInput1">
+                        <input name="nome" type="text" class="form-control" id="exampleInput1" required>
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <input  name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1">
+                        <input name="senha" type="password" class="form-control" id="exampleInputPassword1" required>
                     </div>
                     <div class="d-grid gap-2">
-                        <button class="btn btn-dark" type="button">Registrar</button>
+                        <button class="btn btn-dark" name="submit" type="submit">Registrar</button>
                         <button class="btn" type="button">Login</button>
                     </div>
                 </form>

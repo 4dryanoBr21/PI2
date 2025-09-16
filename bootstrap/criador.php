@@ -23,7 +23,7 @@
             <h2 style="text-align: center; font-weight: bold;">Sala de Test</h2>
             <div class="card-body">
                 <form>
-                    <div class="d-grid gap-2 overflow-auto shadow p-3 mb-5 bg-body-tertiary rounded" style="height: 300px;">
+                    <div class="d-grid gap-2 overflow-auto shadow p-3 mb-5 bg-body-tertiary rounded" style="height: 200px;">
                         <p>Adriano 🤚 00:00</p>
                         <p>Adriano 🤚 00:00</p>
                         <p>Adriano 🤚 00:00</p>
