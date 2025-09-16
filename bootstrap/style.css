@@ -1,0 +1,11 @@
+body {
+    font-family: "Montserrat";
+    background-color: #0078A6;
+    margin-top: 100px;
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
