@@ -19,10 +19,11 @@
     <div class="container">
         <img src="../img/MI_legenda.png" class="img-fluid" alt="..." style="width: 200px;">
         <div class="card" style="width: 300px;">
-            <h2 style="text-align: center; font-weight: bold; margin-top: 20px;">Reuniões</h2>
+            <button type="button" class="btn-close" aria-label="Close" style="padding: 10px;"></button>
+            <h2 style="text-align: center; font-weight: bold;">Reuniões</h2>
             <div class="card-body">
                 <form>
-                    <div class="d-grid gap-2 overflow-auto" style="height: 300px;">
+                    <div class="d-grid gap-2 overflow-auto shadow p-3 mb-5 bg-body-tertiary rounded" style="height: 200px;">
                         <button class="btn btn-secondary" type="button">Button</button>
                         <button class="btn btn-secondary" type="button">Button</button>
                         <button class="btn btn-secondary" type="button">Button</button>
@@ -40,7 +41,11 @@
                         <button class="btn btn-secondary" type="button">Button</button>
                         <button class="btn btn-secondary" type="button">Button</button>
                     </div>
-                    <div class="d-grid gap-2" style="margin-top: 20px;">
+                    <div class="mb-3">
+                        <label for="exampleInput1" class="form-label">Digite o Nome da Sala</label>
+                        <input type="text" class="form-control" id="exampleInput1">
+                    </div>
+                    <div class="d-grid gap-2">
                         <button class="btn btn-dark" type="button">Entrar na Sala</button>
                         <button class="btn" type="button">Criar Sala</button>
                     </div>
