@@ -36,12 +36,41 @@
                     </div>
                     <div class="d-grid gap-2">
                         <button class="btn btn-dark" name="submit" type="submit">Registrar</button>
-                        <button class="btn" type="button">Login</button>
+                        <button id="login_page" class="btn" type="button">Login</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </body>
+
+<script>
+
+    const login = document.getElementById("login_page")
+
+    function login_page(){
+        window.open("index.php")
+    }
+  
+    login.addEventListener("click", login_page)
+
+</script>
+
+<?php
+
+  if(isset($_POST['submit'])) {
+
+    include_once("functions/conexao.php");
+  
+    $nome = $_POST['nome'];
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+
+    $result = mysqli_query($mysqli, "INSERT INTO usuario (nome, email, senha) VALUES ('$nome', '$email', '$senha')");
+
+    header("Location: index.php");
+
+  }
+?>
 
 </html>
