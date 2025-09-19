@@ -23,10 +23,12 @@
             <h2 style="text-align: center; font-weight: bold;">Sala de Test</h2>
             <div class="card-body">
                 <form>
-                    <div class="d-grid gap-2 overflow-auto shadow p-3 mb-5 bg-body-tertiary rounded" style="height: 300px;">
-                        <p>Adriano 🤚 00:00</p>
-                        <p>Adriano 🤚 00:00</p>
-                        <p>Adriano 🤚 00:00</p>
+                    <div class="d-grid gap-2 overflow-auto shadow p-3 mb-5 bg-body-tertiary rounded" style="height: 200px;">
+                        <script>
+
+                            
+
+                        </script>
                         <p>Adriano</p>
                         <p>Adriano</p>
                         <p>Adriano</p>
@@ -45,12 +47,26 @@
                         <p>Adriano</p>
                     </div>
                     <div class="d-grid gap-2">
-                        <button class="btn" type="button" style="font-size: 75px;">🤚</button>
+                        <button id="mao" class="btn" type="button" style="font-size: 75px;">🤚</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </body>
+
+<script>
+  const emoji = document.getElementById("mao")
+
+  function troca_de_emoji() {
+    if (emoji.textContent === "🤚") {
+      emoji.textContent = "❌"
+    } else {
+        emoji.textContent = "🤚"
+    }
+  }
+
+  emoji.addEventListener("click", troca_de_emoji)
+</script>
 
 </html>

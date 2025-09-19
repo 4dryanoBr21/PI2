@@ -26,7 +26,7 @@ include('functions/conexao.php');
     <div class="container">
         <img src="../img/MI_legenda.png" class="img-fluid" alt="..." style="width: 200px;">
         <div class="card" style="width: 300px;">
-            <button id="leave" type="button" class="btn-close" aria-label="Close" style="padding: 10px;"></button>
+            <a href="../bootstrap/index.php"><button type="button" class="btn-close" aria-label="Close" style="padding: 10px;"></button></a>
             <h2 style="text-align: center; font-weight: bold;">Reuniões</h2>
             <div class="card-body">
                 <form>
@@ -71,18 +71,6 @@ include('functions/conexao.php');
 
 <script>
 
-    const saida = document.getElementById("leave")
-
-    function sair(){
-        window.open("index.php")
-    }
-  
-    saida.addEventListener("click", sair)
-
-</script>
-
-<script>
-
     const criar = document.getElementById("criar_sala")
 
     function create(){
@@ -95,32 +83,30 @@ include('functions/conexao.php');
 
 <?php
 
-if(isset($_POST['nome_sala'])) {
+    if(isset($_POST['nome_sala'])) {
 
-            $nome_sala = $mysqli->real_escape_string($_POST['nome_sala']);
-
-            $sql_code = "SELECT * FROM sala WHERE nome_sala = '$nome_sala'";
-            $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
-            
-            $quantidade = $sql_query->num_rows;
-
-            if($quantidade == 1) {
-
-                $usuario = $sql_query->fetch_assoc();
-
-                if(!isset($_SESSION)) {
-                    session_start();
-                }
-
-                $_SESSION['nome_sala'] = $usuario['nome_sala'];
-
-                header("Location: participante.php");
-
-            } else {
-                echo "Falha ao entrar na sala!";
+        $nome_sala = $mysqli->real_escape_string($_POST['nome_sala']);
+        $sql_code = "SELECT * FROM sala WHERE nome_sala = '$nome_sala'";
+        $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
+        
+        $quantidade = $sql_query->num_rows;
+        if($quantidade == 1) {
+        
+            $usuario = $sql_query->fetch_assoc();
+        
+            if(!isset($_SESSION)) {
+                session_start();
             }
-
-        }   
+        
+            $_SESSION['nome_sala'] = $usuario['nome_sala'];
+        
+            header("Location: participante.php");
+        
+        } else {
+            echo "Falha ao entrar na sala!";
+        }
+    
+    }  
 
 ?>
 

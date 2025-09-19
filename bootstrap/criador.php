@@ -67,12 +67,27 @@ include('functions/protect.php');
                         <p>Adriano</p>
                     </div>
                     <div class="d-grid gap-2">
-                        <button class="btn" type="button" style="font-size: 75px;">⏰</button>
+                        <button id="relogio" class="btn" type="button" style="font-size: 75px;">⏰</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </body>
+
+<script>
+  const emoji = document.getElementById("relogio")
+
+  function troca_de_emoji() {
+    if (emoji.textContent === "⏰") {
+      emoji.textContent = "❌"
+    } else {
+        emoji.textContent = "⏰"
+    }
+  }
+
+  emoji.addEventListener("click", troca_de_emoji)
+</script>
+
 
 </html>
