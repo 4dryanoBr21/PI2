@@ -1,3 +1,5 @@
+<?php include('functions/protect.php');?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,22 +24,42 @@
             <button type="button" class="btn-close" aria-label="Close" style="padding: 10px;"></button>
             <h2 style="text-align: center; font-weight: bold;">Criar Sala</h2>
             <div class="card-body">
-                <form>
+                <form action="" method="POST">
                     <div class="mb-3">
                         <label for="exampleInput1" class="form-label">Nome da Sala</label>
-                        <input type="text" class="form-control" id="exampleInput1">
+                        <input name="nome" type="text" class="form-control" id="exampleInput1" required />
                     </div>
                     <div class="mb-3">
                         <label for="exampleInput1" class="form-label">Tempo de fala dos participantes</label>
-                        <input type="number" class="form-control" id="exampleInput1">
+                        <input name="tempo" type="number" class="form-control" id="exampleInput1" required />
                     </div>
                     <div class="d-grid gap-2">
-                        <button class="btn btn-dark" type="button">Criar</button>
+                        <button class="btn btn-dark" name="submit" type="submit">Criar</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </body>
+
+<?php
+
+  if(isset($_POST['submit'])) {
+
+    include_once("functions/conexao.php");
+    session_start();
+  
+    $nome = $_POST['nome'];
+    $tempo = $_POST['tempo'];
+
+    $result = mysqli_query($mysqli, "INSERT INTO sala (nome_sala, tempo_fala) VALUES ('$nome', '$tempo')");
+
+    $_SESSION['nome_sala'] = $nome;
+
+    header("Location: criador.php");
+    exit();
+
+  }
+?>
 
 </html>

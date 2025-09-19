@@ -1,3 +1,10 @@
+<?php
+
+include('functions/conexao.php');
+include('functions/protect.php');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,8 +26,23 @@
     <div class="container">
         <img src="../img/MI_legenda.png" class="img-fluid" alt="..." style="width: 200px;">
         <div class="card" style="width: 300px;">
-            <button type="button" class="btn-close" aria-label="Close" style="padding: 10px;"></button>
-            <h2 style="text-align: center; font-weight: bold;">Sala de Test</h2>
+            <a href="../bootstrap/functions/sair_e_deletar_sala.php"><button type="button" class="btn-close" aria-label="Close" style="padding: 10px;"></button></a>
+            
+            <?php
+
+              $sql = "SELECT nome_sala FROM sala";
+              $result = $mysqli->query($sql);
+
+              if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                echo '<h2 style="text-align: center; font-weight: bold;">' . htmlspecialchars($row['nome_sala']) . '</h2>';
+              } else {
+                echo "Nenhum produto encontrado.";
+              }
+          
+          
+            ?>
+
             <div class="card-body">
                 <form>
                     <div class="d-grid gap-2 overflow-auto shadow p-3 mb-5 bg-body-tertiary rounded" style="height: 200px;">

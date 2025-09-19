@@ -1,3 +1,10 @@
+<?php
+
+include('functions/protect.php');
+include('functions/conexao.php');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,22 +31,29 @@
             <div class="card-body">
                 <form>
                     <div class="d-grid gap-2 overflow-auto shadow p-3 mb-5 bg-body-tertiary rounded" style="height: 200px;">
-                        <!-- 
                         <?php
-                          $sql = "SELECT id, nome_sala FROM sala";
-                          $resultado = $mysqli->query($sql);
-                          if ($resultado->num_rows > 0) {
-                            while ($sala = $resultado->fetch_assoc()) {
-                              echo '
-                                <div class="salas">
-                                  <a href="participante.php?id=' . $sala["id"] . '"><h2>' . htmlspecialchars($sala["nome_sala"]) . '</h2></a>
+                            $sql = "SELECT id, nome_sala FROM sala";
+                            $resultado = $mysqli->query($sql);
+
+                            if ($resultado->num_rows > 0) {
+                              while ($sala = $resultado->fetch_assoc()) {
+                                echo '
+                                <div class="container d-grid gap-2">
+                                    <div class="d-grid gap-2">
+                                    <a href="participante.php?id=' . $sala["id"] . '" 
+                                       class="btn btn-secondary">
+                                       ' . htmlspecialchars($sala["nome_sala"]) . '
+                                    </a>
+                                  </div>
                                 </div>
-                              ';
+                                  
+                                ';
+                              }
+                            } else {
+                              echo "<p>Nenhuma sala disponível.</p>";
                             }
-                          } else {
-                            echo "<p>Nenhuma sala disponível.</p>";
-                          }
-                        ?> -->
+                        ?>
+
                     </div>
                     <div class="mb-3">
                         <label for="exampleInput1" class="form-label">Digite o Nome da Sala</label>
@@ -47,7 +61,7 @@
                     </div>
                     <div class="d-grid gap-2">
                         <button class="btn btn-dark" type="button">Entrar na Sala</button>
-                        <button class="btn" type="button">Criar Sala</button>
+                        <button id="criar_sala" class="btn" type="button">Criar Sala</button>
                     </div>
                 </form>
             </div>
@@ -60,19 +74,24 @@
     const saida = document.getElementById("leave")
 
     function sair(){
-        open("index.php")
+        window.open("index.php")
     }
   
     saida.addEventListener("click", sair)
 
 </script>
 
-<?php
+<script>
 
-include('functions/protect.php');
-include('functions/conexao.php');
+    const criar = document.getElementById("criar_sala")
 
-?>
+    function create(){
+        window.open("criar.php")
+    }
+  
+    criar.addEventListener("click", create)
+
+</script>
 
 <?php
 
