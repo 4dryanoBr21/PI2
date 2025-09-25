@@ -31,7 +31,6 @@ $nome_sala = isset($_GET['sala']) ? urldecode($_GET['sala']) : 'Sala Desconhecid
                         <div id="quero_falar" style="margin-bottom: 15px;">
                             
                         </div>
-
                         <p>Adriano </p>
                         <p>Adriano</p>
                         <p>Adriano</p>
