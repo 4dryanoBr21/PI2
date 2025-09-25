@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 06/08/2025 às 23:58
+-- Tempo de geração: 25/09/2025 às 15:05
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -20,9 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `projetomi`
 --
-
-CREATE DATABASE projetomi;
-USE projetomi;
 
 -- --------------------------------------------------------
 
@@ -46,7 +43,8 @@ CREATE TABLE `usuario` (
   `id` int(11) NOT NULL,
   `nome` varchar(100) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
-  `senha` varchar(100) DEFAULT NULL
+  `senha` varchar(100) DEFAULT NULL,
+  `is_logged_in` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -73,13 +71,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de tabela `sala`
 --
 ALTER TABLE `sala`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
