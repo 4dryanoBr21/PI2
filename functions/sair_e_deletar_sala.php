@@ -9,7 +9,7 @@ if (isset($_SESSION['nome_sala'])) {
     $mysqli->query($sql);
 
     unset($_SESSION['nome_sala']);
-    header("Location: ../pages/salas.php");
+    header("Location: ../salas.php");
     exit();
 } else {
     echo "Nome da sala não encontrado na sessão.";
