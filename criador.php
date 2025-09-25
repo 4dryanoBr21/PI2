@@ -18,15 +18,15 @@ include('functions/protect.php');
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="../img/MI_legenda_branco.png" type="image/x-icon">
+    <link rel="shortcut icon" href="img/MI_legenda_branco.png" type="image/x-icon">
     <title>ME INSCREVO - Sala de Test</title>
 </head>
 
 <body>
     <div class="container">
-        <img src="../img/MI_legenda.png" class="img-fluid" alt="..." style="width: 200px;">
+        <img src="img/MI_legenda.png" class="img-fluid" alt="..." style="width: 200px;">
         <div class="card" style="width: 300px;">
-            <a href="../bootstrap/functions/sair_e_deletar_sala.php"><button type="button" class="btn-close" aria-label="Close" style="padding: 10px;"></button></a>
+            <a href="functions/sair_e_deletar_sala.php"><button type="button" class="btn-close" aria-label="Close" style="padding: 10px;"></button></a>
             
             <?php
 
@@ -42,7 +42,9 @@ include('functions/protect.php');
           
           
             ?>
-
+            <div class="container">
+              <p>00:00</p>
+            </div>
             <div class="card-body">
                 <form>
                     <div class="d-grid gap-2 overflow-auto shadow p-3 mb-5 bg-body-tertiary rounded" style="height: 200px;">

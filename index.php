@@ -1,6 +1,6 @@
 <?php
-    session_start();
     include("functions/conexao.php");
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -16,13 +16,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="../img/MI_legenda_branco.png" type="image/x-icon">
+    <link rel="shortcut icon" href="img/MI_legenda_branco.png" type="image/x-icon">
     <title>ME INSCREVO - Login</title>
 </head>
 
 <body>
     <div class="container">
-        <img src="../img/MI_legenda.png" class="img-fluid" alt="..." style="width: 200px;">
+        <img src="img/MI_legenda.png" class="img-fluid" alt="..." style="width: 200px;">
         <div class="card" style="width: 300px;">
             <h2 style="text-align: center; font-weight: bold; margin-top: 20px;">Login</h2>
             <div class="card-body">

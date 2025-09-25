@@ -1,8 +1,8 @@
 <?php
 
-session_start();
 include('functions/protect.php');
 include('functions/conexao.php');
+session_start();
 
 ?>
 
@@ -19,15 +19,15 @@ include('functions/conexao.php');
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="../img/MI_legenda_branco.png" type="image/x-icon">
+    <link rel="shortcut icon" href="img/MI_legenda_branco.png" type="image/x-icon">
     <title>ME INSCREVO - Salas</title>
 </head>
 
 <body>
     <div class="container">
-        <img src="../img/MI_legenda.png" class="img-fluid" alt="..." style="width: 200px;">
+        <img src="img/MI_legenda.png" class="img-fluid" alt="..." style="width: 200px;">
         <div class="card" style="width: 300px;">
-            <a href="../bootstrap/index.php"><button type="button" class="btn-close" aria-label="Close" style="padding: 10px;"></button></a>
+            <a href="index.php"><button type="button" class="btn-close" aria-label="Close" style="padding: 10px;"></button></a>
             <h2 style="text-align: center; font-weight: bold;">Reuniões</h2>
             <div class="card-body">
                 <form>
