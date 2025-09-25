@@ -1,5 +1,5 @@
 <?php
-    include_once("functions/conexao.php");
+    include_once("../functions/conexao.php");
 ?>
 
 <!DOCTYPE html>
@@ -51,7 +51,7 @@
     const login = document.getElementById("login_page")
 
     function login_page(){
-        window.open("index.php")
+        window.open("../index.php")
     }
   
     login.addEventListener("click", login_page)
@@ -68,7 +68,7 @@
 
     $result = mysqli_query($mysqli, "INSERT INTO usuario (nome, email, senha) VALUES ('$nome', '$email', '$senha')");
 
-    header("Location: index.php");
+    header("Location: ../index.php");
 
   }
 ?>

@@ -27,8 +27,12 @@ $nome_sala = isset($_GET['sala']) ? urldecode($_GET['sala']) : 'Sala Desconhecid
             <div class="card-body">
                 <form>
                     <div class="d-grid gap-2 overflow-auto shadow p-3 mb-5 bg-body-tertiary rounded" style="height: 200px;">
-                        <!-- Aqui futuramente você pode carregar os participantes da sala -->
-                        <p>Adriano</p>
+                        
+                        <div id="quero_falar" style="margin-bottom: 15px;">
+                            
+                        </div>
+
+                        <p>Adriano </p>
                         <p>Adriano</p>
                         <p>Adriano</p>
                     </div>
@@ -43,16 +47,28 @@ $nome_sala = isset($_GET['sala']) ? urldecode($_GET['sala']) : 'Sala Desconhecid
 
 <script>
   const emoji = document.getElementById("mao")
+  const lista = document.getElementById("quero_falar")
+
   function troca_de_emoji() {
     emoji.textContent = (emoji.textContent === "🤚") ? "❌" : "🤚"
   }
-  emoji.addEventListener("click", troca_de_emoji)
+
+  function troca_de_lista() {
+    lista.textContent = (lista.textContent === "") 
+    ? "<?php echo htmlspecialchars($_SESSION['nome']); ?> 🤚 00:00" 
+    : "";
+
+  }
 
   var fechar_btn = document.getElementById("close")
+
   function fechar_page(){
     open("salas.php", "_self")
   }
+
   fechar_btn.addEventListener("click", fechar_page)
+  emoji.addEventListener("click", troca_de_emoji)
+  emoji.addEventListener("click", troca_de_lista)
 </script>
 
 </html>

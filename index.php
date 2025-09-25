@@ -1,5 +1,5 @@
 <?php
-    include("functions/conexao.php");
+    include("../PI2/functions/conexao.php");
     session_start();
 ?>
 
@@ -87,7 +87,7 @@
 
 <script>
     document.getElementById("cad").addEventListener("click", () => {
-        window.open("register.php", "_self");
+        window.open("../PI2/pages/register.php", "_self");
     });
 </script>
 
