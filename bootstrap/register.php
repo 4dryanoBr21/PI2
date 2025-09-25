@@ -1,3 +1,7 @@
+<?php
+    include_once("functions/conexao.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,8 +63,6 @@
 <?php
 
   if(isset($_POST['submit'])) {
-
-    include_once("functions/conexao.php");
   
     $nome = $_POST['nome'];
     $email = $_POST['email'];

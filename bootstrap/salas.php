@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 include('functions/protect.php');
 include('functions/conexao.php');
 
@@ -74,7 +75,7 @@ include('functions/conexao.php');
     const criar = document.getElementById("criar_sala")
 
     function create(){
-        window.open("criar.php")
+        window.open("criar.php", "_self")
     }
   
     criar.addEventListener("click", create)
@@ -86,27 +87,25 @@ include('functions/conexao.php');
     if(isset($_POST['nome_sala'])) {
 
         $nome_sala = $mysqli->real_escape_string($_POST['nome_sala']);
+
+        if(empty($nome_sala)) {
+            echo "Informe o nome da sala!";
+            exit;
+        }
+
         $sql_code = "SELECT * FROM sala WHERE nome_sala = '$nome_sala'";
         $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
-        
-        $quantidade = $sql_query->num_rows;
-        if($quantidade == 1) {
-        
+
+        if($sql_query->num_rows == 1) {
             $usuario = $sql_query->fetch_assoc();
-        
-            if(!isset($_SESSION)) {
-                session_start();
-            }
-        
             $_SESSION['nome_sala'] = $usuario['nome_sala'];
-        
             header("Location: participante.php");
-        
+            exit;
         } else {
             echo "Falha ao entrar na sala!";
         }
-    
-    }  
+    }
+
 
 ?>
 

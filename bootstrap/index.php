@@ -1,3 +1,8 @@
+<?php
+    session_start();
+    include("functions/conexao.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +26,7 @@
         <div class="card" style="width: 300px;">
             <h2 style="text-align: center; font-weight: bold; margin-top: 20px;">Login</h2>
             <div class="card-body">
-                <form actin="" method="POST">
+                <form action="" method="POST">
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Endereço de email</label>
                         <input name="email" type="email" class="form-control" id="email" aria-describedby="emailHelp">
@@ -45,7 +50,7 @@
     const cad = document.getElementById("cad")
 
     function register_page(){
-        window.open("register.php")
+        window.open("register.php", "_self")
     }
   
     cad.addEventListener("click", register_page)
@@ -53,52 +58,33 @@
 </script>
 
 <?php
-
     include("functions/conexao.php");
 
-    if(isset($_POST['email']) || isset($_POST['password'])) {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+        $password = htmlspecialchars($_POST['password'], ENT_QUOTES, 'UTF-8');
 
-        if(strlen($_POST['email']) == 0) {
-            echo'<div class="alert alert-warning" role="alert">
-                    Preencha seu email!
-                </div>';
-        } else if(strlen($_POST['password']) == 0) {
-            echo'<div class="alert alert-warning" role="alert">
-                    Preencha sua senha!
-                </div>';
-        } else {
+        if (strlen($email) == 0 || strlen($password) == 0) {
+            echo '<div class="alert alert-warning" role="alert">Preencha seu email e senha!</div>';
+            } else {
+            $sql_code = "SELECT * FROM usuario WHERE email = ? AND senha = ?";
+            $stmt = $mysqli->prepare($sql_code);
+            $stmt->bind_param("ss", $email, $password);
+            $stmt->execute();
+            $result = $stmt->get_result();
 
-            $email = $mysqli->real_escape_string($_POST['email']);
-            $senha = $mysqli->real_escape_string($_POST['password']);
-
-            $sql_code = "SELECT * FROM usuario WHERE email = '$email' AND senha = '$senha'";
-            $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
-            
-            $quantidade = $sql_query->num_rows;
-
-            if($quantidade == 1) {
-
-                $usuario = $sql_query->fetch_assoc();
-
-                if(!isset($_SESSION)) {
-                    session_start();
-                }
-
+            if ($result->num_rows == 1) {
+                $usuario = $result->fetch_assoc();
                 $_SESSION['id'] = $usuario['id'];
                 $_SESSION['nome'] = $usuario['nome'];
-
                 header("Location: salas.php");
-
+                exit;
             } else {
-                echo'<div class="alert alert-danger" role="alert">
-                        Falha no login!
-                    </div>';
+                echo '<div class="alert alert-danger" role="alert">Falha no login!</div>';
             }
-
-        }   
-
+            $stmt->close();
+        }
     }
-
 ?>
 
 </html>

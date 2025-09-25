@@ -19,7 +19,7 @@
     <div class="container">
         <img src="../img/MI_legenda.png" class="img-fluid" alt="..." style="width: 200px;">
         <div class="card" style="width: 300px;">
-            <button type="button" class="btn-close" aria-label="Close" style="padding: 10px;"></button>
+            <button id="close" type="button" class="btn-close" aria-label="Close" style="padding: 10px;"></button>
             <h2 style="text-align: center; font-weight: bold;">Sala de Test</h2>
             <div class="card-body">
                 <form>
@@ -67,6 +67,18 @@
   }
 
   emoji.addEventListener("click", troca_de_emoji)
+</script>
+
+<script>
+
+  var fechar_btn = document.getElementById("close")
+
+  function fechar_page(){
+    open("salas.php", "_self")
+  }
+
+  fechar_btn.addEventListener("click", fechar_page)
+
 </script>
 
 </html>
