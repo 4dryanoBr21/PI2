@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nome_sala'])) {
     $nome_sala = trim($_POST['nome_sala']);
 
     if ($nome_sala === '') {
-        $alert_message = "⚠️ Informe o nome da sala!";
+        $alert_message = "Informe o nome da sala!";
     } else {
         // Prepared statement para buscar a sala pelo nome
         $stmt = $mysqli->prepare("SELECT id, nome_sala FROM sala WHERE nome_sala = ? LIMIT 1");
@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nome_sala'])) {
                 header("Location: participante.php?sala=" . $nome_url);
                 exit;
             } else {
-                $alert_message = "❌ Sala não encontrada!";
+                $alert_message = "Sala não encontrada!";
             }
 
             $stmt->close();
@@ -65,36 +65,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nome_sala'])) {
     <link rel="stylesheet" href="../style.css">
     <link rel="shortcut icon" href="../img/MI_legenda_branco.png" type="image/x-icon">
     <title>ME INSCREVO - Salas</title>
-
-    <style>
-        /* Estilo do autocomplete */
-        .autocomplete-items {
-            position: absolute;
-            border: 1px solid #d4d4d4;
-            border-bottom: none;
-            border-top: none;
-            z-index: 99;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: white;
-        }
-
-        .autocomplete-items div {
-            padding: 10px;
-            cursor: pointer;
-            border-bottom: 1px solid #d4d4d4;
-        }
-
-        .autocomplete-items div:hover {
-            background-color: #e9e9e9;
-        }
-
-        .autocomplete-active {
-            background-color: #0d6efd !important;
-            color: #ffffff;
-        }
-    </style>
 </head>
 
 <body>

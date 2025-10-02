@@ -1,5 +1,5 @@
 <?php
-    include("../PI2/functions/conexao.php");
+    include("functions/conexao.php");
     session_start();
 ?>
 
@@ -70,7 +70,7 @@
 
                                 $_SESSION['id'] = $usuario['id'];
                                 $_SESSION['nome'] = $usuario['nome'];
-                                header("Location: /PI2/pages/salas.php");
+                                header("Location: pages/salas.php");
                                 exit;
                             }
                         } else {
@@ -87,7 +87,7 @@
 
 <script>
     document.getElementById("cad").addEventListener("click", () => {
-        window.open("../PI2/pages/register.php", "_self");
+        window.open("pages/register.php", "_self");
     });
 </script>
 
