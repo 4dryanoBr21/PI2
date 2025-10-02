@@ -1,7 +1,7 @@
 <?php
 
-include('../functions/conexao.php');
-include('../functions/protect.php');
+  include('../functions/conexao.php');
+  include('../functions/protect.php');
 
 ?>
 

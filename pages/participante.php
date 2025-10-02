@@ -1,6 +1,6 @@
 <?php
-session_start();
-$nome_sala = isset($_GET['sala']) ? urldecode($_GET['sala']) : 'Sala Desconhecida';
+    session_start();
+    $nome_sala = isset($_GET['sala']) ? urldecode($_GET['sala']) : 'Sala Desconhecida';
 ?>
 
 <!DOCTYPE html>
@@ -68,6 +68,7 @@ $nome_sala = isset($_GET['sala']) ? urldecode($_GET['sala']) : 'Sala Desconhecid
   fechar_btn.addEventListener("click", fechar_page)
   emoji.addEventListener("click", troca_de_emoji)
   emoji.addEventListener("click", troca_de_lista)
+  
 </script>
 
 </html>
