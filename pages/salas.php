@@ -1,55 +1,51 @@
 <?php
-include('../functions/protect.php');
-include('../functions/conexao.php');
-session_start();
 
-// Variáveis
-$alert_message = null;
-$salas = [];
-$salas_rows = [];
+    include('../functions/protect.php');
+    include('../functions/conexao.php');
+    session_start();
 
-// Carrega todas as salas (uma vez)
-$sql = "SELECT id, nome_sala FROM sala";
-$resultado = $mysqli->query($sql);
-if ($resultado) {
-    while ($row = $resultado->fetch_assoc()) {
-        $salas_rows[] = $row;
-        $salas[] = $row['nome_sala'];
-    }
-}
+    $alert_message = null;
+    $salas = [];
+    $salas_rows = [];
 
-// Tratamento do POST — deve ocorrer antes de qualquer output HTML para poder usar header()
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nome_sala'])) {
-    $nome_sala = trim($_POST['nome_sala']);
-
-    if ($nome_sala === '') {
-        $alert_message = "Informe o nome da sala!";
-    } else {
-        // Prepared statement para buscar a sala pelo nome
-        $stmt = $mysqli->prepare("SELECT id, nome_sala FROM sala WHERE nome_sala = ? LIMIT 1");
-        if ($stmt) {
-            $stmt->bind_param('s', $nome_sala);
-            $stmt->execute();
-            $res = $stmt->get_result();
-
-            if ($res && $res->num_rows === 1) {
-                $sala = $res->fetch_assoc();
-                $_SESSION['nome_sala'] = $sala['nome_sala'];
-
-                // redireciona usando o nome da sala na URL (participante.php?sala=...)
-                $nome_url = urlencode($sala['nome_sala']);
-                header("Location: participante.php?sala=" . $nome_url);
-                exit;
-            } else {
-                $alert_message = "Sala não encontrada!";
-            }
-
-            $stmt->close();
-        } else {
-            $alert_message = "Erro interno ao preparar a consulta.";
+    $sql = "SELECT id, nome_sala FROM sala";
+    $resultado = $mysqli->query($sql);
+    if ($resultado) {
+        while ($row = $resultado->fetch_assoc()) {
+            $salas_rows[] = $row;
+            $salas[] = $row['nome_sala'];
         }
     }
-}
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nome_sala'])) {
+        $nome_sala = trim($_POST['nome_sala']);
+
+        if ($nome_sala === '') {
+            $alert_message = "Informe o nome da sala!";
+        } else {
+            $stmt = $mysqli->prepare("SELECT id, nome_sala FROM sala WHERE nome_sala = ? LIMIT 1");
+            if ($stmt) {
+                $stmt->bind_param('s', $nome_sala);
+                $stmt->execute();
+                $res = $stmt->get_result();
+
+                if ($res && $res->num_rows === 1) {
+                    $sala = $res->fetch_assoc();
+                    $_SESSION['nome_sala'] = $sala['nome_sala'];
+
+                    $nome_url = urlencode($sala['nome_sala']);
+                    header("Location: participante.php?sala=" . $nome_url);
+                    exit;
+                } else {
+                    $alert_message = "Sala não encontrada!";
+                }
+
+                $stmt->close();
+            } else {
+                $alert_message = "Erro interno ao preparar a consulta.";
+            }
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -93,7 +89,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nome_sala'])) {
                         ?>
                     </div>
 
-                    <!-- espaço para mensagens (erro/aviso) -->
                     <?php if (!empty($alert_message)): ?>
                         <div class="alert alert-warning text-center" role="alert">
                             <?php echo htmlspecialchars($alert_message); ?>
@@ -117,7 +112,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nome_sala'])) {
 </body>
 
 <script>
-    // Salas vindas do PHP
+    
     const salas = <?php echo json_encode($salas, JSON_UNESCAPED_UNICODE); ?>;
 
     const input = document.getElementById("searchInput1");
@@ -142,16 +137,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nome_sala'])) {
         });
     });
 
-    // Fechar lista ao clicar fora
     document.addEventListener("click", function(e) {
         if (e.target !== input) {
             list.innerHTML = "";
         }
     });
 
-    // Botão criar sala
     document.getElementById("criar_sala").addEventListener("click", function() {
         window.open("criar.php", "_self");
     });
+
 </script>
 </html>

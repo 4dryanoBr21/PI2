@@ -71,6 +71,7 @@
     header("Location: ../index.php");
 
   }
+  
 ?>
 
 </html>
