@@ -51,7 +51,7 @@
     $nome = $_POST['nome'];
     $tempo = $_POST['tempo'];
 
-    $result = mysqli_query($mysqli, "INSERT INTO sala (nome_sala, tempo_fala) VALUES ('$nome', '$tempo')");
+    $result = mysqli_query($mysqli, "INSERT INTO sala (nome_sala, tempo_maximo_fala) VALUES ('$nome', '$tempo')");
 
     $_SESSION['nome_sala'] = $nome;
 

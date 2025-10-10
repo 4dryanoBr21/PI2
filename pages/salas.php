@@ -2,13 +2,12 @@
 
     include('../functions/protect.php');
     include('../functions/conexao.php');
-    session_start();
 
     $alert_message = null;
     $salas = [];
     $salas_rows = [];
 
-    $sql = "SELECT id, nome_sala FROM sala";
+    $sql = "SELECT id_sala, nome_sala FROM sala";
     $resultado = $mysqli->query($sql);
     if ($resultado) {
         while ($row = $resultado->fetch_assoc()) {
@@ -23,7 +22,7 @@
         if ($nome_sala === '') {
             $alert_message = "Informe o nome da sala!";
         } else {
-            $stmt = $mysqli->prepare("SELECT id, nome_sala FROM sala WHERE nome_sala = ? LIMIT 1");
+            $stmt = $mysqli->prepare("SELECT id_sala, nome_sala FROM sala WHERE nome_sala = ? LIMIT 1");
             if ($stmt) {
                 $stmt->bind_param('s', $nome_sala);
                 $stmt->execute();

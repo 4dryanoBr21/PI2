@@ -24,6 +24,9 @@
         <div class="card" style="width: 300px;">
             <button id="close" type="button" class="btn-close" aria-label="Close" style="padding: 10px;"></button>
             <h2 style="text-align: center; font-weight: bold;"><?php echo htmlspecialchars($nome_sala); ?></h2>
+            <div class="container">
+              <p>00:00</p>
+            </div>
             <div class="card-body">
                 <form>
                     <div class="d-grid gap-2 overflow-auto shadow p-3 mb-5 bg-body-tertiary rounded" style="height: 200px;">

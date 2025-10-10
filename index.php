@@ -1,6 +1,43 @@
 <?php
+
     include("functions/conexao.php");
-    session_start();
+                
+    if(isset($_POST['email']) || isset($_POST['senha'])) {
+
+        if(strlen($_POST['email']) == 0) {
+            echo "Prencha seu email!";
+            } else if(strlen($_POST['senha']) == 0) {
+                echo "Prencha sua senha!";
+            } else {
+
+                $email = $mysqli->real_escape_string($_POST['email']);
+                $senha = $mysqli->real_escape_string($_POST['senha']);
+
+                $sql_code = "SELECT * FROM usuario WHERE email = '$email' AND senha = '$senha'";
+                $sql_query = $mysqli->query($sql_code) or die("Falha na execução do SQL: " . $mysqli->error);
+
+                $quantidade = $sql_query->num_rows;
+
+                if($quantidade == 1) {  
+
+                    $usuario = $sql_query->fetch_assoc();
+
+                    if(!isset($_SESSION)) {
+                        session_start();
+                    }
+
+                    $_SESSION['id'] = $usuario['id_usuario'];
+                    $_SESSION['nome'] = $usuario['nome'];
+
+                    header("Location: pages/salas.php");
+
+                } else {
+                    echo "email ou senha incorretos!";
+                }
+
+        }
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -32,54 +69,13 @@
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Senha</label>
-                        <input name="password" type="password" class="form-control" id="password">
+                        <input name="senha" type="password" class="form-control" id="password">
                     </div>
                     <div class="d-grid gap-2">
                         <button class="btn btn-dark" name="submit" type="submit">Entrar</button>
                         <button id="cad" class="btn" type="button">Registrar</button>
                     </div>
                 </form>
-
-                <?php
-                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-                    $password = htmlspecialchars($_POST['password'], ENT_QUOTES, 'UTF-8');
-
-                    if (strlen($email) == 0 || strlen($password) == 0) {
-                        echo '<div class="alert alert-warning mt-3" role="alert">Preencha seu email e senha!</div>';
-                    } else {
-                        $sql_code = "SELECT * FROM usuario WHERE email = ? AND senha = ?";
-                        $stmt = $mysqli->prepare($sql_code);
-                        $stmt->bind_param("ss", $email, $password);
-                        $stmt->execute();
-                        $result = $stmt->get_result();
-
-                        if ($result->num_rows == 1) {
-                            $usuario = $result->fetch_assoc();
-
-                            // Verifica se já está logado em outro local
-                            if ($usuario['is_logged_in'] == 1) {
-                                echo '<div class="alert alert-danger mt-3" role="alert">
-                                        Este usuário já está logado em outro dispositivo/navegador!
-                                      </div>';
-                            } else {
-                                // Marca como logado
-                                $update = $mysqli->prepare("UPDATE usuario SET is_logged_in = 1 WHERE id = ?");
-                                $update->bind_param("i", $usuario['id']);
-                                $update->execute();
-
-                                $_SESSION['id'] = $usuario['id'];
-                                $_SESSION['nome'] = $usuario['nome'];
-                                header("Location: pages/salas.php");
-                                exit;
-                            }
-                        } else {
-                            echo '<div class="alert alert-danger mt-3" role="alert">Falha no login!</div>';
-                        }
-                        $stmt->close();
-                    }
-                }
-                ?>
             </div>
         </div>
     </div>
