@@ -72,19 +72,20 @@
                 <form method="POST">
                     <div class="d-grid gap-2 overflow-auto shadow p-3 mb-3 bg-body-tertiary rounded" style="height: 200px;">
                         <?php
-                        if (count($salas_rows) > 0) {
-                            foreach ($salas_rows as $sala) {
-                                echo '<div class="container d-grid gap-2">
-                                        <div class="d-grid gap-2">
-                                            <a href="participante.php?sala=' . urlencode($sala["nome_sala"]) . '" class="btn btn-secondary">'
-                                            . htmlspecialchars($sala["nome_sala"]) .
-                                            '</a>
-                                        </div>
-                                      </div>';
+                            if (count($salas_rows) > 0) {
+                                foreach ($salas_rows as $sala) {
+                                    echo '<div class="container d-grid gap-2">
+                                            <div class="d-grid gap-2">
+                                                <a href="participante.php?sala=' . urlencode($sala["nome_sala"]) . '" class="btn btn-secondary">'
+                                                . htmlspecialchars($sala["nome_sala"]) .
+                                                '</a>
+                                            </div>
+                                        </div>';
+                                }
+                            } else {
+                                echo "<p>Nenhuma sala disponível.</p>";
                             }
-                        } else {
-                            echo "<p>Nenhuma sala disponível.</p>";
-                        }
+
                         ?>
                     </div>
 

@@ -1,7 +1,3 @@
-<?php
-    include_once("../functions/conexao.php");
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,17 +56,19 @@
 
 <?php
 
-  if(isset($_POST['submit'])) {
+    include("../functions/conexao.php");
+
+    if(isset($_POST['submit'])) {
   
-    $nome = $_POST['nome'];
-    $email = $_POST['email'];
-    $senha = $_POST['senha'];
+        $nome = $_POST['nome'];
+        $email = $_POST['email'];
+        $senha = $_POST['senha'];
 
-    $result = mysqli_query($mysqli, "INSERT INTO usuario (nome, email, senha) VALUES ('$nome', '$email', '$senha')");
+        $result = mysqli_query($mysqli, "INSERT INTO usuario (nome, email, senha) VALUES ('$nome', '$email', '$senha')");
 
-    header("Location: ../index.php");
+        header("Location: ../index.php");
 
-  }
+    }
   
 ?>
 

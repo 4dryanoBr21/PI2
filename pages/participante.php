@@ -1,6 +1,8 @@
 <?php
-    session_start();
-    $nome_sala = isset($_GET['sala']) ? urldecode($_GET['sala']) : 'Sala Desconhecida';
+  include_once("../functions/conexao.php");
+  include('../functions/protect.php');
+  
+  $nome_sala = isset($_GET['sala']) ? urldecode($_GET['sala']) : 'Sala Desconhecida';
 ?>
 
 <!DOCTYPE html>
@@ -34,9 +36,7 @@
                         <div id="quero_falar" style="margin-bottom: 15px;">
                             
                         </div>
-                        <p>Adriano </p>
-                        <p>Adriano</p>
-                        <p>Adriano</p>
+                        <?php echo $_SESSION['nome'] ?>
                     </div>
                     <div class="d-grid gap-2">
                         <button id="mao" class="btn" type="button" style="font-size: 75px;">🤚</button>

@@ -1,10 +1,3 @@
-<?php
-
-  include('../functions/conexao.php');
-  include('../functions/protect.php');
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,6 +21,9 @@
             
             <?php
 
+              include('../functions/conexao.php');
+              include('../functions/protect.php');
+
               $sql = "SELECT nome_sala FROM sala";
               $result = $mysqli->query($sql);
 
@@ -40,31 +36,14 @@
           
           
             ?>
+
             <div class="container">
               <p>00:00</p>
             </div>
             <div class="card-body">
                 <form>
                     <div class="d-grid gap-2 overflow-auto shadow p-3 mb-5 bg-body-tertiary rounded" style="height: 200px;">
-                        <p>Adriano 🤚 00:00</p>
-                        <p>Adriano 🤚 00:00</p>
-                        <p>Adriano 🤚 00:00</p>
-                        <p>Adriano</p>
-                        <p>Adriano</p>
-                        <p>Adriano</p>
-                        <p>Adriano</p>
-                        <p>Adriano</p>
-                        <p>Adriano</p>
-                        <p>Adriano</p>
-                        <p>Adriano</p>
-                        <p>Adriano</p>
-                        <p>Adriano</p>
-                        <p>Adriano</p>
-                        <p>Adriano</p>
-                        <p>Adriano</p>
-                        <p>Adriano</p>
-                        <p>Adriano</p>
-                        <p>Adriano</p>
+                        <?php echo $_SESSION['nome'] ?>
                     </div>
                     <div class="d-grid gap-2">
                         <button id="relogio" class="btn" type="button" style="font-size: 75px;">⏰</button>

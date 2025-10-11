@@ -1,9 +1,3 @@
-<?php 
-    include_once("../functions/conexao.php");
-    include('../functions/protect.php');
-    session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,7 +27,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="exampleInput1" class="form-label">Tempo de fala dos participantes</label>
-                        <input name="tempo" type="number" class="form-control" id="exampleInput1" required />
+                        <input name="tempo" type="time" class="form-control" id="exampleInput1" required />
                     </div>
                     <div class="d-grid gap-2">
                         <button class="btn btn-dark" name="submit" type="submit">Criar</button>
@@ -46,19 +40,22 @@
 
 <?php
 
-  if(isset($_POST['submit'])) {
+    include_once("../functions/conexao.php");
+    include('../functions/protect.php');
+
+    if(isset($_POST['submit'])) {
   
-    $nome = $_POST['nome'];
-    $tempo = $_POST['tempo'];
+        $nome = $_POST['nome'];
+        $tempo = $_POST['tempo'];
 
-    $result = mysqli_query($mysqli, "INSERT INTO sala (nome_sala, tempo_maximo_fala) VALUES ('$nome', '$tempo')");
+        $result = mysqli_query($mysqli, "INSERT INTO sala (nome_sala, tempo_maximo_fala) VALUES ('$nome', '$tempo')");
 
-    $_SESSION['nome_sala'] = $nome;
+        $_SESSION['nome_sala'] = $nome;
 
-    header("Location: criador.php");
-    exit();
+        header("Location: criador.php");
+        exit();
 
-  }
+    }
 ?>
 
 </html>

@@ -1,6 +1,6 @@
 <?php
-  include('protect.php');
   include('conexao.php');
+  include('protect.php');
   
   $sql = "SELECT id, nome_sala FROM sala";
   $resultado = $mysqli->query($sql);
