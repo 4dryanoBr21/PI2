@@ -1,5 +1,10 @@
+<?php 
+include_once("../functions/conexao.php");
+include('../functions/protect.php');
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
@@ -22,12 +27,12 @@
             <div class="card-body">
                 <form action="" method="POST">
                     <div class="mb-3">
-                        <label for="exampleInput1" class="form-label">Nome da Sala</label>
-                        <input name="nome" type="text" class="form-control" id="exampleInput1" required />
+                        <label for="nome" class="form-label">Nome da Sala</label>
+                        <input name="nome" type="text" class="form-control" id="nome" required />
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInput1" class="form-label">Tempo de fala dos participantes</label>
-                        <input name="tempo" type="time" class="form-control" id="exampleInput1" required />
+                        <label for="tempo" class="form-label">Tempo de fala dos participantes</label>
+                        <input name="tempo" type="time" class="form-control" id="tempo" required />
                     </div>
                     <div class="d-grid gap-2">
                         <button class="btn btn-dark" name="submit" type="submit">Criar</button>
@@ -36,26 +41,27 @@
             </div>
         </div>
     </div>
-</body>
 
 <?php
+if (isset($_POST['submit'])) {
 
-    include_once("../functions/conexao.php");
-    include('../functions/protect.php');
+    $nome_sala = mysqli_real_escape_string($mysqli, $_POST['nome']);
+    $tempo = mysqli_real_escape_string($mysqli, $_POST['tempo']);
 
-    if(isset($_POST['submit'])) {
-  
-        $nome = $_POST['nome'];
-        $tempo = $_POST['tempo'];
+    // Cria a sala no banco
+    $result = mysqli_query($mysqli, "INSERT INTO sala (nome_sala, tempo_maximo_fala) VALUES ('$nome_sala', '$tempo')");
 
-        $result = mysqli_query($mysqli, "INSERT INTO sala (nome_sala, tempo_maximo_fala) VALUES ('$nome', '$tempo')");
+    if ($result) {
+        // Pega o ID da sala recém-criada
+        $id_sala = mysqli_insert_id($mysqli);
 
-        $_SESSION['nome_sala'] = $nome;
-
-        header("Location: criador.php");
+        // Redireciona para a página do criador com o ID da sala
+        header("Location: criador.php?id_sala=$id_sala");
         exit();
-
+    } else {
+        echo "<p style='color:red;'>Erro ao criar sala.</p>";
     }
+}
 ?>
-
+</body>
 </html>

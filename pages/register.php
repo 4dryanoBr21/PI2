@@ -1,3 +1,5 @@
+<?php include("../functions/conexao.php"); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,21 +44,7 @@
     </div>
 </body>
 
-<script>
-
-    const login = document.getElementById("login_page")
-
-    function login_page(){
-        window.open("../index.php")
-    }
-  
-    login.addEventListener("click", login_page)
-
-</script>
-
 <?php
-
-    include("../functions/conexao.php");
 
     if(isset($_POST['submit'])) {
   
@@ -71,5 +59,17 @@
     }
   
 ?>
+
+<script>
+
+    const login = document.getElementById("login_page")
+
+    function login_page(){
+        window.open("../index.php", "_self")
+    }
+  
+    login.addEventListener("click", login_page)
+
+</script>
 
 </html>

@@ -1,7 +1,7 @@
 <?php
 
     include('conexao.php');
-    include('protect.php')
+    include('protect.php');
     
     if (isset($_SESSION['nome_sala'])) {
         $nome_sala = $mysqli->real_escape_string($_SESSION['nome_sala']);

@@ -1,44 +1,4 @@
-<?php
-
-    include("functions/conexao.php");
-                
-    if(isset($_POST['email']) || isset($_POST['senha'])) {
-
-        if(strlen($_POST['email']) == 0) {
-            echo "Prencha seu email!";
-            } else if(strlen($_POST['senha']) == 0) {
-                echo "Prencha sua senha!";
-            } else {
-
-                $email = $mysqli->real_escape_string($_POST['email']);
-                $senha = $mysqli->real_escape_string($_POST['senha']);
-
-                $sql_code = "SELECT * FROM usuario WHERE email = '$email' AND senha = '$senha'";
-                $sql_query = $mysqli->query($sql_code) or die("Falha na execução do SQL: " . $mysqli->error);
-
-                $quantidade = $sql_query->num_rows;
-
-                if($quantidade == 1) {  
-
-                    $usuario = $sql_query->fetch_assoc();
-
-                    if(!isset($_SESSION)) {
-                        session_start();
-                    }
-
-                    $_SESSION['id'] = $usuario['id_usuario'];
-                    $_SESSION['nome'] = $usuario['nome'];
-
-                    header("Location: pages/salas.php");
-
-                } else {
-                    echo "email ou senha incorretos!";
-                }
-
-        }
-    }
-
-?>
+<?php include("functions/conexao.php"); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -80,6 +40,46 @@
         </div>
     </div>
 </body>
+
+<?php
+                
+    if(isset($_POST['email']) || isset($_POST['senha'])) {
+
+        if(strlen($_POST['email']) == 0) {
+            echo "Prencha seu email!";
+            } else if(strlen($_POST['senha']) == 0) {
+                echo "Prencha sua senha!";
+            } else {
+
+                $email = $mysqli->real_escape_string($_POST['email']);
+                $senha = $mysqli->real_escape_string($_POST['senha']);
+
+                $sql_code = "SELECT * FROM usuario WHERE email = '$email' AND senha = '$senha'";
+                $sql_query = $mysqli->query($sql_code) or die("Falha na execução do SQL: " . $mysqli->error);
+
+                $quantidade = $sql_query->num_rows;
+
+                if($quantidade == 1) {  
+
+                    $usuario = $sql_query->fetch_assoc();
+
+                    if(!isset($_SESSION)) {
+                        session_start();
+                    }
+
+                    $_SESSION['id'] = $usuario['id_usuario'];
+                    $_SESSION['nome'] = $usuario['nome'];
+
+                    header("Location: pages/salas.php");
+
+                } else {
+                    echo "email ou senha incorretos!";
+                }
+
+        }
+    }
+
+?>
 
 <script>
     document.getElementById("cad").addEventListener("click", () => {
