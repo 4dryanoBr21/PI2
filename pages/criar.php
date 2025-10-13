@@ -1,7 +1,4 @@
-<?php 
-include_once("../functions/conexao.php");
-include('../functions/protect.php');
-?>
+<?php include_once("../functions/conexao.php"); include('../functions/protect.php'); ?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -48,14 +45,15 @@ if (isset($_POST['submit'])) {
     $nome_sala = mysqli_real_escape_string($mysqli, $_POST['nome']);
     $tempo = mysqli_real_escape_string($mysqli, $_POST['tempo']);
 
-    // Cria a sala no banco
     $result = mysqli_query($mysqli, "INSERT INTO sala (nome_sala, tempo_maximo_fala) VALUES ('$nome_sala', '$tempo')");
 
     if ($result) {
-        // Pega o ID da sala recém-criada
         $id_sala = mysqli_insert_id($mysqli);
 
-        // Redireciona para a página do criador com o ID da sala
+        $nome_usuario = mysqli_real_escape_string($mysqli, $_SESSION['nome']);
+
+        $result2 = mysqli_query($mysqli, "UPDATE usuario SET sala_atual = '$id_sala' WHERE nome = '$nome_usuario'");
+
         header("Location: criador.php?id_sala=$id_sala");
         exit();
     } else {

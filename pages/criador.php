@@ -1,24 +1,23 @@
 <?php 
-include('../functions/conexao.php'); 
-include('../functions/protect.php'); 
-
-if (!isset($_GET['id_sala'])) {
-    die("Sala não especificada. <a href='criar.php'>Voltar</a>");
-}
-
-$id_sala = intval($_GET['id_sala']);
-
-// Busca os dados da sala específica
-$sql = "SELECT * FROM sala WHERE id_sala = $id_sala";
-$result = $mysqli->query($sql);
-
-if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-    $nome_sala = htmlspecialchars($row['nome_sala']);
-    $tempo_fala = htmlspecialchars($row['tempo_maximo_fala']);
-} else {
-    die("Sala não encontrada. <a href='criar.php'>Voltar</a>");
-}
+    include('../functions/conexao.php'); 
+    include('../functions/protect.php'); 
+    
+    if (!isset($_GET['id_sala'])) {
+        die("Sala não especificada. <a href='criar.php'>Voltar</a>");
+    }
+    
+    $id_sala = intval($_GET['id_sala']);
+    
+    $sql = "SELECT * FROM sala WHERE id_sala = $id_sala";
+    $result = $mysqli->query($sql);
+    
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $nome_sala = htmlspecialchars($row['nome_sala']);
+        $tempo_fala = htmlspecialchars($row['tempo_maximo_fala']);
+    } else {
+        die("Sala não encontrada. <a href='criar.php'>Voltar</a>");
+    }
 ?>
 
 <!DOCTYPE html>

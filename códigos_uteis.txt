@@ -1,0 +1,3 @@
+Lista de usuarios por sala atual (
+    SELECT usuario.nome, usuario.sala_atual FROM usuario join sala on sala.id_sala = usuario.sala_atual WHERE sala.id_sala = 5;
+)

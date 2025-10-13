@@ -33,6 +33,13 @@
                     $_SESSION['nome_sala'] = $sala['nome_sala'];
 
                     $nome_url = urlencode($sala['nome_sala']);
+
+                    $id_sala = $sala['id_sala'];
+
+                    $nome_usuario = mysqli_real_escape_string($mysqli, $_SESSION['nome']);
+
+                    $result2 = mysqli_query($mysqli, "UPDATE usuario SET sala_atual = '$id_sala' WHERE nome = '$nome_usuario'");
+
                     header("Location: participante.php?sala=" . $nome_url);
                     exit;
                 } else {
