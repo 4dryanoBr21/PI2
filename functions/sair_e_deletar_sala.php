@@ -1,5 +1,5 @@
 <?php
-
+    session_start();
     include('conexao.php');
     include('protect.php');
     
@@ -10,7 +10,10 @@
         $mysqli->query($sql);
     
         unset($_SESSION['nome_sala']);
-        header("Location: ../pages/salas.php");
+
+        session_destroy();
+
+        header("Location: ../index.php");
         exit();
     } else {
         echo "Nome da sala não encontrado na sessão.";

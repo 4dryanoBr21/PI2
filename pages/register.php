@@ -1,4 +1,20 @@
-<?php include("../functions/conexao.php"); ?>
+<?php 
+
+    include("../functions/conexao.php"); 
+
+    if(isset($_POST['submit'])) {
+  
+        $nome = $_POST['nome'];
+        $email = $_POST['email'];
+        $senha = $_POST['senha'];
+
+        $result = mysqli_query($mysqli, "INSERT INTO criador (nome_criador, email, senha) VALUES ('$nome', '$email', '$senha')");
+
+        header("Location: ../index.php");
+
+    }
+  
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -44,28 +60,12 @@
     </div>
 </body>
 
-<?php
-
-    if(isset($_POST['submit'])) {
-  
-        $nome = $_POST['nome'];
-        $email = $_POST['email'];
-        $senha = $_POST['senha'];
-
-        $result = mysqli_query($mysqli, "INSERT INTO usuario (nome, email, senha) VALUES ('$nome', '$email', '$senha')");
-
-        header("Location: ../index.php");
-
-    }
-  
-?>
-
 <script>
 
     const login = document.getElementById("login_page")
 
     function login_page(){
-        window.open("../index.php", "_self")
+        window.open("login.php", "_self")
     }
   
     login.addEventListener("click", login_page)

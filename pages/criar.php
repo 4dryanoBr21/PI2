@@ -1,4 +1,31 @@
-<?php include_once("../functions/conexao.php"); include('../functions/protect.php'); ?>
+<?php 
+    session_start();
+    include_once("../functions/conexao.php"); 
+    include('../functions/protect.php'); 
+
+    if (isset($_POST['submit'])) {
+    
+        $nome_sala = mysqli_real_escape_string($mysqli, $_POST['nome']);
+        $tempo = mysqli_real_escape_string($mysqli, $_POST['tempo']);
+    
+        $result = mysqli_query($mysqli, "INSERT INTO sala (nome_sala, tempo_de_fala) VALUES ('$nome_sala', '$tempo')");
+    
+        if ($result) {
+            $id_sala = mysqli_insert_id($mysqli);
+        
+            if (!isset($_SESSION['nome_criador'])) {
+                die("Sessão inválida: nome de usuário não encontrado.");
+            }
+            
+            $_SESSION['nome_sala'] = $_POST['nome'];
+
+            header("Location: criador.php?id_sala=$id_sala");
+            exit();
+        } else {
+            echo "<p style='color:red;'>Erro ao criar sala: " . mysqli_error($mysqli) . "</p>";
+        }
+    }
+?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -19,7 +46,7 @@
     <div class="container">
         <img src="../img/MI_legenda.png" class="img-fluid" alt="..." style="width: 200px;">
         <div class="card" style="width: 300px;">
-            <button type="button" class="btn-close" aria-label="Close" style="padding: 10px;"></button>
+            <a href="../functions/logout.php"><button type="button" class="btn-close" aria-label="Close" style="padding: 10px;"></button></a>
             <h2 style="text-align: center; font-weight: bold;">Criar Sala</h2>
             <div class="card-body">
                 <form action="" method="POST">
@@ -38,28 +65,5 @@
             </div>
         </div>
     </div>
-
-<?php
-if (isset($_POST['submit'])) {
-
-    $nome_sala = mysqli_real_escape_string($mysqli, $_POST['nome']);
-    $tempo = mysqli_real_escape_string($mysqli, $_POST['tempo']);
-
-    $result = mysqli_query($mysqli, "INSERT INTO sala (nome_sala, tempo_maximo_fala) VALUES ('$nome_sala', '$tempo')");
-
-    if ($result) {
-        $id_sala = mysqli_insert_id($mysqli);
-
-        $nome_usuario = mysqli_real_escape_string($mysqli, $_SESSION['nome']);
-
-        $result2 = mysqli_query($mysqli, "UPDATE usuario SET sala_atual = '$id_sala' WHERE nome = '$nome_usuario'");
-
-        header("Location: criador.php?id_sala=$id_sala");
-        exit();
-    } else {
-        echo "<p style='color:red;'>Erro ao criar sala.</p>";
-    }
-}
-?>
 </body>
 </html>

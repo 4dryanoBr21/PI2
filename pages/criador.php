@@ -1,4 +1,10 @@
-<?php 
+<?php
+
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+
+    session_start();
     include('../functions/conexao.php'); 
     include('../functions/protect.php'); 
     
@@ -14,7 +20,7 @@
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         $nome_sala = htmlspecialchars($row['nome_sala']);
-        $tempo_fala = htmlspecialchars($row['tempo_maximo_fala']);
+        $tempo_fala = htmlspecialchars($row['tempo_de_fala']);
     } else {
         die("Sala não encontrada. <a href='criar.php'>Voltar</a>");
     }
@@ -52,7 +58,21 @@
             <div class="card-body">
                 <form>
                     <div class="d-grid gap-2 overflow-auto shadow p-3 mb-5 bg-body-tertiary rounded" style="height: 200px;">
-                        <p>Aqui você pode colocar os participantes ou mensagens da sala.</p>
+                        <?php
+                            
+                            $sql = "SELECT participante.nome_participante FROM participante JOIN sala ON sala.id_sala = participante.fk_sala_atual WHERE sala.id_sala = $id_sala;";
+                            $result = $mysqli->query($sql);
+                            
+                            if ($result->num_rows > 0) {
+                                while ($row = $result->fetch_assoc()) {
+                                    echo "<p>" . htmlspecialchars($row['nome_participante']) . "</p>";
+                                }
+                            } else {
+                                echo "<p>Nenhum participante encontrado.</p>";
+                            }
+
+                            
+                        ?>
                     </div>
                     <div class="d-grid gap-2">
                         <button id="relogio" class="btn" type="button" style="font-size: 75px;">⏰</button>

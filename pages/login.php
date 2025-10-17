@@ -1,6 +1,6 @@
-<?php
+<?php 
 
-    include('functions/conexao.php');
+    include("../functions/conexao.php"); 
                 
     if(isset($_POST['email']) || isset($_POST['senha'])) {
 
@@ -29,7 +29,7 @@
                     $_SESSION['id'] = $usuario['id_criador'];
                     $_SESSION['nome_criador'] = $usuario['nome_criador'];
 
-                    header("Location: pages/criar.php");
+                    header("Location: criar.php");
 
                 } else {
                     echo "email ou senha incorretos!";
@@ -49,31 +49,31 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="img/MI_legenda_branco.png" type="image/x-icon">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="shortcut icon" href="../img/MI_legenda_branco.png" type="image/x-icon">
     <title>ME INSCREVO - Login</title>
 </head>
 
 <body>
     <div class="container">
-        <img src="img/MI_legenda.png" class="img-fluid" alt="..." style="width: 200px;">
+        <img src="../img/MI_legenda.png" class="img-fluid" alt="..." style="width: 200px;">
         <div class="card" style="width: 300px;">
-            <h2 style="text-align: center; font-weight: bold; margin-top: 20px;">Sala Existente</h2>
+            <h2 style="text-align: center; font-weight: bold; margin-top: 20px;">Login</h2>
             <div class="card-body">
                 <form action="" method="POST">
                     <div class="mb-3">
-                        <label for="email" class="form-label">Código da Sala</label>
-                        <input name="codigo" type="text" class="form-control" id="codigo">
+                        <label for="email" class="form-label">Endereço de email</label>
+                        <input name="email" type="email" class="form-control" id="email">
                     </div>
                     <div class="mb-3">
-                        <label for="name" class="form-label">Nome do Convidado</label>
-                        <input name="name" type="text" class="form-control" id="name">
+                        <label for="password" class="form-label">Senha</label>
+                        <input name="senha" type="password" class="form-control" id="password">
                     </div>
                     <div class="d-grid gap-2">
                         <button class="btn btn-dark" name="submit" type="submit">Entrar</button>
-                        <button id="login" class="btn" type="button">Criar Sala</button>
+                        <button id="cad" class="btn" type="button">Registrar</button>
                     </div>
                 </form>
             </div>
@@ -82,8 +82,8 @@
 </body>
 
 <script>
-    document.getElementById("login").addEventListener("click", () => {
-        window.open("pages/login.php", "_self");
+    document.getElementById("cad").addEventListener("click", () => {
+        window.open("register.php", "_self");
     });
 </script>
 

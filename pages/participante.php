@@ -1,4 +1,5 @@
 <?php
+  session_start();
   include_once("../functions/conexao.php");
   include('../functions/protect.php');
   $nome_sala = isset($_GET['sala']) ? urldecode($_GET['sala']) : 'Sala Desconhecida';
@@ -31,12 +32,21 @@
             <div class="card-body">
                 <form>
                     <div class="d-grid gap-2 overflow-auto shadow p-3 mb-5 bg-body-tertiary rounded" style="height: 200px;">
-                        
-                        <div id="quero_falar" style="margin-bottom: 15px;">
+                        <?php
                             
-                        </div>
-                        <?php echo $_SESSION['nome'] ?>
-                    </div>
+                          $sql = "SELECT participante.nome_participante FROM participante JOIN sala ON sala.id_sala = participante.fk_sala_atual WHERE sala.id_sala = $id_sala;";
+                          $result = $mysqli->query($sql);
+                          
+                          if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                              echo "<p>" . htmlspecialchars($row['nome_participante']) . "</p>";
+                            }
+                          } else {
+                            echo "<p>Nenhum participante encontrado.</p>";
+                          }
+
+                            
+                        ?>
                     <div class="d-grid gap-2">
                         <button id="mao" class="btn" type="button" style="font-size: 75px;">🤚</button>
                     </div>
@@ -51,7 +61,7 @@
   const lista = document.getElementById("quero_falar")
 
   function troca_de_emoji() {
-    emoji.textContent = (emoji.textContent === "🤚") ? "❌" : "🤚"
+    emoji.textContent = (emoji.textContent === "❌") ? "🤚" : "❌"
   }
 
   function troca_de_lista() {
