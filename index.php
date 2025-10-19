@@ -1,43 +1,48 @@
 <?php
 
-    include('functions/conexao.php');
-                
-    if(isset($_POST['email']) || isset($_POST['senha'])) {
-
-        if(strlen($_POST['email']) == 0) {
-            echo "Prencha seu email!";
-            } else if(strlen($_POST['senha']) == 0) {
-                echo "Prencha sua senha!";
-            } else {
-
-                $email = $mysqli->real_escape_string($_POST['email']);
-                $senha = $mysqli->real_escape_string($_POST['senha']);
-
-                $sql_code = "SELECT * FROM criador WHERE email = '$email' AND senha = '$senha'";
-                $sql_query = $mysqli->query($sql_code) or die("Falha na execução do SQL: " . $mysqli->error);
-
-                $quantidade = $sql_query->num_rows;
-
-                if($quantidade == 1) {  
-
-                    $usuario = $sql_query->fetch_assoc();
-
-                    if(!isset($_SESSION)) {
-                        session_start();
-                    }
-
-                    $_SESSION['id'] = $usuario['id_criador'];
-                    $_SESSION['nome_criador'] = $usuario['nome_criador'];
-
-                    header("Location: pages/criar.php");
-
-                } else {
-                    echo "email ou senha incorretos!";
-                }
-
-        }
+    // Inicia sessão e redireciona
+    if (!isset($_SESSION)) {
+        session_start();
     }
 
+    include('functions/conexao.php');
+
+    if (isset($_POST['codigo']) || isset($_POST['nome'])) {
+
+        if (strlen($_POST['codigo']) == 0) {
+            echo "Preencha seu código!";
+        } else if (strlen($_POST['nome']) == 0) {
+            echo "Preencha seu nome!";
+        } else {
+
+            $codigo = $mysqli->real_escape_string($_POST['codigo']);
+            $nome = $mysqli->real_escape_string($_POST['nome']);
+
+            // Verifica se a sala existe
+            $sql_code = "SELECT id_sala, nome_sala FROM sala WHERE codigo_sala = '$codigo'";
+            $sql_query = $mysqli->query($sql_code) or die("Falha na execução do SQL: " . $mysqli->error);
+
+            $quantidade = $sql_query->num_rows;
+
+            if ($quantidade == 1) {
+            $sala = $sql_query->fetch_assoc();
+            $id_sala = $sala['id_sala'];
+
+            // Insere o participante na tabela
+            $sql_insert = "INSERT INTO participante (nome_participante, fk_sala_atual) VALUES ('$nome', $id_sala)";
+            $mysqli->query($sql_insert) or die("Erro ao inserir participante: " . $mysqli->error);
+
+            $_SESSION['codigo'] = $codigo;
+            $_SESSION['nome'] = $nome;
+
+            header("Location: pages/participante.php");
+            exit;
+
+            } else {
+                echo "Código ou nome incorretos!";
+            }
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -60,16 +65,16 @@
     <div class="container">
         <img src="img/MI_legenda.png" class="img-fluid" alt="..." style="width: 200px;">
         <div class="card" style="width: 300px;">
-            <h2 style="text-align: center; font-weight: bold; margin-top: 20px;">Sala Existente</h2>
+            <h2 style="text-align: center; font-weight: bold; margin-top: 20px;">Entrar na Sala</h2>
             <div class="card-body">
                 <form action="" method="POST">
                     <div class="mb-3">
-                        <label for="email" class="form-label">Código da Sala</label>
+                        <label for="codigo" class="form-label">Código da Sala</label>
                         <input name="codigo" type="text" class="form-control" id="codigo">
                     </div>
                     <div class="mb-3">
                         <label for="name" class="form-label">Nome do Convidado</label>
-                        <input name="name" type="text" class="form-control" id="name">
+                        <input name="nome" type="text" class="form-control" id="name">
                     </div>
                     <div class="d-grid gap-2">
                         <button class="btn btn-dark" name="submit" type="submit">Entrar</button>
