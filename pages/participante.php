@@ -1,7 +1,6 @@
 <?php
-  session_start();
   include_once("../functions/conexao.php");
-  include('../functions/protect.php');
+  include_once('../functions/protect.php');
   $nome_sala = isset($_GET['sala']) ? urldecode($_GET['sala']) : 'Sala Desconhecida';
 ?>
 

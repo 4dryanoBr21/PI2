@@ -1,10 +1,4 @@
 <?php
-
-    // Inicia sessão e redireciona
-    if (!isset($_SESSION)) {
-        session_start();
-    }
-
     include('functions/conexao.php');
 
     if (isset($_POST['codigo']) || isset($_POST['nome'])) {
@@ -31,6 +25,10 @@
             // Insere o participante na tabela
             $sql_insert = "INSERT INTO participante (nome_participante, fk_sala_atual) VALUES ('$nome', $id_sala)";
             $mysqli->query($sql_insert) or die("Erro ao inserir participante: " . $mysqli->error);
+
+            if(!isset($_SESSION)) {
+                session_start();
+            }
 
             $_SESSION['codigo'] = $codigo;
             $_SESSION['nome'] = $nome;
