@@ -1,7 +1,6 @@
 <?php 
     session_start();
-    include_once("../functions/conexao.php"); 
-    include('../functions/protect.php'); 
+    include("../functions/conexao.php");
 
     if (isset($_POST['submit'])) {
     

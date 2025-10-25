@@ -10,7 +10,7 @@
 
         $result = mysqli_query($mysqli, "INSERT INTO criador (nome_criador, email, senha) VALUES ('$nome', '$email', '$senha')");
 
-        header("Location: ../index.php");
+        header("Location: login.php");
 
     }
   

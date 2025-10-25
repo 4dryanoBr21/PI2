@@ -1,6 +1,6 @@
 <?php
-  include_once("../functions/conexao.php");
-  include_once('../functions/protect.php');
+  session_start();
+  include("../functions/conexao.php");
   $nome_sala = isset($_GET['sala']) ? urldecode($_GET['sala']) : 'Sala Desconhecida';
 ?>
 
@@ -33,18 +33,16 @@
                     <div class="d-grid gap-2 overflow-auto shadow p-3 mb-5 bg-body-tertiary rounded" style="height: 200px;">
                         <?php
                             
-                          $sql = "SELECT participante.nome_participante FROM participante JOIN sala ON sala.id_sala = participante.fk_sala_atual WHERE sala.id_sala = $id_sala;";
-                          $result = $mysqli->query($sql);
-                          
-                          if ($result->num_rows > 0) {
-                            while ($row = $result->fetch_assoc()) {
-                              echo "<p>" . htmlspecialchars($row['nome_participante']) . "</p>";
-                            }
-                          } else {
-                            echo "<p>Nenhum participante encontrado.</p>";
-                          }
-
+                            $sql = "SELECT participante.nome_participante FROM participante JOIN sala ON sala.id_sala = participante.fk_sala_atual WHERE sala.id_sala = $id_sala;";
+                            $result = $mysqli->query($sql);
                             
+                            if ($result->num_rows > 0) {
+                                while ($row = $result->fetch_assoc()) {
+                                    echo "<p>" . htmlspecialchars($row['nome_participante']) . "</p>";
+                                }
+                            } else {
+                                echo "<p>Nenhum participante encontrado.</p>";
+                            }
                         ?>
                     <div class="d-grid gap-2">
                         <button id="mao" class="btn" type="button" style="font-size: 75px;">🤚</button>

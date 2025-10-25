@@ -1,7 +1,6 @@
 <?php
     session_start();
     include('../functions/conexao.php'); 
-    include('../functions/protect.php'); 
     
     if (!isset($_GET['id_sala'])) {
         die("Sala não especificada. <a href='criar.php'>Voltar</a>");
