@@ -25,7 +25,7 @@
                         session_start();
                     }
 
-                    $_SESSION['id'] = $usuario['id_criador'];
+                    $_SESSION['id_criador'] = $usuario['id_criador'];
                     $_SESSION['nome_criador'] = $usuario['nome_criador'];
 
                     header("Location: criar.php");

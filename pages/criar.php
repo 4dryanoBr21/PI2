@@ -11,7 +11,12 @@
     
         if ($result) {
             $id_sala = mysqli_insert_id($mysqli);
-        
+
+            $stmt = $mysqli->prepare("UPDATE criador SET fk_sala_criada = ? WHERE id_criador = ?");
+            $stmt->bind_param("ii", $id_sala, $_SESSION['id_criador']);
+            $stmt->execute();
+
+
             if (!isset($_SESSION['nome_criador'])) {
                 die("Sessão inválida: nome de usuário não encontrado.");
             }

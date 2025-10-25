@@ -1,11 +1,35 @@
 <?php
-  session_start();
-  include("../functions/conexao.php");
-  $nome_sala = isset($_GET['sala']) ? urldecode($_GET['sala']) : 'Sala Desconhecida';
+session_start();
+require_once("../functions/conexao.php");
+
+// Verifica se a sessão está ativa
+if (!isset($_SESSION['codigo']) || !isset($_SESSION['nome'])) {
+    header("Location: ../index.php");
+    exit;
+}
+
+$codigo_sala = $_SESSION['codigo'];
+$nome_participante = $_SESSION['nome'];
+
+// Busca informações da sala
+$stmt = $mysqli->prepare("SELECT id_sala, nome_sala FROM sala WHERE codigo_sala = ?");
+$stmt->bind_param("s", $codigo_sala);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result && $result->num_rows > 0) {
+    $sala = $result->fetch_assoc();
+    $id_sala = $sala['id_sala'];
+    $nome_sala = $sala['nome_sala'];
+} else {
+    echo "⚠️ Sala não encontrada.";
+    exit;
+}
+$stmt->close();
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -23,61 +47,35 @@
     <div class="container">
         <img src="../img/MI_legenda.png" class="img-fluid" alt="..." style="width: 200px;">
         <div class="card" style="width: 300px;">
-            <button id="close" type="button" class="btn-close" aria-label="Close" style="padding: 10px;"></button>
+            <button id="close" type="button" class="btn-close" aria-label="Close" style="padding: 10px;"
+                onclick="window.location.href='../index.php'"></button>
             <h2 style="text-align: center; font-weight: bold;"><?php echo htmlspecialchars($nome_sala); ?></h2>
-            <div class="container">
-              <p>00:00</p>
+            <div class="container text-center">
+                <p>Bem-vindo(a), <strong><?php echo htmlspecialchars($nome_participante); ?></strong></p>
             </div>
             <div class="card-body">
-                <form>
-                    <div class="d-grid gap-2 overflow-auto shadow p-3 mb-5 bg-body-tertiary rounded" style="height: 200px;">
-                        <?php
-                            
-                            $sql = "SELECT participante.nome_participante FROM participante JOIN sala ON sala.id_sala = participante.fk_sala_atual WHERE sala.id_sala = $id_sala;";
-                            $result = $mysqli->query($sql);
-                            
-                            if ($result->num_rows > 0) {
-                                while ($row = $result->fetch_assoc()) {
-                                    echo "<p>" . htmlspecialchars($row['nome_participante']) . "</p>";
-                                }
-                            } else {
-                                echo "<p>Nenhum participante encontrado.</p>";
-                            }
-                        ?>
-                    <div class="d-grid gap-2">
-                        <button id="mao" class="btn" type="button" style="font-size: 75px;">🤚</button>
-                    </div>
-                </form>
+                <div class="d-grid gap-2 overflow-auto shadow p-3 mb-5 bg-body-tertiary rounded" style="height: 200px;">
+                    <?php
+                    // Busca os participantes dessa sala
+                    $sql = "SELECT nome_participante FROM participante WHERE fk_sala_atual = ?";
+                    $stmt_part = $mysqli->prepare($sql);
+                    $stmt_part->bind_param("i", $id_sala);
+                    $stmt_part->execute();
+                    $result_part = $stmt_part->get_result();
+
+                    if ($result_part->num_rows > 0) {
+                        while ($row = $result_part->fetch_assoc()) {
+                            echo "<p>" . htmlspecialchars($row['nome_participante']) . "</p>";
+                        }
+                    } else {
+                        echo "<p>Nenhum participante na sala ainda.</p>";
+                    }
+
+                    $stmt_part->close();
+                    ?>
+                </div>
             </div>
         </div>
     </div>
 </body>
-
-<script>
-  const emoji = document.getElementById("mao")
-  const lista = document.getElementById("quero_falar")
-
-  function troca_de_emoji() {
-    emoji.textContent = (emoji.textContent === "❌") ? "🤚" : "❌"
-  }
-
-  function troca_de_lista() {
-    lista.textContent = (lista.textContent === "") 
-    ? "<?php echo htmlspecialchars($_SESSION['nome']); ?> 🤚 00:00" 
-    : "";
-
-  }
-
-  var fechar_btn = document.getElementById("close")
-
-  function fechar_page(){
-    open("salas.php", "_self")
-  }
-
-  fechar_btn.addEventListener("click", fechar_page)
-  emoji.addEventListener("click", troca_de_emoji)
-  emoji.addEventListener("click", troca_de_lista)
-  
-</script>
-
 </html>
