@@ -1,31 +1,31 @@
 <?php
-session_start();
-require_once("../functions/conexao.php");
+    require("../functions/conexao.php");
+    session_start();
 
-// Verifica se a sessão está ativa
-if (!isset($_SESSION['codigo']) || !isset($_SESSION['nome'])) {
-    header("Location: ../index.php");
-    exit;
-}
+    if (!isset($_SESSION['codigo']) || !isset($_SESSION['nome'])) {
+        header("Location: ../index.php");
+        exit;
+    }
 
-$codigo_sala = $_SESSION['codigo'];
-$nome_participante = $_SESSION['nome'];
+    $codigo_sala = $_SESSION['codigo'];
+    $nome_participante = $_SESSION['nome'];
 
-// Busca informações da sala
-$stmt = $mysqli->prepare("SELECT id_sala, nome_sala FROM sala WHERE codigo_sala = ?");
-$stmt->bind_param("s", $codigo_sala);
-$stmt->execute();
-$result = $stmt->get_result();
+    $stmt = $mysqli->prepare("SELECT id_sala, nome_sala FROM sala WHERE codigo_sala = ?");
+    $stmt->bind_param("s", $codigo_sala);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-if ($result && $result->num_rows > 0) {
-    $sala = $result->fetch_assoc();
-    $id_sala = $sala['id_sala'];
-    $nome_sala = $sala['nome_sala'];
-} else {
-    echo "⚠️ Sala não encontrada.";
-    exit;
-}
-$stmt->close();
+    if ($result && $result->num_rows > 0) {
+        $sala = $result->fetch_assoc();
+        $id_sala = $sala['id_sala'];
+        $nome_sala = $sala['nome_sala'];
+    } else {
+        echo "Sala não encontrada.";
+        exit;
+    }
+
+    $stmt->close();
+
 ?>
 
 <!DOCTYPE html>
@@ -56,23 +56,25 @@ $stmt->close();
             <div class="card-body">
                 <div class="d-grid gap-2 overflow-auto shadow p-3 mb-5 bg-body-tertiary rounded" style="height: 200px;">
                     <?php
-                    // Busca os participantes dessa sala
-                    $sql = "SELECT nome_participante FROM participante WHERE fk_sala_atual = ?";
-                    $stmt_part = $mysqli->prepare($sql);
-                    $stmt_part->bind_param("i", $id_sala);
-                    $stmt_part->execute();
-                    $result_part = $stmt_part->get_result();
+                        $sql = "SELECT nome_participante FROM participante WHERE fk_sala_atual = ?";
+                        $stmt_part = $mysqli->prepare($sql);
+                        $stmt_part->bind_param("i", $id_sala);
+                        $stmt_part->execute();
+                        $result_part = $stmt_part->get_result();
 
-                    if ($result_part->num_rows > 0) {
-                        while ($row = $result_part->fetch_assoc()) {
-                            echo "<p>" . htmlspecialchars($row['nome_participante']) . "</p>";
+                        if ($result_part->num_rows > 0) {
+                            while ($row = $result_part->fetch_assoc()) {
+                                echo "<p>" . htmlspecialchars($row['nome_participante']) . "</p>";
+                            }
+                        } else {
+                            echo "<p>Nenhum participante na sala ainda.</p>";
                         }
-                    } else {
-                        echo "<p>Nenhum participante na sala ainda.</p>";
-                    }
 
-                    $stmt_part->close();
+                        $stmt_part->close();
                     ?>
+                </div>
+                <div class="d-grid gap-2">
+                    <button id="relogio" class="btn" type="button" style="font-size: 75px;">🤚</button>
                 </div>
             </div>
         </div>

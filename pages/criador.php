@@ -1,6 +1,6 @@
 <?php
-    session_start();
-    include('../functions/conexao.php'); 
+    include('../functions/conexao.php');
+    session_start(); 
     
     if (!isset($_GET['id_sala'])) {
         die("Sala não especificada. <a href='criar.php'>Voltar</a>");
@@ -65,7 +65,6 @@
                                 echo "<p>Nenhum participante encontrado.</p>";
                             }
 
-                            
                         ?>
                     </div>
                     <div class="d-grid gap-2">

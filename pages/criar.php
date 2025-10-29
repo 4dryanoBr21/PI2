@@ -1,6 +1,6 @@
 <?php 
-    session_start();
     include("../functions/conexao.php");
+    session_start();
 
     if (isset($_POST['submit'])) {
     
