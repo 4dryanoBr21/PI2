@@ -39,10 +39,7 @@
     <div class="container">
         <img src="../img/MI_legenda.png" class="img-fluid" alt="..." style="width: 200px;">
         <div class="card" style="width: 300px;">
-            <a href="../functions/sair_e_deletar_sala.php?id_sala=<?php echo $id_sala; ?>">
-              <button type="button" class="btn-close" aria-label="Close" style="padding: 10px;"></button>
-            </a>
-
+            
             <h2 style="text-align: center; font-weight: bold;"><?php echo $nome_sala; ?></h2>
 
             <div class="container">

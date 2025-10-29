@@ -50,7 +50,6 @@
     <div class="container">
         <img src="../img/MI_legenda.png" class="img-fluid" alt="..." style="width: 200px;">
         <div class="card" style="width: 300px;">
-            <a href="../functions/logout.php"><button type="button" class="btn-close" aria-label="Close" style="padding: 10px;"></button></a>
             <h2 style="text-align: center; font-weight: bold;">Criar Sala</h2>
             <div class="card-body">
                 <form action="" method="POST">

@@ -47,8 +47,6 @@
     <div class="container">
         <img src="../img/MI_legenda.png" class="img-fluid" alt="..." style="width: 200px;">
         <div class="card" style="width: 300px;">
-            <button id="close" type="button" class="btn-close" aria-label="Close" style="padding: 10px;"
-                onclick="window.location.href='../index.php'"></button>
             <h2 style="text-align: center; font-weight: bold;"><?php echo htmlspecialchars($nome_sala); ?></h2>
             <div class="container text-center">
                 <p>Bem-vindo(a), <strong><?php echo htmlspecialchars($nome_participante); ?></strong></p>
