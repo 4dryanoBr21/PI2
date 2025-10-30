@@ -90,9 +90,9 @@
 </body>
 
 <script>
-document.getElementById("login").addEventListener("click", () => {
-    window.location.href = "pages/login.php";
-});
+    document.getElementById("login").addEventListener("click", () => {
+        window.location.href = "pages/login.php";
+    });
 </script>
 
 </html>
