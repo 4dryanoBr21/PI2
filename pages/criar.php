@@ -1,5 +1,6 @@
 <?php 
     include("../functions/conexao.php");
+    
     session_start();
 
     if (isset($_POST['submit'])) {
@@ -47,26 +48,30 @@
 </head>
 
 <body>
-    <div class="container">
-        <img src="../img/MI_legenda.png" class="img-fluid" alt="..." style="width: 200px;">
-        <div class="card" style="width: 300px;">
-            <h2 style="text-align: center; font-weight: bold;">Criar Sala</h2>
-            <div class="card-body">
-                <form action="" method="POST">
-                    <div class="mb-3">
-                        <label for="nome" class="form-label">Nome da Sala</label>
-                        <input name="nome" type="text" class="form-control" id="nome" required />
-                    </div>
-                    <div class="mb-3">
-                        <label for="tempo" class="form-label">Tempo de fala dos participantes</label>
-                        <input name="tempo" type="time" class="form-control" id="tempo" required />
-                    </div>
-                    <div class="d-grid gap-2">
-                        <button class="btn btn-dark" name="submit" type="submit">Criar</button>
-                    </div>
-                </form>
+    <div class="row">
+        <div class="col-md-5"></div>
+        <div class="col-md-2">
+            <img src="../img/MI_legenda.png" class="img-fluid" alt="...">
+            <div class="card" style="width: 300px;">
+                <h2 style="text-align: center; font-weight: bold;">Criar Sala</h2>
+                <div class="card-body">
+                    <form action="" method="POST">
+                        <div class="mb-3">
+                            <label for="nome" class="form-label">Nome da Sala</label>
+                            <input name="nome" type="text" class="form-control" id="nome" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="tempo" class="form-label">Tempo de fala dos participantes</label>
+                            <input name="tempo" type="time" class="form-control" id="tempo" required />
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-dark" name="submit" type="submit">Criar</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
+        <div class="col-md-5"></div>
     </div>
 </body>
 </html>

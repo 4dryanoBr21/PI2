@@ -32,31 +32,35 @@
 </head>
 
 <body>
-    <div class="container">
-        <img src="../img/MI_legenda.png" class="img-fluid" alt="..." style="width: 200px;">
-        <div class="card" style="width: 300px;">
-            <h2 style="text-align: center; font-weight: bold; margin-top: 20px;">Register</h2>
-            <div class="card-body">
-                <form action="" method="POST">
-                    <div class="mb-3">
-                        <label for="exampleInput1" class="form-label">Username</label>
-                        <input name="nome" type="text" class="form-control" id="exampleInput1" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Email address</label>
-                        <input  name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input name="senha" type="password" class="form-control" id="exampleInputPassword1" required>
-                    </div>
-                    <div class="d-grid gap-2">
-                        <button class="btn btn-dark" name="submit" type="submit">Registrar</button>
-                        <button id="login_page" class="btn" type="button">Login</button>
-                    </div>
-                </form>
+    <div class="row">
+        <div class="col-md-5"></div>
+        <div class="col-md-2">
+            <img src="../img/MI_legenda.png" class="img-fluid" alt="..." style="width: 200px;">
+            <div class="card" style="width: 300px;">
+                <h2 style="text-align: center; font-weight: bold; margin-top: 20px;">Register</h2>
+                <div class="card-body">
+                    <form action="" method="POST">
+                        <div class="mb-3">
+                            <label for="exampleInput1" class="form-label">Username</label>
+                            <input name="nome" type="text" class="form-control" id="exampleInput1" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email address</label>
+                            <input  name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Password</label>
+                            <input name="senha" type="password" class="form-control" id="exampleInputPassword1" required>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-dark" name="submit" type="submit">Registrar</button>
+                            <button id="login_page" class="btn" type="button">Login</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
+        <div class="col-md-5"></div>
     </div>
 </body>
 

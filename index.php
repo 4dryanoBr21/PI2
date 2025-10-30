@@ -1,5 +1,6 @@
 <?php
     require('functions/conexao.php');
+    
     session_start();
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -65,27 +66,31 @@
 </head>
 
 <body>
-    <div class="container text-center">
-        <img src="img/MI_legenda.png" class="img-fluid my-4" alt="Logo" style="width: 200px;">
-        <div class="card mx-auto shadow" style="max-width: 320px;">
-            <h2 class="mt-3 fw-bold">Entrar na Sala</h2>
-            <div class="card-body">
-                <form action="" method="POST">
-                    <div class="mb-3 text-start">
-                        <label for="codigo" class="form-label">Código da Sala</label>
-                        <input name="codigo" type="text" class="form-control" id="codigo" required>
-                    </div>
-                    <div class="mb-3 text-start">
-                        <label for="nome" class="form-label">Nome do Convidado</label>
-                        <input name="nome" type="text" class="form-control" id="nome" required>
-                    </div>
-                    <div class="d-grid gap-2">
-                        <button class="btn btn-dark" type="submit">Entrar</button>
-                        <button id="login" class="btn" type="button">Criar Sala</button>
-                    </div>
-                </form>
+    <div class="row">
+        <div class="col-md-5"></div>
+        <div class="col-md-2">  
+            <img src="img/MI_legenda.png" class="img-fluid" alt="Logo">
+            <div class="card mx-auto shadow" style="max-width: 320px;">
+                <h2 class="mt-3 fw-bold" style="text-align: center;">Entrar na Sala</h2>
+                <div class="card-body">
+                    <form action="" method="POST">
+                        <div class="mb-3 text-start">
+                            <label for="codigo" class="form-label">Código da Sala</label>
+                            <input name="codigo" type="text" class="form-control" id="codigo" required>
+                        </div>
+                        <div class="mb-3 text-start">
+                            <label for="nome" class="form-label">Nome do Convidado</label>
+                            <input name="nome" type="text" class="form-control" id="nome" required>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-dark" type="submit">Entrar</button>
+                            <button id="login" class="btn" type="button">Criar Sala</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
+        <div class="col-md-5"></div>
     </div>
 </body>
 

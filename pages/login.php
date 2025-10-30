@@ -56,27 +56,31 @@
 </head>
 
 <body>
-    <div class="container">
-        <img src="../img/MI_legenda.png" class="img-fluid" alt="..." style="width: 200px;">
-        <div class="card" style="width: 300px;">
-            <h2 style="text-align: center; font-weight: bold; margin-top: 20px;">Login</h2>
-            <div class="card-body">
-                <form action="" method="POST">
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Endereço de email</label>
-                        <input name="email" type="email" class="form-control" id="email">
-                    </div>
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Senha</label>
-                        <input name="senha" type="password" class="form-control" id="password">
-                    </div>
-                    <div class="d-grid gap-2">
-                        <button class="btn btn-dark" name="submit" type="submit">Entrar</button>
-                        <button id="cad" class="btn" type="button">Registrar</button>
-                    </div>
-                </form>
+    <div class="row">
+        <div class="col-md-5"></div>
+        <div class="col-md-2">
+            <img src="../img/MI_legenda.png" class="img-fluid" alt="...">
+            <div class="card" style="width: 300px;">
+                <h2 style="text-align: center; font-weight: bold; margin-top: 20px;">Login</h2>
+                <div class="card-body">
+                    <form action="" method="POST">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Endereço de email</label>
+                            <input name="email" type="email" class="form-control" id="email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Senha</label>
+                            <input name="senha" type="password" class="form-control" id="password">
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-dark" name="submit" type="submit">Entrar</button>
+                            <button id="cad" class="btn" type="button">Registrar</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
+        <div class="col-md-5"></div>
     </div>
 </body>
 

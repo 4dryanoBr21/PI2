@@ -1,5 +1,6 @@
 <?php
     require("../functions/conexao.php");
+
     session_start();
 
     if (!isset($_SESSION['codigo']) || !isset($_SESSION['nome'])) {
@@ -44,38 +45,51 @@
 </head>
 
 <body>
-    <div class="container">
-        <img src="../img/MI_legenda.png" class="img-fluid" alt="..." style="width: 200px;">
-        <div class="card" style="width: 300px;">
-            <h2 style="text-align: center; font-weight: bold;"><?php echo htmlspecialchars($nome_sala); ?></h2>
-            <div class="container text-center">
-                <p>Bem-vindo(a), <strong><?php echo htmlspecialchars($nome_participante); ?></strong></p>
-            </div>
-            <div class="card-body">
-                <div class="d-grid gap-2 overflow-auto shadow p-3 mb-5 bg-body-tertiary rounded" style="height: 200px;">
-                    <?php
-                        $sql = "SELECT nome_participante FROM participante WHERE fk_sala_atual = ?";
-                        $stmt_part = $mysqli->prepare($sql);
-                        $stmt_part->bind_param("i", $id_sala);
-                        $stmt_part->execute();
-                        $result_part = $stmt_part->get_result();
-
-                        if ($result_part->num_rows > 0) {
-                            while ($row = $result_part->fetch_assoc()) {
-                                echo "<p>" . htmlspecialchars($row['nome_participante']) . "</p>";
-                            }
-                        } else {
-                            echo "<p>Nenhum participante na sala ainda.</p>";
-                        }
-
-                        $stmt_part->close();
-                    ?>
+    <div class="row">
+        <div class="col-md-5"></div>
+        <div class="col-md-2">
+            <img src="../img/MI_legenda.png" class="img-fluid" alt="..." style="width: 200px;">
+            <div class="card" style="width: 300px;">
+                <h2 style="text-align: center; font-weight: bold;"><?php echo htmlspecialchars($nome_sala); ?></h2>
+                <div class="container text-center">
+                    <p>Bem-vindo(a), <strong><?php echo htmlspecialchars($nome_participante); ?></strong></p>
                 </div>
-                <div class="d-grid gap-2">
-                    <button id="relogio" class="btn" type="button" style="font-size: 75px;">🤚</button>
+                <div class="card-body">
+                    <div class="d-grid gap-2 overflow-auto shadow p-3 mb-5 bg-body-tertiary rounded" style="height: 200px;">
+                        <?php
+                            $sql = "SELECT nome_participante FROM participante WHERE fk_sala_atual = ?";
+                            $stmt_part = $mysqli->prepare($sql);
+                            $stmt_part->bind_param("i", $id_sala);
+                            $stmt_part->execute();
+                            $result_part = $stmt_part->get_result();
+
+                            if ($result_part->num_rows > 0) {
+                                while ($row = $result_part->fetch_assoc()) {
+                                    echo "<p>" . htmlspecialchars($row['nome_participante']) . "</p>";
+                                }
+                            } else {
+                                echo "<p>Nenhum participante na sala ainda.</p>";
+                            }
+
+                            $stmt_part->close();
+                        ?>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button id="mao" class="btn" type="button" style="font-size: 75px;">🤚</button>
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="col-md-5"></div>
     </div>
 </body>
+
+<script>
+  const emoji = document.getElementById("mao");
+
+  emoji.addEventListener("click", () => {
+    emoji.textContent = emoji.textContent === "🤚" ? "❌" : "🤚";
+  });
+</script>
+
 </html>

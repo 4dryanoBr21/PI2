@@ -1,5 +1,6 @@
 <?php
     include('../functions/conexao.php');
+    
     session_start(); 
     
     if (!isset($_GET['id_sala'])) {
@@ -36,42 +37,42 @@
 </head>
 
 <body>
-    <div class="container">
-        <img src="../img/MI_legenda.png" class="img-fluid" alt="..." style="width: 200px;">
-        <div class="card" style="width: 300px;">
-            
-            <h2 style="text-align: center; font-weight: bold;"><?php echo $nome_sala; ?></h2>
+    <div class="row">
+        <div class="col-md-5"></div>
+        <div class="col-md-2">
+            <img src="../img/MI_legenda.png" class="img-fluid" alt="...">
+            <div class="card" style="width: 300px;">
 
-            <div class="container">
-              <p><?php echo $tempo_fala; ?></p>
-            </div>
+                <h2 style="text-align: center; font-weight: bold;"><?php echo $nome_sala; ?></h2>
+                <div class="container">
+                  <p><?php echo $tempo_fala; ?></p>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="d-grid gap-2 overflow-auto shadow p-3 mb-5 bg-body-tertiary rounded" style="height: 200px;">
+                            <?php
 
-            <div class="card-body">
-                <form>
-                    <div class="d-grid gap-2 overflow-auto shadow p-3 mb-5 bg-body-tertiary rounded" style="height: 200px;">
-                        <?php
-                            
-                            $sql = "SELECT participante.nome_participante FROM participante JOIN sala ON sala.id_sala = participante.fk_sala_atual WHERE sala.id_sala = $id_sala;";
-                            $result = $mysqli->query($sql);
-                            
-                            if ($result->num_rows > 0) {
-                                while ($row = $result->fetch_assoc()) {
-                                    echo "<p>" . htmlspecialchars($row['nome_participante']) . "</p>";
+                                $sql = "SELECT participante.nome_participante FROM participante JOIN sala ON sala.id_sala = participante.fk_sala_atual WHERE sala.id_sala = $id_sala;";
+                                $result = $mysqli->query($sql);
+
+                                if ($result->num_rows > 0) {
+                                    while ($row = $result->fetch_assoc()) {
+                                        echo "<p>" . htmlspecialchars($row['nome_participante']) . "</p>";
+                                    }
+                                } else {
+                                    echo "<p>Nenhum participante encontrado.</p>";
                                 }
-                            } else {
-                                echo "<p>Nenhum participante encontrado.</p>";
-                            }
-
-                        ?>
-                    </div>
-                    <div class="d-grid gap-2">
-                        <button id="relogio" class="btn" type="button" style="font-size: 75px;">⏰</button>
-                    </div>
-                </form>
+                            ?>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button id="relogio" class="btn" type="button" style="font-size: 75px;">⏰</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
+        <div class="col-md-5"></div>
     </div>
-
 <script>
   const emoji = document.getElementById("relogio");
 
