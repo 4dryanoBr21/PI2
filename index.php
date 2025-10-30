@@ -81,7 +81,7 @@
                     </div>
                     <div class="d-grid gap-2">
                         <button class="btn btn-dark" type="submit">Entrar</button>
-                        <button id="login" class="btn btn-outline-dark" type="button">Criar Sala</button>
+                        <button id="login" class="btn" type="button">Criar Sala</button>
                     </div>
                 </form>
             </div>
