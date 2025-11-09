@@ -3,12 +3,16 @@
     
     session_start();
 
+    $numero_de_bytes = 3; 
+    $bytes_aleatorios = random_bytes($numero_de_bytes);
+    $codigo_sala = bin2hex($bytes_aleatorios);
+
     if (isset($_POST['submit'])) {
     
         $nome_sala = mysqli_real_escape_string($mysqli, $_POST['nome']);
         $tempo = mysqli_real_escape_string($mysqli, $_POST['tempo']);
     
-        $result = mysqli_query($mysqli, "INSERT INTO sala (nome_sala, tempo_de_fala) VALUES ('$nome_sala', '$tempo')");
+        $result = mysqli_query($mysqli, "INSERT INTO sala (nome_sala, codigo_sala, tempo_de_fala) VALUES ('$nome_sala', '$codigo_sala', '$tempo')");
     
         if ($result) {
             $id_sala = mysqli_insert_id($mysqli);
@@ -59,6 +63,10 @@
                         <div class="mb-3">
                             <label for="nome" class="form-label">Nome da Sala</label>
                             <input name="nome" type="text" class="form-control" id="nome" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="codigo" class="form-label">Código da Sala</label>
+                            <input name="codigo" type="text" class="form-control" id="codigo" value="<?php echo  $codigo_sala; ?>" required />
                         </div>
                         <div class="mb-3">
                             <label for="tempo" class="form-label">Tempo de fala dos participantes</label>
