@@ -50,10 +50,8 @@
         <div class="col-md-2">
             <img src="../img/MI_legenda.png" class="img-fluid" alt="..." style="width: 200px;">
             <div class="card" style="width: 300px;">
+                <button type="button" class="btn-close" aria-label="Close"></button>
                 <h2 style="text-align: center; font-weight: bold;"><?php echo htmlspecialchars($nome_sala); ?></h2>
-                <div class="container text-center">
-                    <p>Bem-vindo(a), <strong><?php echo htmlspecialchars($nome_participante); ?></strong></p>
-                </div>
                 <div class="card-body">
                     <div class="d-grid gap-2 overflow-auto shadow p-3 mb-5 bg-body-tertiary rounded" style="height: 200px;">
                         <?php
