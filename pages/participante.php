@@ -48,7 +48,7 @@
     <div class="row">
         <div class="col-md-5"></div>
         <div class="col-md-2">
-            <img src="../img/MI_legenda.png" class="img-fluid" alt="..." style="width: 200px;">
+            <img src="../img/MI_legenda.png" class="img-fluid" alt="...">
             <div class="card" style="width: 300px;">
                 <button type="button" class="btn-close" aria-label="Close"></button>
                 <h2 style="text-align: center; font-weight: bold;"><?php echo htmlspecialchars($nome_sala); ?></h2>
