@@ -49,7 +49,23 @@ if ($result->num_rows > 0) {
         <div class="card-body">
           <form>
             <div class="d-grid gap-2 overflow-auto shadow p-3 mb-5 bg-body-tertiary rounded" style="height: 200px;">
-              <p>Carregando participantes...</p>
+              <?php
+                $sql = "SELECT nome_participante FROM participante WHERE fk_sala_atual = ?";
+                $stmt_part = $mysqli->prepare($sql);
+                $stmt_part->bind_param("i", $id_sala);
+                $stmt_part->execute();
+                $result_part = $stmt_part->get_resu
+                if ($result_part->num_rows > 0) {
+                    while ($row = $result_part->fetch_assoc()) {
+                        echo "<p>" . htmlspecialchars($row['nome_participante']) . "</p>";
+                    }
+                  } else {
+                    echo "<p>Nenhum participante na sala ainda.</p>";
+                
+                    $stmt_part->close();
+                  }
+                }
+              ?>
             </div>
             <div class="d-grid gap-2">
               <button id="relogio" class="btn" type="button" style="font-size: 75px;">⏰</button>
