@@ -1,31 +1,31 @@
 <?php
-    require("../functions/conexao.php");
+require("../functions/conexao.php");
 
-    session_start();
+session_start();
 
-    if (!isset($_SESSION['codigo']) || !isset($_SESSION['nome'])) {
-        header("Location: ../index.php");
-        exit;
-    }
+if (!isset($_SESSION['codigo']) || !isset($_SESSION['nome'])) {
+    header("Location: ../index.php");
+    exit;
+}
 
-    $codigo_sala = $_SESSION['codigo'];
-    $nome_participante = $_SESSION['nome'];
+$codigo_sala = $_SESSION['codigo'];
+$nome_participante = $_SESSION['nome'];
 
-    $stmt = $mysqli->prepare("SELECT id_sala, nome_sala FROM sala WHERE codigo_sala = ?");
-    $stmt->bind_param("s", $codigo_sala);
-    $stmt->execute();
-    $result = $stmt->get_result();
+$stmt = $mysqli->prepare("SELECT id_sala, nome_sala FROM sala WHERE codigo_sala = ?");
+$stmt->bind_param("s", $codigo_sala);
+$stmt->execute();
+$result = $stmt->get_result();
 
-    if ($result && $result->num_rows > 0) {
-        $sala = $result->fetch_assoc();
-        $id_sala = $sala['id_sala'];
-        $nome_sala = $sala['nome_sala'];
-    } else {
-        echo "Sala não encontrada.";
-        exit;
-    }
+if ($result && $result->num_rows > 0) {
+    $sala = $result->fetch_assoc();
+    $id_sala = $sala['id_sala'];
+    $nome_sala = $sala['nome_sala'];
+} else {
+    echo "Sala não encontrada.";
+    exit;
+}
 
-    $stmt->close();
+$stmt->close();
 
 ?>
 
@@ -53,23 +53,24 @@
                 <button type="button" class="btn-close" aria-label="Close"></button>
                 <h2 style="text-align: center; font-weight: bold;"><?php echo htmlspecialchars($nome_sala); ?></h2>
                 <div class="card-body">
-                    <div class="d-grid gap-2 overflow-auto shadow p-3 mb-5 bg-body-tertiary rounded" style="height: 200px;">
+                    <div class="d-grid gap-2 overflow-auto shadow p-3 mb-5 bg-body-tertiary rounded"
+                        style="height: 200px;">
                         <?php
-                            $sql = "SELECT nome_participante FROM participante WHERE fk_sala_atual = ?";
-                            $stmt_part = $mysqli->prepare($sql);
-                            $stmt_part->bind_param("i", $id_sala);
-                            $stmt_part->execute();
-                            $result_part = $stmt_part->get_result();
+                        $sql = "SELECT nome_participante FROM participante WHERE fk_sala_atual = ?";
+                        $stmt_part = $mysqli->prepare($sql);
+                        $stmt_part->bind_param("i", $id_sala);
+                        $stmt_part->execute();
+                        $result_part = $stmt_part->get_result();
 
-                            if ($result_part->num_rows > 0) {
-                                while ($row = $result_part->fetch_assoc()) {
-                                    echo "<p>" . htmlspecialchars($row['nome_participante']) . "</p>";
-                                }
-                            } else {
-                                echo "<p>Nenhum participante na sala ainda.</p>";
+                        if ($result_part->num_rows > 0) {
+                            while ($row = $result_part->fetch_assoc()) {
+                                echo "<p>" . htmlspecialchars($row['nome_participante']) . "</p>";
                             }
+                        } else {
+                            echo "<p>Nenhum participante na sala ainda.</p>";
+                        }
 
-                            $stmt_part->close();
+                        $stmt_part->close();
                         ?>
                     </div>
                     <div class="d-grid gap-2">
@@ -83,11 +84,11 @@
 </body>
 
 <script>
-  const emoji = document.getElementById("mao");
+    const emoji = document.getElementById("mao");
 
-  emoji.addEventListener("click", () => {
-    emoji.textContent = emoji.textContent === "🤚" ? "❌" : "🤚";
-  });
+    emoji.addEventListener("click", () => {
+        emoji.textContent = emoji.textContent === "🤚" ? "❌" : "🤚";
+    });
 </script>
 
 </html>

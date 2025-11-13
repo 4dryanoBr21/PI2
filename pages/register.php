@@ -1,19 +1,19 @@
-<?php 
+<?php
 
-    include("../functions/conexao.php"); 
+include("../functions/conexao.php");
 
-    if(isset($_POST['submit'])) {
-  
-        $nome = $_POST['nome'];
-        $email = $_POST['email'];
-        $senha = $_POST['senha'];
+if (isset($_POST['submit'])) {
 
-        $result = mysqli_query($mysqli, "INSERT INTO criador (nome_criador, email, senha) VALUES ('$nome', '$email', '$senha')");
+    $nome = $_POST['nome'];
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
 
-        header("Location: login.php");
+    $result = mysqli_query($mysqli, "INSERT INTO criador (nome_criador, email, senha) VALUES ('$nome', '$email', '$senha')");
 
-    }
-  
+    header("Location: login.php");
+
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -46,11 +46,13 @@
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Email address</label>
-                            <input  name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                            <input name="email" type="email" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" required>
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Password</label>
-                            <input name="senha" type="password" class="form-control" id="exampleInputPassword1" required>
+                            <input name="senha" type="password" class="form-control" id="exampleInputPassword1"
+                                required>
                         </div>
                         <div class="d-grid gap-2">
                             <button class="btn btn-dark" name="submit" type="submit">Registrar</button>
@@ -68,10 +70,10 @@
 
     const login = document.getElementById("login_page")
 
-    function login_page(){
+    function login_page() {
         window.open("login.php", "_self")
     }
-  
+
     login.addEventListener("click", login_page)
 
 </script>

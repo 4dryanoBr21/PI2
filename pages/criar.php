@@ -1,40 +1,69 @@
-<?php 
-    include("../functions/conexao.php");
-    
-    session_start();
-
-    $numero_de_bytes = 3; 
-    $bytes_aleatorios = random_bytes($numero_de_bytes);
-    $codigo_sala = bin2hex($bytes_aleatorios);
-
-    if (isset($_POST['submit'])) {
-    
-        $nome_sala = mysqli_real_escape_string($mysqli, $_POST['nome']);
-        $tempo = mysqli_real_escape_string($mysqli, $_POST['tempo']);
-    
-        $result = mysqli_query($mysqli, "INSERT INTO sala (nome_sala, codigo_sala, tempo_de_fala) VALUES ('$nome_sala', '$codigo_sala', '$tempo')");
-    
-        if ($result) {
-            $id_sala = mysqli_insert_id($mysqli);
-
-            $stmt = $mysqli->prepare("UPDATE criador SET fk_sala_criada = ? WHERE id_criador = ?");
-            $stmt->bind_param("ii", $id_sala, $_SESSION['id_criador']);
-            $stmt->execute();
+<?php
+include("../functions/conexao.php");
+session_start();
 
 
-            if (!isset($_SESSION['nome_criador'])) {
-                die("Sessão inválida: nome de usuário não encontrado.");
+if (!isset($_SESSION['id_criador'])) {
+    header('Location: login.php');
+    exit();
+}
+
+// Gera um código aleatório de 6 caracteres (letras e números)
+function gerar_codigo_sala_aleatorio()
+{
+    $caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $codigo = '';
+    $max = strlen($caracteres) - 1;
+    for ($i = 0; $i < 6; $i++) {
+        // random_int é seguro; aqui usamos a forma simples sem parâmetros nomeados
+        $indice = random_int(0, $max);
+        $codigo .= $caracteres[$indice];
+    }
+    return $codigo;
+}
+
+$codigo_sala = gerar_codigo_sala_aleatorio();
+
+if (isset($_POST['submit'])) {
+    // Valida e normaliza entradas
+    $nome_sala = trim($_POST['nome'] ?? '');
+    $tempo = trim($_POST['tempo'] ?? '');
+    $codigo = trim($_POST['codigo'] ?? '');
+
+    if ($nome_sala === '' || $tempo === '' || $codigo === '') {
+        echo "Por favor preencha todos os campos.";
+    } else {
+        // Usa prepared statement para inserir de forma segura
+        $stmt = $mysqli->prepare("INSERT INTO sala (nome_sala, codigo_sala, tempo_de_fala) VALUES (?, ?, ?)");
+        if ($stmt === false) {
+            echo "Erro interno. Tente novamente.";
+            exit();
+        }
+
+        // Liga os valores e executa o INSERT de forma segura
+        $stmt->bind_param("sss", $nome_sala, $codigo, $tempo);
+        if ($stmt->execute()) {
+            $id_sala = $mysqli->insert_id;
+            $stmt->close();
+
+            $update = $mysqli->prepare("UPDATE criador SET fk_sala_criada = ? WHERE id_criador = ?");
+            if ($update) {
+                $update->bind_param('ii', $id_sala, $_SESSION['id_criador']);
+                $update->execute();
+                $update->close();
             }
-            
-            $_SESSION['nome_sala'] = $_POST['nome'];
 
+            $_SESSION['nome_sala'] = $nome_sala;
             header("Location: criador.php?id_sala=$id_sala");
             exit();
         } else {
-            echo "<p style='color:red;'>Erro ao criar sala: " . mysqli_error($mysqli) . "</p>";
+            echo "Erro ao criar sala. Tente novamente.";
+            $stmt->close();
         }
     }
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -66,7 +95,8 @@
                         </div>
                         <div class="mb-3">
                             <label for="codigo" class="form-label">Código da Sala</label>
-                            <input name="codigo" type="text" class="form-control" id="codigo" value="<?php echo  $codigo_sala; ?>" required />
+                            <input name="codigo" type="text" class="form-control" id="codigo"
+                                value="<?php echo htmlspecialchars($codigo_sala, ENT_QUOTES); ?>" required />
                         </div>
                         <div class="mb-3">
                             <label for="tempo" class="form-label">Tempo de fala dos participantes</label>
@@ -82,4 +112,5 @@
         <div class="col-md-5"></div>
     </div>
 </body>
+
 </html>

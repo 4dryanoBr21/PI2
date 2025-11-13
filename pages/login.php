@@ -1,41 +1,41 @@
-<?php 
-    include("../functions/conexao.php");
-                
-    if(isset($_POST['email']) || isset($_POST['senha'])) {
+<?php
+include("../functions/conexao.php");
 
-        if(strlen($_POST['email']) == 0) {
-            echo "Prencha seu email!";
-            } else if(strlen($_POST['senha']) == 0) {
-                echo "Prencha sua senha!";
-            } else {
+if (isset($_POST['email']) || isset($_POST['senha'])) {
 
-                $email = $mysqli->real_escape_string($_POST['email']);
-                $senha = $mysqli->real_escape_string($_POST['senha']);
+    if (strlen($_POST['email']) == 0) {
+        echo "Prencha seu email!";
+    } else if (strlen($_POST['senha']) == 0) {
+        echo "Prencha sua senha!";
+    } else {
 
-                $sql_code = "SELECT * FROM criador WHERE email = '$email' AND senha = '$senha'";
-                $sql_query = $mysqli->query($sql_code) or die("Falha na execução do SQL: " . $mysqli->error);
+        $email = $mysqli->real_escape_string($_POST['email']);
+        $senha = $mysqli->real_escape_string($_POST['senha']);
 
-                $quantidade = $sql_query->num_rows;
+        $sql_code = "SELECT * FROM criador WHERE email = '$email' AND senha = '$senha'";
+        $sql_query = $mysqli->query($sql_code) or die("Falha na execução do SQL: " . $mysqli->error);
 
-                if($quantidade == 1) {  
+        $quantidade = $sql_query->num_rows;
 
-                    $usuario = $sql_query->fetch_assoc();
+        if ($quantidade == 1) {
 
-                    if(!isset($_SESSION)) {
-                        session_start();
-                    }
+            $usuario = $sql_query->fetch_assoc();
 
-                    $_SESSION['id_criador'] = $usuario['id_criador'];
-                    $_SESSION['nome_criador'] = $usuario['nome_criador'];
+            if (!isset($_SESSION)) {
+                session_start();
+            }
 
-                    header("Location: criar.php");
+            $_SESSION['id_criador'] = $usuario['id_criador'];
+            $_SESSION['nome_criador'] = $usuario['nome_criador'];
 
-                } else {
-                    echo "email ou senha incorretos!";
-                }
+            header("Location: criar.php");
 
+        } else {
+            echo "email ou senha incorretos!";
         }
+
     }
+}
 
 ?>
 
@@ -47,7 +47,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../style.css">
