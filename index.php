@@ -1,52 +1,52 @@
 <?php
-    require('functions/conexao.php');
-    
-    session_start();
+require('functions/conexao.php');
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+session_start();
 
-        $codigo = trim(filter_input(INPUT_POST, 'codigo', FILTER_SANITIZE_STRING));
-        $nome = trim(filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING));
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-        if (empty($codigo)) {
-            echo "Preencha o código da sala!";
-        } elseif (empty($nome)) {
-            echo "Preencha seu nome!";
-        } else {
+    $codigo = trim(filter_input(INPUT_POST, 'codigo', FILTER_SANITIZE_STRING));
+    $nome = trim(filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING));
 
-            $stmt = $mysqli->prepare("SELECT id_sala, nome_sala FROM sala WHERE codigo_sala = ?");
-            if ($stmt) {
-                $stmt->bind_param("s", $codigo);
-                $stmt->execute();
-                $result = $stmt->get_result();
+    if (empty($codigo)) {
+        echo "Preencha o código da sala!";
+    } elseif (empty($nome)) {
+        echo "Preencha seu nome!";
+    } else {
 
-                if ($result && $result->num_rows === 1) {
-                    $sala = $result->fetch_assoc();
-                    $id_sala = $sala['id_sala'];
+        $stmt = $mysqli->prepare("SELECT id_sala, nome_sala FROM sala WHERE codigo_sala = ?");
+        if ($stmt) {
+            $stmt->bind_param("s", $codigo);
+            $stmt->execute();
+            $result = $stmt->get_result();
 
-                    $stmt_insert = $mysqli->prepare("INSERT INTO participante (nome_participante, fk_sala_atual) VALUES (?, ?)");
-                    if ($stmt_insert) {
-                        $stmt_insert->bind_param("si", $nome, $id_sala);
-                        if ($stmt_insert->execute()) {
-                            $_SESSION['codigo'] = $codigo;
-                            $_SESSION['nome'] = $nome;
-                            header("Location: pages/participante.php");
-                            exit;
-                        } else {
-                            echo "Erro ao inserir participante.";
-                        }
-                        $stmt_insert->close();
+            if ($result && $result->num_rows === 1) {
+                $sala = $result->fetch_assoc();
+                $id_sala = $sala['id_sala'];
+
+                $stmt_insert = $mysqli->prepare("INSERT INTO participante (nome_participante, fk_sala_atual) VALUES (?, ?)");
+                if ($stmt_insert) {
+                    $stmt_insert->bind_param("si", $nome, $id_sala);
+                    if ($stmt_insert->execute()) {
+                        $_SESSION['codigo'] = $codigo;
+                        $_SESSION['nome'] = $nome;
+                        header("Location: pages/participante.php");
+                        exit;
+                    } else {
+                        echo "Erro ao inserir participante.";
                     }
-                } else {
-                    echo "Código de sala inválido.";
+                    $stmt_insert->close();
                 }
-
-                $stmt->close();
             } else {
-                echo "Erro ao preparar consulta SQL.";
+                echo "Código de sala inválido.";
             }
+
+            $stmt->close();
+        } else {
+            echo "Erro ao preparar consulta SQL.";
         }
     }
+}
 ?>
 
 <!DOCTYPE html>
@@ -68,7 +68,7 @@
 <body>
     <div class="row">
         <div class="col-md-5"></div>
-        <div class="col-md-2">  
+        <div class="col-md-2">
             <img src="img/MI_legenda.png" class="img-fluid" alt="Logo">
             <div class="card mx-auto shadow" style="max-width: 320px;">
                 <h2 class="mt-3 fw-bold" style="text-align: center;">Entrar na Sala</h2>

@@ -29,11 +29,9 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
             $_SESSION['nome_criador'] = $usuario['nome_criador'];
 
             header("Location: criar.php");
-
         } else {
             echo "email ou senha incorretos!";
         }
-
     }
 }
 

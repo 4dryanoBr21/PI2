@@ -11,7 +11,6 @@ if (isset($_POST['submit'])) {
     $result = mysqli_query($mysqli, "INSERT INTO criador (nome_criador, email, senha) VALUES ('$nome', '$email', '$senha')");
 
     header("Location: login.php");
-
 }
 
 ?>
@@ -67,7 +66,6 @@ if (isset($_POST['submit'])) {
 </body>
 
 <script>
-
     const login = document.getElementById("login_page")
 
     function login_page() {
@@ -75,7 +73,6 @@ if (isset($_POST['submit'])) {
     }
 
     login.addEventListener("click", login_page)
-
 </script>
 
 </html>
