@@ -48,23 +48,8 @@ if ($result->num_rows > 0) {
         </div>
         <div class="card-body">
           <form>
-            <div class="d-grid gap-2 overflow-auto shadow p-3 mb-5 bg-body-tertiary rounded" style="height: 200px;">
-              <?php
-              $stmt = $mysqli->prepare("SELECT nome_participante FROM participante WHERE fk_sala_atual = ?");
-              $stmt->bind_param("i", $id_sala);
-              $stmt->execute();
-              $result = $stmt->get_result();
-
-              if ($result->num_rows === 0) {
-                echo "<p>Nenhum participante na sala ainda.</p>";
-              } else {
-                foreach ($result as $row) {
-                  echo "<p>" . htmlspecialchars($row['nome_participante']) . "</p>";
-                }
-              }
-
-              $stmt->close();
-              ?>
+            <div id="listaUsuarios" class="d-grid gap-2 overflow-auto shadow p-3 mb-5 bg-body-tertiary rounded"
+              style="height: 200px;">
             </div>
             <div class="d-grid gap-2">
               <button id="relogio" class="btn" type="button" style="font-size: 75px;">⏰</button>
@@ -75,6 +60,22 @@ if ($result->num_rows > 0) {
     </div>
     <div class="col-md-5"></div>
   </div>
+
+  <script>
+    function atualizarUsuarios() {
+      fetch("../functions/get_usuarios.php?id_sala=<?php echo $id_sala; ?>")
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById("listaUsuarios").innerHTML = html;
+        })
+        .catch(err => console.error("Erro ao buscar usuários:", err));
+    }
+
+    setInterval(atualizarUsuarios, 1000);
+    atualizarUsuarios();
+  </script>
+
+
   <script>
     const emoji = document.getElementById("relogio");
 

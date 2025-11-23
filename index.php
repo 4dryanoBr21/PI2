@@ -28,8 +28,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if ($stmt_insert) {
                     $stmt_insert->bind_param("si", $nome, $id_sala);
                     if ($stmt_insert->execute()) {
+
+                        $id_participante = $stmt_insert->insert_id;
+
                         $_SESSION['codigo'] = $codigo;
                         $_SESSION['nome'] = $nome;
+                        $_SESSION['id_participante'] = $id_participante;
                         header("Location: pages/participante.php");
                         exit;
                     } else {

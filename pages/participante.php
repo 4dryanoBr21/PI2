@@ -50,28 +50,11 @@ $stmt->close();
         <div class="col-md-2">
             <img src="../img/MI_legenda.png" class="img-fluid" alt="...">
             <div class="card" style="width: 300px;">
-                <button type="button" class="btn-close" aria-label="Close"></button>
+                <button type="button" class="btn-close" id="btnSair" aria-label="Close"></button>
                 <h2 style="text-align: center; font-weight: bold;"><?php echo htmlspecialchars($nome_sala); ?></h2>
                 <div class="card-body">
-                    <div class="d-grid gap-2 overflow-auto shadow p-3 mb-5 bg-body-tertiary rounded"
+                    <div id="listaUsuarios" class="d-grid gap-2 overflow-auto shadow p-3 mb-5 bg-body-tertiary rounded"
                         style="height: 200px;">
-                        <?php
-                        $sql = "SELECT nome_participante FROM participante WHERE fk_sala_atual = ?";
-                        $stmt_part = $mysqli->prepare($sql);
-                        $stmt_part->bind_param("i", $id_sala);
-                        $stmt_part->execute();
-                        $result_part = $stmt_part->get_result();
-
-                        if ($result_part->num_rows > 0) {
-                            while ($row = $result_part->fetch_assoc()) {
-                                echo "<p>" . htmlspecialchars($row['nome_participante']) . "</p>";
-                            }
-                        } else {
-                            echo "<p>Nenhum participante na sala ainda.</p>";
-                        }
-
-                        $stmt_part->close();
-                        ?>
                     </div>
                     <div class="d-grid gap-2">
                         <button id="mao" class="btn" type="button" style="font-size: 75px;">🤚</button>
@@ -82,6 +65,45 @@ $stmt->close();
         <div class="col-md-5"></div>
     </div>
 </body>
+
+<script>
+    const idParticipante = <?php echo $_SESSION['id_participante']; ?>;
+</script>
+
+<script>
+    document.getElementById("btnSair").addEventListener("click", function() {
+        const formData = new FormData();
+        formData.append("id_participante", idParticipante);
+
+        fetch("../functions/sair_sala.php", {
+                method: "POST",
+                body: formData
+            })
+            .then(res => res.text())
+            .then(ret => {
+                if (ret.trim() === "ok") {
+                    window.location.href = "../index.php";
+                } else {
+                    alert("Erro ao sair da sala.");
+                }
+            })
+            .catch(err => console.error("Erro:", err));
+    });
+</script>
+
+<script>
+    function atualizarUsuarios() {
+        fetch("../functions/get_usuarios.php?id_sala=<?php echo $id_sala; ?>")
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById("listaUsuarios").innerHTML = html;
+            })
+            .catch(err => console.error("Erro ao buscar usuários:", err));
+    }
+
+    setInterval(atualizarUsuarios, 1000);
+    atualizarUsuarios();
+</script>
 
 <script>
     const emoji = document.getElementById("mao");
