@@ -45,24 +45,28 @@ $stmt->close();
 </head>
 
 <body>
-    <div class="row">
-        <div class="col-md-5"></div>
-        <div class="col-md-2">
-            <img src="../img/MI_legenda.png" class="img-fluid" alt="...">
-            <div class="card" style="width: 300px;">
-                <button type="button" class="btn-close" id="btnSair" aria-label="Close"></button>
-                <h2 style="text-align: center; font-weight: bold;"><?php echo htmlspecialchars($nome_sala); ?></h2>
-                <div class="card-body">
-                    <div id="listaUsuarios" class="d-grid gap-2 overflow-auto shadow p-3 mb-5 bg-body-tertiary rounded"
-                        style="height: 200px;">
-                    </div>
-                    <div class="d-grid gap-2">
-                        <button id="mao" class="btn" type="button" style="font-size: 75px;">🤚</button>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <div class="text-center">
+                    <img src="../img/MI_legenda.png" class="rounded" alt="Logo" style="height: 300px;">
+                </div>
+                <div class="card">
+                    <button type="button" class="btn-close" id="btnSair" aria-label="Close"></button>
+                    <h2 class="text-center fw-bold"><?php echo htmlspecialchars($nome_sala); ?></h2>
+                    <div class="card-body">
+                        <div id="listaUsuarios" class="d-grid gap-2 overflow-auto shadow p-3 mb-5 bg-body-tertiary rounded"
+                            style="height: 200px;">
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button id="mao" class="btn" type="button" style="font-size: 75px;">🤚</button>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="col-md-4"></div>
         </div>
-        <div class="col-md-5"></div>
     </div>
 
     <script>

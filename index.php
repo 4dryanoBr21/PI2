@@ -70,38 +70,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-    <div class="row">
-        <div class="col-md-5"></div>
-        <div class="col-md-2">
-            <img src="img/MI_legenda.png" class="img-fluid" alt="Logo">
-            <div class="card mx-auto shadow" style="max-width: 320px;">
-                <h2 class="mt-3 fw-bold" style="text-align: center;">Entrar na Sala</h2>
-                <div class="card-body">
-                    <form action="" method="POST">
-                        <div class="mb-3 text-start">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <div class="text-center">
+                    <img src="img/MI_legenda.png" class="rounded" alt="Logo" style="height: 300px;">
+                </div>
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h2 class="text-center fw-bold">Entrar na Sala</h2><br>
+                        <form action="" method="POST">
                             <label for="codigo" class="form-label">Código da Sala</label>
-                            <input name="codigo" type="text" class="form-control" id="codigo" required>
-                        </div>
-                        <div class="mb-3 text-start">
+                            <input name="codigo" type="text" class="form-control" id="codigo" required><br>
+
                             <label for="nome" class="form-label">Nome do Convidado</label>
-                            <input name="nome" type="text" class="form-control" id="nome" required>
-                        </div>
-                        <div class="d-grid gap-2">
-                            <button class="btn btn-dark" type="submit">Entrar</button>
-                            <button id="login" class="btn" type="button">Criar Sala</button>
-                        </div>
-                    </form>
+                            <input name="nome" type="text" class="form-control" id="nome" required><br>
+
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-dark" type="submit">Entrar</button>
+                                <button id="login" class="btn" type="button">Criar Sala</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
+            <div class="col-md-4"></div>
         </div>
-        <div class="col-md-5"></div>
     </div>
-</body>
 
-<script>
-    document.getElementById("login").addEventListener("click", () => {
-        window.location.href = "pages/login.php";
-    });
-</script>
+    <script>
+        document.getElementById("login").addEventListener("click", () => {
+            window.location.href = "pages/login.php";
+        });
+    </script>
+</body>
 
 </html>

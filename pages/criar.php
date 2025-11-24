@@ -81,35 +81,35 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body>
-    <div class="row">
-        <div class="col-md-5"></div>
-        <div class="col-md-2">
-            <img src="../img/MI_legenda.png" class="img-fluid" alt="...">
-            <div class="card" style="width: 300px;">
-                <h2 style="text-align: center; font-weight: bold;">Criar Sala</h2>
-                <div class="card-body">
-                    <form action="" method="POST">
-                        <div class="mb-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <div class="text-center">
+                    <img src="../img/MI_legenda.png" class="rounded" alt="Logo" style="height: 300px;">
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="text-center fw-bold">Criar Sala</h2>
+                        <form action="" method="POST">
                             <label for="nome" class="form-label">Nome da Sala</label>
-                            <input name="nome" type="text" class="form-control" id="nome" required />
-                        </div>
-                        <div class="mb-3">
+                            <input name="nome" type="text" class="form-control" id="nome" required /><br>
+
                             <label for="codigo" class="form-label">Código da Sala</label>
-                            <input name="codigo" type="text" class="form-control" id="codigo"
-                                value="<?php echo htmlspecialchars($codigo_sala, ENT_QUOTES); ?>" required />
-                        </div>
-                        <div class="mb-3">
+                            <input name="codigo" type="text" class="form-control" id="codigo" value="<?php echo htmlspecialchars($codigo_sala, ENT_QUOTES); ?>" required /><br>
+
                             <label for="tempo" class="form-label">Tempo de fala dos participantes</label>
-                            <input name="tempo" type="time" class="form-control" id="tempo" required />
-                        </div>
-                        <div class="d-grid gap-2">
-                            <button class="btn btn-dark" name="submit" type="submit">Criar</button>
-                        </div>
-                    </form>
+                            <input name="tempo" type="time" class="form-control" id="tempo" required /><br>
+
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-dark" name="submit" type="submit">Criar</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
+            <div class="col-md-4"></div>
         </div>
-        <div class="col-md-5"></div>
     </div>
 </body>
 
