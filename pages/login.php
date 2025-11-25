@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("../functions/conexao.php");
 
 if (isset($_POST['email']) || isset($_POST['senha'])) {
@@ -20,10 +21,6 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
         if ($quantidade == 1) {
 
             $usuario = $sql_query->fetch_assoc();
-
-            if (!isset($_SESSION)) {
-                session_start();
-            }
 
             $_SESSION['id_criador'] = $usuario['id_criador'];
             $_SESSION['nome_criador'] = $usuario['nome_criador'];

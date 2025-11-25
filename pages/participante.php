@@ -70,6 +70,21 @@ $stmt->close();
     </div>
 
     <script>
+        function verificarSala() {
+            fetch("../functions/verifica_sala.php?id_sala=<?php echo $id_sala; ?>")
+                .then(res => res.text())
+                .then(resp => {
+                    if (resp.trim() === "0") {
+                        window.location.href = "../index.php";
+                    }
+                });
+        }
+
+        setInterval(verificarSala, 1000);
+    </script>
+
+
+    <script>
         document.getElementById("mao").addEventListener("click", () => {
 
             const idParticipante = <?php echo $_SESSION['id_participante']; ?>;

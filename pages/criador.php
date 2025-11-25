@@ -66,6 +66,29 @@ if ($result->num_rows > 0) {
   </div>
 
   <script>
+    document.querySelector(".btn-close").addEventListener("click", function() {
+
+      const idSala = <?php echo $id_sala; ?>;
+      const form = new FormData();
+      form.append("id_sala", idSala);
+
+      fetch("../functions/fechar_sala.php", {
+          method: "POST",
+          body: form
+        })
+        .then(res => res.text())
+        .then(ret => {
+          if (ret.trim() === "ok") {
+            window.location.href = "criar.php";
+          } else {
+            alert("Erro ao fechar a sala.");
+          }
+        });
+    });
+  </script>
+
+
+  <script>
     function atualizarUsuarios() {
       fetch("../functions/get_usuarios.php?id_sala=<?php echo $id_sala; ?>")
         .then(res => res.text())
