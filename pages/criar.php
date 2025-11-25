@@ -8,14 +8,12 @@ if (!isset($_SESSION['id_criador'])) {
     exit();
 }
 
-// Gera um código aleatório de 6 caracteres (letras e números)
 function gerar_codigo_sala_aleatorio()
 {
     $caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $codigo = '';
     $max = strlen($caracteres) - 1;
     for ($i = 0; $i < 6; $i++) {
-        // random_int é seguro; aqui usamos a forma simples sem parâmetros nomeados
         $indice = random_int(0, $max);
         $codigo .= $caracteres[$indice];
     }
@@ -25,7 +23,6 @@ function gerar_codigo_sala_aleatorio()
 $codigo_sala = gerar_codigo_sala_aleatorio();
 
 if (isset($_POST['submit'])) {
-    // Valida e normaliza entradas
     $nome_sala = trim($_POST['nome'] ?? '');
     $tempo = trim($_POST['tempo'] ?? '');
     $codigo = trim($_POST['codigo'] ?? '');
@@ -33,14 +30,12 @@ if (isset($_POST['submit'])) {
     if ($nome_sala === '' || $tempo === '' || $codigo === '') {
         echo "Por favor preencha todos os campos.";
     } else {
-        // Usa prepared statement para inserir de forma segura
         $stmt = $mysqli->prepare("INSERT INTO sala (nome_sala, codigo_sala, tempo_de_fala) VALUES (?, ?, ?)");
         if ($stmt === false) {
             echo "Erro interno. Tente novamente.";
             exit();
         }
 
-        // Liga os valores e executa o INSERT de forma segura
         $stmt->bind_param("sss", $nome_sala, $codigo, $tempo);
         if ($stmt->execute()) {
             $id_sala = $mysqli->insert_id;

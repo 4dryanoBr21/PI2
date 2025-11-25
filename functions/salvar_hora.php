@@ -8,7 +8,6 @@ if (!isset($_POST['id_participante'])) {
 
 $id_participante = intval($_POST['id_participante']);
 
-// Primeiro buscamos o valor atual
 $stmt = $mysqli->prepare("
     SELECT data_hora_solicitacao 
     FROM participante 
@@ -21,12 +20,9 @@ $row = $result->fetch_assoc();
 $valorAtual = $row['data_hora_solicitacao'];
 $stmt->close();
 
-// Alterna: se tiver valor -> coloca NULL | se estiver NULL -> coloca horário atual
 if ($valorAtual === null) {
-    // Define data/hora atual
     $novoValor = date("Y-m-d H:i:s");
 } else {
-    // Remove (define NULL)
     $novoValor = null;
 }
 
@@ -36,7 +32,6 @@ $stmt2 = $mysqli->prepare("
     WHERE id_participante = ?
 ");
 
-// Como o campo pode receber NULL, tratamos assim:
 $stmt2->bind_param("si", $novoValor, $id_participante);
 $stmt2->execute();
 
@@ -47,4 +42,3 @@ if ($stmt2->affected_rows >= 0) {
 }
 
 $stmt2->close();
-?>
