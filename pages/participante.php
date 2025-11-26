@@ -74,7 +74,7 @@ $stmt->close();
             fetch("../functions/verifica_sala.php?id_sala=<?php echo $id_sala; ?>")
                 .then(res => res.text())
                 .then(resp => {
-                    if (resp.trim() === "0") {
+                    if (resp.trim() === "1") {
                         window.location.href = "../index.php";
                     }
                 });
@@ -82,7 +82,6 @@ $stmt->close();
 
         setInterval(verificarSala, 1000);
     </script>
-
 
     <script>
         document.getElementById("mao").addEventListener("click", () => {
