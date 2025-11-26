@@ -21,16 +21,11 @@ if ($result->num_rows > 0) {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="pt-BR">
+<html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
   <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-    rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
   <link rel="shortcut icon" href="../img/MI_legenda_branco.png" type="image/x-icon">
   <title>ME INSCREVO - Sala <?php echo $nome_sala; ?></title>

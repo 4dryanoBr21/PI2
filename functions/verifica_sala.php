@@ -14,13 +14,11 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows === 0) {
-    echo "1";   // sala inexistente = expulsa
+    echo "1";
     exit;
 }
 
 $row = $result->fetch_assoc();
 
-// Se realmente estiver encerrada, retorna 1.  
-// Caso contrário, sempre retorna 0.
 echo ($row['encerrada'] == 1) ? "1" : "0";
 ?>

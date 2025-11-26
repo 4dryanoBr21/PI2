@@ -42,3 +42,4 @@ if ($stmt2->affected_rows >= 0) {
 }
 
 $stmt2->close();
+?>
