@@ -42,8 +42,6 @@ if ($result->num_rows > 0) {
         <div class="card">
           <button type="button" class="btn-close" aria-label="Close"></button>
           <h2 class="text-center fw-bold"><?php echo $nome_sala; ?></h2>
-          <div class="container">
-          </div>
           <div class="card-body">
             <form>
               <div id="listaUsuarios" class="d-grid gap-2 overflow-auto shadow p-3 mb-5 bg-body-tertiary rounded"
