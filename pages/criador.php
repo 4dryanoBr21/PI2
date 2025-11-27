@@ -9,8 +9,6 @@ if (!isset($_GET['id_sala'])) {
 
 $id_sala = intval($_GET['id_sala']);
 
-$id_sala = intval($_GET['id_sala']);
-
 // registra início se ainda não tiver valor
 $mysqli->query("UPDATE sala SET data_inicio = NOW() WHERE id_sala = $id_sala AND data_inicio IS NULL");
 
