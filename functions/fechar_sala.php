@@ -9,7 +9,9 @@ if (!isset($_POST['id_sala'])) {
 $id_sala = intval($_POST['id_sala']);
 
 $stmt = $mysqli->prepare("
-    UPDATE sala SET encerrada = 1 
+    UPDATE sala 
+    SET encerrada = 1,
+        data_fim = NOW()
     WHERE id_sala = ?
 ");
 $stmt->bind_param("i", $id_sala);
@@ -20,6 +22,7 @@ $stmt2 = $mysqli->prepare("
     SET fk_sala_atual = NULL, data_hora_solicitacao = NULL
     WHERE fk_sala_atual = ?
 ");
+
 $stmt2->bind_param("i", $id_sala);
 $stmt2->execute();
 

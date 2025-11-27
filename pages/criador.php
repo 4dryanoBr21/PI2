@@ -1,5 +1,6 @@
 <?php
 include('../functions/conexao.php');
+
 session_start();
 
 if (!isset($_GET['id_sala'])) {
@@ -8,24 +9,20 @@ if (!isset($_GET['id_sala'])) {
 
 $id_sala = intval($_GET['id_sala']);
 
-// Inclui o script que inicializa inicio_sala se necessário
-include('../functions/tempo_corrido.php');
+// registra início se ainda não tiver valor
+$mysqli->query("UPDATE sala SET data_inicio = NOW() WHERE id_sala = $id_sala AND data_inicio IS NULL");
 
-// Agora pega todos os dados da sala (já com inicio_sala preenchido se precisou)
 $sql = "SELECT * FROM sala WHERE id_sala = $id_sala";
 $result = $mysqli->query($sql);
 
 if ($result->num_rows > 0) {
   $row = $result->fetch_assoc();
-
   $nome_sala = htmlspecialchars($row['nome_sala']);
   $tempo_fala = htmlspecialchars($row['tempo_de_fala']);
-  $inicio_sala = $row['inicio_sala'];
 } else {
   die("Sala não encontrada. <a href='criar.php'>Voltar</a>");
 }
 ?>
-
 
 <html>
 
@@ -48,12 +45,6 @@ if ($result->num_rows > 0) {
         <div class="card">
           <button type="button" class="btn-close" aria-label="Close"></button>
           <h2 class="text-center fw-bold"><?php echo $nome_sala; ?></h2>
-<<<<<<< Updated upstream
-=======
-          <p id="contador" class="text-center">00:00:00</p>
-          <div class="container">
-          </div>
->>>>>>> Stashed changes
           <div class="card-body">
             <form>
               <div id="listaUsuarios" class="d-grid gap-2 overflow-auto shadow p-3 mb-5 bg-body-tertiary rounded"
@@ -71,16 +62,16 @@ if ($result->num_rows > 0) {
   </div>
 
   <script>
-    document.querySelector(".btn-close").addEventListener("click", function () {
+    document.querySelector(".btn-close").addEventListener("click", function() {
 
       const idSala = <?php echo $id_sala; ?>;
       const form = new FormData();
       form.append("id_sala", idSala);
 
       fetch("../functions/fechar_sala.php", {
-        method: "POST",
-        body: form
-      })
+          method: "POST",
+          body: form
+        })
         .then(res => res.text())
         .then(ret => {
           if (ret.trim() === "ok") {
@@ -115,44 +106,6 @@ if ($result->num_rows > 0) {
       emoji.textContent = emoji.textContent === "⏰" ? "❌" : "⏰";
     });
   </script>
-
-
-  <script>
-    const inicioSala = "<?php echo $inicio_sala; ?>";
-  </script>
-  
-  
-  
-  <script>
-
-    const contador = document.getElementById("contador");
-
-    const inicio = new Date(inicioSala).getTime();
-
-    function atualizarContador() {
-      const agora = Date.now();
-      const diff = Math.floor((agora - inicio) / 1000);
-
-      let horas = Math.floor(diff / 3600);
-      let minutos = Math.floor((diff % 3600) / 60);
-      let segundos = diff % 60;
-
-      horas = horas < 10 ? "0" + horas : horas;
-      minutos = minutos < 10 ? "0" + minutos : minutos;
-      segundos = segundos < 10 ? "0" + segundos : segundos;
-
-      contador.textContent = `${horas}:${minutos}:${segundos}`;
-    }
-
-    setInterval(atualizarContador, 1000);
-    atualizarContador();
-  </script>
-
 </body>
-
-
-
-
-
 
 </html>
